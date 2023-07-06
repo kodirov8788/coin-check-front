@@ -1,0 +1,35 @@
+.main h1 {
+    text-align: center;
+}
+
+.main {
+    /* border: 2px solid red; */
+    /* overflow: hidden; */
+}
+
+.main_wrap {
+    /* border: 2px solid blue; */
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+a {
+    background: #fff;
+    color: var(--primary);
+    border: 2px solid var(--primary);
+    padding: 6px 10px;
+    border-radius: 4px;
+    font-family: "Poppins";
+    cursor: pointer;
+    font-size: 1em;
+    text-decoration: none;
+    margin-bottom: 10px;
+
+
+}
+
+.main_wrap>a {
+    transform: translateX(-20px);
+}

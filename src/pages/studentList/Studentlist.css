@@ -1,0 +1,90 @@
+.studentlist_form {
+    height: 10%;
+    /* border: 1px solid red; */
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: column;
+}
+
+.studentlist_inputs {
+    display: flex;
+    /* border: 2px solid red; */
+    justify-content: space-around;
+    justify-content: center;
+    height: 40px;
+    height: 50px;
+    overflow: hidden;
+
+}
+
+.inputs input {
+    /* padding: 5px; */
+    /* margin: 0 8px; */
+    height: 100%;
+    margin-right: 15px;
+    border: none;
+    margin-left: 10px;
+    background: none;
+    font-size: 18px;
+    /* margin-top: 3px; */
+}
+
+.studentlist_inputs input:focus {
+    outline: none;
+
+}
+
+.studentlist_inputs select {
+    margin-right: 15px;
+    height: 100%;
+    width: 100px;
+    cursor: pointer;
+}
+
+.studentlist_form button {
+    height: 50px;
+    font-size: 18px;
+    cursor: pointer;
+    width: 120px;
+    margin-top: 20px;
+}
+
+
+
+@media screen and (max-width:500px) {
+    .studentlist_form {
+        height: auto;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        justify-content: space-around;
+        height: 180px;
+        /* border: 2px solid red; */
+    }
+
+    .studentlist_inputs {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        width: 100%;
+        height: 50px;
+        justify-content: space-around;
+        /* border: 2px solid red; */
+        /* place-items: center; */
+
+    }
+
+
+    .studentlist_inputs select {
+        height: 50px;
+        width: 100%;
+        font-size: 18px;
+    }
+
+    .studentlist_form button {
+        margin: auto;
+        width: 100px;
+        height: 50px;
+        font-size: 18px;
+    }
+}

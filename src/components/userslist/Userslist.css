@@ -1,0 +1,190 @@
+.userlist {
+    /* border: 2px solid pink; */
+    height: 500px;
+}
+
+.userlist h1 {
+    text-align: center;
+
+}
+
+.list_collection {
+    /* border: 2px solid blue; */
+    height: 80%;
+    overflow-y: auto;
+    border-radius: 4px;
+    margin: auto;
+}
+
+.userlist li {
+    display: flex;
+    /* justify-content: space-between; */
+    align-items: center;
+    border: 2px solid blue;
+    border-radius: 4px;
+    width: fit-content;
+    margin: auto;
+    margin-bottom: 5px;
+    margin-top: 5px;
+    font-size: 20px;
+    padding: 5px;
+
+
+}
+
+/* .list {
+    display: flex;
+    justify-content: space-around;
+    font-size: 16px;
+    border: 2px solid blue;
+
+} */
+
+
+
+.userlist li a {
+    text-decoration: none;
+    /* border: 2px solid blue; */
+    padding: 3px;
+    border-radius: 4px;
+    transition: 0.3s;
+
+}
+
+.userlist li a:hover {
+    transform: scale(1.02);
+}
+
+.userlist_name {
+    display: inline-flex;
+    padding: 3px;
+    width: 300px;
+    /* border: 2px solid blue; */
+}
+
+.userlist_coin {
+    width: 300px;
+}
+
+.userlist li p b {
+    margin-left: 10px;
+    color: red;
+
+}
+
+.userlist li button {
+    /* background-color: red; */
+    width: fit-content;
+    height: 30px;
+    font-size: 16px;
+    padding: 0 10px;
+    cursor: pointer;
+    color: white;
+    opacity: 0.8;
+}
+
+p .userlist li button:hover {
+    opacity: 1;
+}
+
+.userlist_number {
+    margin-right: 20px;
+    border: none;
+    color: blue;
+}
+
+
+
+@media screen and (max-width:500px) {
+    .userlist li {
+        /* display: flex; */
+        /* justify-content: space-between; */
+        /* align-items: center; */
+        /* border: 2px solid blue; */
+        border-radius: 4px;
+        margin: auto;
+        margin-bottom: 5px;
+        margin-top: 5px;
+        font-size: 16px;
+        padding: 0px;
+
+
+        display: grid;
+        grid-template-columns: 1fr;
+        /* border: 2px solid blue; */
+        width: 90%;
+        padding-left: 20px;
+    }
+
+
+
+
+
+    .userlist li a {
+        text-decoration: none;
+        /* border: 2px solid blue; */
+        padding: 3px;
+        border-radius: 4px;
+        transition: 0.3s;
+
+    }
+
+    .userlist li a:hover {
+        transform: scale(1.02);
+    }
+
+    .userlist_name {
+        display: inline-flex;
+        padding: 2px;
+        width: 80%;
+
+        /* border: 2px solid blue; */
+        margin: 0;
+        /* border: 2px solid blue; */
+    }
+
+    .userlist_coin {
+        width: 80%;
+        margin: 0;
+
+        /* border: 2px solid blue; */
+
+    }
+
+    .userlist li p b {
+        margin-left: 10px;
+        color: red;
+        margin: 0;
+
+
+    }
+
+    .userlist li button {
+        background-color: red;
+        width: fit-content;
+        /* height: 30px; */
+        font-size: 16px;
+        padding: 0 5px;
+        cursor: pointer;
+        color: white;
+        opacity: 0.8;
+        margin: 0;
+        width: 80%;
+
+
+    }
+
+    .userlist_link {
+        width: 80%;
+        display: flex;
+    }
+
+    p .userlist li button:hover {
+        opacity: 1;
+    }
+
+    .userlist_number {
+        margin-right: 0px;
+    }
+
+}

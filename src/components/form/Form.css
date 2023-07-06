@@ -1,0 +1,96 @@
+.form {
+    height: 10%;
+    /* border: 1px solid red; */
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: column;
+}
+
+.inputs {
+    display: flex;
+    /* border: 2px solid red; */
+    justify-content: center;
+    width: fit-content;
+    height: 40px;
+    overflow: hidden;
+    background-color: white;
+
+}
+
+.inputs input {
+    /* padding: 5px; */
+    /* margin: 0 8px; */
+    width: 200px;
+    height: 100%;
+    margin-right: 15px;
+    border: none;
+    margin-left: 10px;
+    background: none;
+    font-size: 18px;
+    /* margin-top: 3px; */
+}
+
+.inputs input:focus {
+    outline: none;
+
+}
+
+.inputs select {
+    margin-right: 15px;
+    height: 100%;
+    cursor: pointer;
+}
+
+.btn button {
+    height: 100%;
+    font-size: 18px;
+    cursor: pointer;
+    width: 120px;
+}
+
+
+
+@media screen and (max-width:500px) {
+    .form {
+        height: auto;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        justify-content: space-around;
+        height: 220px;
+        border: 2px solid red;
+    }
+
+    .inputs {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        width: 100%;
+        height: 100%;
+        /* border: 2px solid red; */
+        /* place-items: center; */
+
+    }
+
+    .inputs input {
+        width: 100%;
+        /* margin-top: 10px; */
+        height: 40px;
+        /* border: 2px solid red; */
+
+
+    }
+
+    .inputs select {
+        height: 50px;
+        width: 100%;
+        font-size: 18px;
+    }
+
+    .btn {
+        margin: auto;
+        width: 100%;
+        height: 100%;
+        font-size: 18px;
+    }
+}

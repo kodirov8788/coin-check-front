@@ -1,0 +1,70 @@
+.sidebar {
+    width: 100%;
+    height: 100vh;
+    background: dodgerblue;
+    position: fixed;
+    top: 0;
+    left: 0;
+    transform: translateX(-2000px);
+    transition: 0.3s;
+    z-index: 1000;
+}
+
+.sidebar_open {
+    display: flex;
+    width: 50px;
+    height: 50px;
+    border-radius: 4px;
+    transform: translateX(30px) translateY(30px);
+}
+
+.sidebar_open img {
+    width: 100%;
+    height: 100%;
+}
+
+.sidebar_route {
+    /* border: 2px solid red; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.sidebar_route a {
+    background: #fff;
+    color: var(--primary);
+    border: 2px solid var(--primary);
+    padding: 6px 10px;
+    border-radius: 4px;
+    font-family: "Poppins";
+    cursor: pointer;
+    font-size: 1em;
+    margin-top: 30px;
+}
+
+.sidebar_link {
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar_logout {
+    background: #fff;
+    color: red;
+    /* border: 2px solid red; */
+    padding: 6px 10px;
+    border-radius: 4px;
+    font-family: "Poppins";
+    cursor: pointer;
+    font-size: 1em;
+    margin-top: 30px;
+
+}
+
+@media screen and (max-width:500px) {
+    .sidebar_link {
+        /* display: none; */
+    }
+}
