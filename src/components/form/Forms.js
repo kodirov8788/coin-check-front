@@ -17,16 +17,19 @@ function Forms() {
         let coin = e.target[1].value
         let weekdays = e.target[2].value
         let lessontime = e.target[3].value
+        let number = e.target[4].value
         console.log(name)
         console.log(coin)
         console.log(weekdays)
         console.log(lessontime)
+        console.log(number)
         await Axios.post("/client/create", {
             name,
             coin,
             teacher: user.username,
             weekday: weekdays,
             time: lessontime,
+            number: number,
             comments: [],
         }, {
             headers: {
@@ -41,6 +44,7 @@ function Forms() {
         e.target[1].value = ''
         e.target[2].value = ''
         e.target[3].value = ''
+        e.target[4].value = ""
     }
 
     return (
@@ -50,7 +54,6 @@ function Forms() {
             </div>
             <div className="inputs">
                 <input type="text" placeholder='student name' required />
-                <input type="number" placeholder='tel raqam' required />
                 <select required>
                     <option value="">coin tanglang</option>
                     <option value="1">1</option>
@@ -71,6 +74,8 @@ function Forms() {
                     <option value="14-16">14-16</option>
                     <option value="16-18">16-18</option>
                 </select>
+                <input type="number" placeholder='tel raqam' required />
+
                 <button className='btn'>Qo'shish</button>
 
             </div>

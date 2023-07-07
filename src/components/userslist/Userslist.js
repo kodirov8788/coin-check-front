@@ -51,9 +51,9 @@ function Userslist() {
                                     ismi: <b>{user.name}</b>
                                 </p>
                                 <p className='userlist_time'>{user.time}</p>
-                                <a href="tel:+998939427899">9939427899</a>
+                                <a href={`tel:+998${user?.number}`}>{user.number ? user.number : "nomer yo'q"}</a>
                                 <p className='userlist_coin'>
-                                    yig`gan coin miqdori: <b style={{ color: 'red' }}>{user.coin}</b>
+                                    coin : <b style={{ color: 'red' }}>{user.coin}</b>
                                 </p>
                                 <Link className='link' to={`/debt/${user._id}`}>
                                     Taxrirlash
