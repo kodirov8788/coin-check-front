@@ -38,21 +38,19 @@ function Teacherlist() {
 
     console.log(teachers)
     return (
-        <ul className='userlist'>
+        <div className='userlist'>
             <h1>User lists</h1>
             {data.length === 0 ? (
                 <h1>loading...</h1>
             ) : (
                 data.map((user) => (
                     <li key={user._id}>
-                        <div className='list_left'>
-                            <span>
-                                ismi: <b>{user.name}</b>
-                            </span>
-                            <span>
-                                yig`gan coin miqdori: <b style={{ color: 'red' }}>{user.coin}</b>
-                            </span>
-                        </div>
+                        <span className='teacher_name'>
+                            ismi: <b>{user.name}</b>
+                        </span>
+                        <span>
+                            yig`gan coin miqdori: <b style={{ color: 'red' }}>{user.coin}</b>
+                        </span>
                         <Link className='link' to={`/debt/${user._id}`}>
                             Taxrirlash
                         </Link>
@@ -60,7 +58,7 @@ function Teacherlist() {
                     </li>
                 ))
             )}
-        </ul>
+        </div>
     )
 }
 

@@ -50,6 +50,7 @@ function Userslist() {
                                 <p className='userlist_name'>
                                     ismi: <b>{user.name}</b>
                                 </p>
+                                <p className='userlist_time'>{user.time}</p>
                                 <a href="tel:+998939427899">9939427899</a>
                                 <p className='userlist_coin'>
                                     yig`gan coin miqdori: <b style={{ color: 'red' }}>{user.coin}</b>

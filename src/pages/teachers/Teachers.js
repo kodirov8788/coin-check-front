@@ -39,7 +39,12 @@ function Teachers() {
             <h1>Teacher</h1>
             <div className="teacher_wrap">
                 {data.map(teacher => (
-                    <li key={teacher._id}>{teacher.username} <Link to={`/teachers/${teacher._id}`} state={teacher}>o`quvchilarini ko`rish</Link></li>
+                    <li className='teacher_list' key={teacher._id}>
+                        <span className='teacher_username'>{teacher.username}</span>
+                        <Link to={`/teachers/${teacher._id}`} state={teacher}>o`quvchilarini ko`rish</Link>
+                        <p className='teacher_role'> role:<span >{teacher.role}</span></p>
+
+                    </li>
                 ))}
 
             </div>

@@ -37,7 +37,8 @@ const Header = () => {
                     <h1>Coin list</h1>
                 </Link>
                 <div className="header_media_wrap">{
-                    user ? <h1>username: <span>{user.username}</span> </h1> : <></>
+                    user ?
+                        <h1>username: <span>{user.username}</span> </h1> : <></>
                 }
 
 

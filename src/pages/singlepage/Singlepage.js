@@ -122,7 +122,7 @@ function Singlepage() {
             <div className="singlepage_main">
                 <div className="singlepage_title">
                     <h1>Ismi: <span> {userData.name}</span></h1>
-                    <h1>Umumiy coindorlik: <span>{userData.coin}</span></h1>
+                    <h2>Umumiy coinlar: <span>{userData.coin}</span> </h2>
                     {
                         user?.role === "root" ?
                             <button className='deletebtn' onClick={() => deleteUser(userData._id)}>delete</button> : ""
@@ -135,7 +135,7 @@ function Singlepage() {
                             <div key={comment._id}>
                                 {comment.operation === "plus" ?
                                     <div className="singlepage_plus">
-                                        <h2>Qo`shilgan miqdor: <span>{comment.amount}</span> </h2>
+                                        <h2>Qo`shilgan: <span>{comment.amount}</span> </h2>
 
                                         <span><b>sana:</b> {(new Date((comment.updatedAt)).toDateString()) + " " + (new Date((comment.updatedAt)).toLocaleTimeString())}</span>
                                     </div>

@@ -1,16 +1,83 @@
 .teacher_wrap {
     width: 90%;
     margin: auto;
+    height: 65vh;
+    overflow-y: auto;
 }
 
 .teacher_wrap li {
-    width: 100%;
+    width: 80%;
     height: 50px;
     border: 2px solid green;
     display: flex;
     align-items: center;
-    padding: 0 10px;
+    /* padding: 0 10px; */
+    margin: auto;
     margin-top: 2px;
     margin-bottom: 2px;
     border-radius: 4px;
+}
+
+.teacher_wrap li a {
+    margin: 0;
+}
+
+.teacher_username {
+    width: 200px;
+    display: inline-flex;
+    font-size: 18px;
+    font-weight: 600;
+    color: red;
+    margin-left: 20px;
+    /* border: 2px solid green; */
+    /* margin-bottom: 5px; */
+}
+
+.teacher_role {
+    /* border: 2px solid green; */
+    margin-left: 20px;
+}
+
+.teacher_role span {
+    margin-left: 10px;
+    color: blue;
+
+}
+
+@media screen and (max-width:500px) {
+
+    .teacher_wrap {
+        height: 60vh;
+        overflow-y: auto;
+    }
+
+    .teacher_wrap li {
+        width: 80%;
+        height: auto;
+        border: 2px solid green;
+        display: flex;
+        align-items: start;
+        flex-direction: column;
+        padding: 0;
+        padding-left: 10px;
+        margin: auto;
+        margin-top: 2px;
+        margin-bottom: 0;
+        border-radius: 4px;
+    }
+
+    .teacher_role {
+        display: inline-flex;
+        margin-left: 0;
+    }
+
+    .teacher_role span {
+        margin-left: 10px;
+        color: blue;
+
+    }
+
+    .teacher_wrap li a {
+        margin: 0;
+    }
 }

@@ -15,7 +15,7 @@ function Studentlist() {
     const { setIsLoading: setContextIsLoading, sensor, setSensor } = useContext(AuthContext);
     const { user } = useAuthContext();
     console.log(filteredData)
-    console.log(Data)
+    // console.log(Data)
     const fetchData = async () => {
         setIsLoading(true);
         try {
@@ -24,7 +24,7 @@ function Studentlist() {
                     Authorization: `Bearer ${user?.token}`,
                 },
             });
-            setData(data);
+            setData(data.filter(use => use.teacher === user.username));
         } catch (error) {
             console.error(error);
             console.log('Error occurred while fetching data');
@@ -32,23 +32,50 @@ function Studentlist() {
         setIsLoading(false);
     };
 
-    const sendForm = async (e) => {
+    const sendForm = (e) => {
         e.preventDefault();
         setIsLoading(true)
-
+        console.log("ishladi")
 
         if (user.role === "root") {
-            let filt = Data.filter((use) => {
-                return use.weekday === weekdays && use.time === lessonTime
-            });
 
-            setFilteredData(filt)
+            if (weekdays && lessonTime) {
+                let filt = Data.filter((use) => {
+                    return use.weekday === weekdays && use.time === lessonTime
+                });
+                setFilteredData(filt)
+            } else if (weekdays) {
+                let filt = Data.filter((use) => {
+                    return use.weekday === weekdays
+                });
+                setFilteredData(filt)
+            } else if (lessonTime) {
+                let filt = Data.filter((use) => {
+                    return use.time === lessonTime
+                });
+                setFilteredData(filt)
+            } else {
+                setFilteredData(Data)
+            }
         } else {
-            let filt = Data.filter((use) => {
-                return use.weekday === weekdays && use.time === lessonTime && use.teacher === user.username;
-            });
-
-            setFilteredData(filt)
+            if (weekdays && lessonTime) {
+                let filt = Data.filter((use) => {
+                    return use.weekday === weekdays && use.time === lessonTime
+                });
+                setFilteredData(filt)
+            } else if (weekdays && !lessonTime) {
+                let filt = Data.filter((use) => {
+                    return use.weekday === weekdays
+                });
+                setFilteredData(filt)
+            } else if (lessonTime && !weekdays) {
+                let filt = Data.filter((use) => {
+                    return use.time === lessonTime
+                });
+                setFilteredData(filt)
+            } else {
+                setFilteredData(Data)
+            }
         }
 
 
@@ -61,6 +88,10 @@ function Studentlist() {
     }, [user, sensor]);
 
 
+    const weekdaysvalue = (e) => {
+        setWeekday(e.target.value);
+        // sendForm();
+    }
 
     return (
         <>
@@ -69,12 +100,12 @@ function Studentlist() {
                     <h3>Dars kuni va vaqtini tanglang!</h3>
                 </div>
                 <div className="studentlist_inputs">
-                    <select onChange={(e) => setWeekday(e.target.value)} >
+                    <select onChange={weekdaysvalue} >
                         <option value="">hafta kunini tanglang</option>
                         <option value="odd">toq kunlar</option>
                         <option value="even">juft kunlar</option>
                     </select>
-                    <select onChange={(e) => setLessonTime(e.target.value)}>
+                    <select onChange={(e) => (setLessonTime(e.target.value))}>
                         <option value="">all</option>
                         <option value="8-10">8-10</option>
                         <option value="10-12">10-12</option>
@@ -83,40 +114,41 @@ function Studentlist() {
                     </select>
 
                 </div>
-                <button>Qo'shish</button>
-            </form>
-            {user.role === "root" ?
-                < div className='userlist'>
-                    <h2>O`quvchilar ro`yhati</h2>
-                    {Data.length === 0 ? (
-                        <h1>loading...</h1>
-                    ) : (
-                        <div className="list_collection">
-                            {!weekdays || !lessonTime ?
-                                Data.map((userl) => (
-                                    <Liststudents key={userl._id} users={userl} />
-                                )) :
-                                filteredData.map((userl) => (
+                <button>Qidiruv</button>
+            </form >
+            {
+                user.role === "root" ?
+                    < div className='userlist'>
+                        <h2>O`quvchilar ro`yhati</h2>
+                        {Data.length === 0 ? (
+                            <h1>loading...</h1>
+                        ) : (
+                            <div className="list_collection">
+                                {!weekdays || !lessonTime ?
+                                    Data.map((userl) => (
+                                        <Liststudents key={userl._id} users={userl} />
+                                    )) :
+                                    filteredData.map((userl) => (
+                                        <Liststudents key={userl._id} users={userl} />
+                                    ))
+                                }
+                            </div>
+                        )}
+                    </div >
+                    :
+                    <div className='userlist'>
+                        <h2>O`quvchilar ro`yhati</h2>
+                        {filteredData.length === 0 ? (
+                            <h1>loading...</h1>
+                        ) : (
+                            <div className="list_collection">
+                                {filteredData.map((userl) => (
                                     <Liststudents key={userl._id} users={userl} />
                                 ))
-                            }
-                        </div>
-                    )}
-                </div >
-                :
-                <div className='userlist'>
-                    <h2>O`quvchilar ro`yhati</h2>
-                    {filteredData.length === 0 ? (
-                        <h1>loading...</h1>
-                    ) : (
-                        <div className="list_collection">
-                            {filteredData.map((userl) => (
-                                <Liststudents key={userl._id} users={userl} />
-                            ))
-                            }
-                        </div>
-                    )}
-                </div>
+                                }
+                            </div>
+                        )}
+                    </div>
             }
 
         </>
