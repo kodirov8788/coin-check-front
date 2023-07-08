@@ -12,7 +12,7 @@ function Userslist() {
     const { setIsLoading: setContextIsLoading, sensor, setSensor } = useContext(AuthContext);
     const { user } = useAuthContext();
 
-    console.log(data);
+    // console.log(data);
 
     const fetchData = async () => {
         setIsLoading(true);
@@ -25,8 +25,8 @@ function Userslist() {
             let filteredData = response.data.filter(student => student.teacher === user.username)
             setData(filteredData);
         } catch (error) {
-            console.error(error);
-            console.log('Error occurred while fetching data');
+            console.log(error);
+            // console.log('Error occurred while fetching data');
         }
         setIsLoading(false);
     };

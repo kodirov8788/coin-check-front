@@ -8,7 +8,7 @@ const Header = () => {
     const location = useLocation().pathname
     const { user, dispatch } = useAuthContext();
     const [sidebarOpen, setSidebarOpen] = useState(false);
-    console.log(sidebarOpen)
+    // console.log(sidebarOpen)
     const logout = () => {
         localStorage.removeItem('user')
         dispatch({ type: 'LOGOUT' })

@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom"
 
 const Signup = () => {
   const navigate = useNavigate()
-  const { isLoading, setIsLoading, sensor, setSensor } = useContext(AuthContext)
+  const { isLoading, setIsLoading } = useContext(AuthContext)
 
   const { user } = useAuthContext()
   const [username, setUsername] = useState('')
@@ -15,17 +15,21 @@ const Signup = () => {
 
 
   const handleSubmit = async (e) => {
-    setIsLoading(true)
     e.preventDefault()
-    console.log(username)
-    console.log(password)
-    signup(username, password)
-      .then(res => {
-        navigate("/login")
-        console.log(res)
-      })
-      .catch(error => console.log(error))
-    setIsLoading(false)
+    setIsLoading(true)
+
+    setTimeout(async () => {
+      await signup(username, password)
+        .then(res => {
+          navigate("/login")
+          console.log(res)
+        })
+        .catch(error => console.log(error))
+      setIsLoading(false)
+    }, 1000);
+    // console.log(username)
+    // console.log(password)
+
 
   }
 

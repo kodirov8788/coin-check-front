@@ -5,7 +5,7 @@ import { useAuthContext } from '../../hooks/useAuthContext'
 import Studentlist from '../studentList/Studentlist'
 function Main() {
     const { user } = useAuthContext()
-    console.log(user)
+    // console.log(user)
     return (
         <div className='main'>
 

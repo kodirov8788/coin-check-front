@@ -12,7 +12,7 @@ function ListItems({ userlist }) {
     const inputFunction = async (e) => {
         setSensor(false)
         setIsLoading(true)
-        console.log(e.target.checked)
+        // console.log(e.target.checked)
         let checked = e.target.checked
         await axios.put(`/user/updateuser/${userlist._id}`, { isAllowed: checked })
             .then(res => console.log(res))

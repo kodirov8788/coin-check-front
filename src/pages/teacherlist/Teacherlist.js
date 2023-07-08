@@ -12,7 +12,7 @@ function Teacherlist() {
     const { setIsLoading: setContextIsLoading, sensor, setSensor } = useContext(AuthContext);
     const { user } = useAuthContext();
 
-    console.log(data);
+    // console.log(data);
 
     const fetchData = async () => {
         setIsLoading(true);
@@ -36,27 +36,32 @@ function Teacherlist() {
         fetchData();
     }, [user, sensor]);
 
-    console.log(teachers)
+    // console.log(teachers)
     return (
         <div className='userlist'>
             <h1>User lists</h1>
             {data.length === 0 ? (
                 <h1>loading...</h1>
             ) : (
-                data.map((user) => (
-                    <li key={user._id}>
-                        <span className='teacher_name'>
-                            ismi: <b>{user.name}</b>
-                        </span>
-                        <span>
-                            yig`gan coin miqdori: <b style={{ color: 'red' }}>{user.coin}</b>
-                        </span>
-                        <Link className='link' to={`/debt/${user._id}`}>
-                            Taxrirlash
-                        </Link>
+                <div className="list_collection">
+                    {data.map((user) => (
+                        <li key={user._id} >
+                            <p className='userlist_name'>
+                                ismi: <b>{user.name}</b>
+                            </p>
+                            <p className='userlist_time'>{user.time}</p>
+                            <a href={`tel:+998${user?.number}`}>{user.number ? user.number : "nomer yo'q"}</a>
+                            <p className='userlist_coin'>
+                                coin : <b style={{ color: 'red' }}>{user.coin}</b>
+                            </p>
+                            <Link className='link' to={`/debt/${user._id}`}>
+                                Taxrirlash
+                            </Link>
 
-                    </li>
-                ))
+                        </li>
+                    ))
+                    }
+                </div>
             )}
         </div>
     )

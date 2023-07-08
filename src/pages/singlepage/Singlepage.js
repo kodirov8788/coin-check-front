@@ -20,7 +20,7 @@ function Singlepage() {
     })
 
     const [userData, setUserData] = useState([])
-    console.log(userData)
+    // console.log(userData)
     const getApi = async () => {
         setIsLoading(true)
         if (user) {
@@ -82,10 +82,10 @@ function Singlepage() {
                     Authorization: `Bearer ${user.token}`,
                 },
             });
-            console.log(response.data); // Assuming the server sends a response with the deleted user information
+            // console.log(response.data); // Assuming the server sends a response with the deleted user information
         } catch (error) {
             console.error(error);
-            console.log('Error occurred while deleting user');
+            // console.log('Error occurred while deleting user');
         }
         setIsLoading(false);
         setSensor(true)
@@ -121,8 +121,8 @@ function Singlepage() {
 
             <div className="singlepage_main">
                 <div className="singlepage_title">
-                    <h1>Ismi: <span> {userData.name}</span></h1>
-                    <h2>Umumiy coinlar: <span>{userData.coin}</span> </h2>
+                    <h1>Ismi: <span> {userData?.name}</span></h1>
+                    <h2>Umumiy coinlar: <span>{userData?.coin}</span> </h2>
                     {
                         user?.role === "root" ?
                             <button className='deletebtn' onClick={() => deleteUser(userData._id)}>delete</button> : ""

@@ -7,8 +7,8 @@ function Forms() {
     const { isLoading, setIsLoading, sensor, setSensor } = useContext(AuthContext)
 
     const { user } = useAuthContext()
-    console.log(user)
-    console.log(isLoading)
+    // console.log(user)
+    // console.log(isLoading)
     const sendForm = async (e) => {
         e.preventDefault()
         setSensor(false)
@@ -18,33 +18,35 @@ function Forms() {
         let weekdays = e.target[2].value
         let lessontime = e.target[3].value
         let number = e.target[4].value
-        console.log(name)
-        console.log(coin)
-        console.log(weekdays)
-        console.log(lessontime)
-        console.log(number)
-        await Axios.post("/client/create", {
-            name,
-            coin,
-            teacher: user.username,
-            weekday: weekdays,
-            time: lessontime,
-            number: number,
-            comments: [],
-        }, {
-            headers: {
-                'Authorization': `Bearer ${user.token}`
-            }
-        }).then(res => console.log(res))
-            .catch(() => console.log("error chiqdi"))
-        setIsLoading(false)
-        setSensor(true)
 
-        e.target[0].value = ''
-        e.target[1].value = ''
-        e.target[2].value = ''
-        e.target[3].value = ''
-        e.target[4].value = ""
+        setTimeout(async () => {
+            await Axios.post("/client/create", {
+                name,
+                coin,
+                teacher: user.username,
+                weekday: weekdays,
+                time: lessontime,
+                number: number,
+                comments: [],
+            }, {
+                headers: {
+                    'Authorization': `Bearer ${user.token}`
+                }
+            }).then(res => console.log(res))
+                .catch(() => console.log("error chiqdi"))
+            setIsLoading(false)
+            setSensor(true)
+            e.target[0].value = ''
+            e.target[1].value = ''
+            e.target[2].value = ''
+            e.target[3].value = ''
+            e.target[4].value = ""
+        }, 500);
+
+
+
+
+
     }
 
     return (

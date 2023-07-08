@@ -11,7 +11,7 @@ function Liststudents({ users }) {
 
             <p className='userlist_time'>{users.time}</p>
 
-            <a className='userlist_number' href="tel:998939427899">939427899</a>
+            <a className='userlist_number' href={`tel:998${users?.number}`}>{users.number ? users.number : "nomer yo'q"}</a>
             <p className='userlist_coin'>
 
                 coin miqdori: <b style={{ color: 'red' }}>{users.coin}</b>

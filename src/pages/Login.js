@@ -1,15 +1,20 @@
-import { useState } from "react"
+import { useContext, useState } from "react"
 import { useLogin } from "../hooks/useLogin"
+import { AuthContext } from "../context/AuthContext"
 
 const Login = () => {
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
-  const { login, error, isLoading } = useLogin()
+  const { login, error } = useLogin()
+  const { isLoading, setIsLoading } = useContext(AuthContext)
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-
-    await login(username, password)
+    setIsLoading(true)
+    setTimeout(async () => {
+      await login(username, password)
+      setIsLoading(false)
+    }, 1000);
   }
 
   return (<div className="">

@@ -6,7 +6,7 @@ import { AuthContext } from '../../context/AuthContext'
 function ListItems({ archivelist }) {
     const { setIsLoading, setSensor } = useContext(AuthContext)
 
-    console.log(archivelist)
+    // console.log(archivelist)
     return (
         <li>
             <span>{archivelist.archive.name}</span> <span>{archivelist.archive.qarz}</span><a href={`tel:+998${archivelist.archive.number}`}>{archivelist.archive.number}</a>

@@ -8,79 +8,88 @@ import Liststudents from './Liststudents';
 
 function Studentlist() {
     const [Data, setData] = useState([]);
+
     const [weekdays, setWeekday] = useState("");
     const [lessonTime, setLessonTime] = useState("");
     const [filteredData, setFilteredData] = useState([]);
-    const [isLoading, setIsLoading] = useState(false);
-    const { setIsLoading: setContextIsLoading, sensor, setSensor } = useContext(AuthContext);
+    const { isLoading, setIsLoading, sensor, setSensor } = useContext(AuthContext);
     const { user } = useAuthContext();
-    console.log(filteredData)
+    // console.log(filteredData)
     // console.log(Data)
     const fetchData = async () => {
         setIsLoading(true);
+
         try {
             const { data } = await Axios.get('/client/get', {
                 headers: {
                     Authorization: `Bearer ${user?.token}`,
                 },
             });
-            setData(data.filter(use => use.teacher === user.username));
+
+            if (user.role === "root") {
+                setData(data)
+            } else {
+                setData(data.filter(use => use.teacher === user.username));
+            }
         } catch (error) {
             console.error(error);
             console.log('Error occurred while fetching data');
         }
         setIsLoading(false);
+
     };
 
     const sendForm = (e) => {
         e.preventDefault();
         setIsLoading(true)
-        console.log("ishladi")
+        // console.log("ishladi")
+        setTimeout(async () => {
+            if (user.role === "root") {
 
-        if (user.role === "root") {
-
-            if (weekdays && lessonTime) {
-                let filt = Data.filter((use) => {
-                    return use.weekday === weekdays && use.time === lessonTime
-                });
-                setFilteredData(filt)
-            } else if (weekdays) {
-                let filt = Data.filter((use) => {
-                    return use.weekday === weekdays
-                });
-                setFilteredData(filt)
-            } else if (lessonTime) {
-                let filt = Data.filter((use) => {
-                    return use.time === lessonTime
-                });
-                setFilteredData(filt)
+                if (weekdays && lessonTime) {
+                    let filt = Data.filter((use) => {
+                        return use.weekday === weekdays && use.time === lessonTime
+                    });
+                    setFilteredData(filt)
+                } else if (weekdays && !lessonTime) {
+                    let filt = Data.filter((use) => {
+                        // console.log("dasdsa")
+                        return use.weekday === weekdays
+                    });
+                    setFilteredData(filt)
+                } else if (lessonTime && !weekdays) {
+                    let filt = Data.filter((use) => {
+                        return use.time === lessonTime
+                    });
+                    setFilteredData(filt)
+                } else {
+                    setFilteredData(Data)
+                }
             } else {
-                setFilteredData(Data)
+                if (weekdays && lessonTime) {
+                    let filt = Data.filter((use) => {
+                        return use.weekday === weekdays && use.time === lessonTime
+                    });
+                    setFilteredData(filt)
+                } else if (weekdays && !lessonTime) {
+                    let filt = Data.filter((use) => {
+                        return use.weekday === weekdays
+                    });
+                    setFilteredData(filt)
+                } else if (lessonTime && !weekdays) {
+                    let filt = Data.filter((use) => {
+                        return use.time === lessonTime
+                    });
+                    setFilteredData(filt)
+                } else {
+                    setFilteredData(Data)
+                }
             }
-        } else {
-            if (weekdays && lessonTime) {
-                let filt = Data.filter((use) => {
-                    return use.weekday === weekdays && use.time === lessonTime
-                });
-                setFilteredData(filt)
-            } else if (weekdays && !lessonTime) {
-                let filt = Data.filter((use) => {
-                    return use.weekday === weekdays
-                });
-                setFilteredData(filt)
-            } else if (lessonTime && !weekdays) {
-                let filt = Data.filter((use) => {
-                    return use.time === lessonTime
-                });
-                setFilteredData(filt)
-            } else {
-                setFilteredData(Data)
-            }
-        }
 
 
 
-        setIsLoading(false)
+            setIsLoading(false)
+        }, 500)
     };
 
     useEffect(() => {
@@ -88,10 +97,7 @@ function Studentlist() {
     }, [user, sensor]);
 
 
-    const weekdaysvalue = (e) => {
-        setWeekday(e.target.value);
-        // sendForm();
-    }
+
 
     return (
         <>
@@ -100,7 +106,7 @@ function Studentlist() {
                     <h3>Dars kuni va vaqtini tanglang!</h3>
                 </div>
                 <div className="studentlist_inputs">
-                    <select onChange={weekdaysvalue} >
+                    <select onChange={(e) => (setWeekday(e.target.value))} >
                         <option value="">hafta kunini tanglang</option>
                         <option value="odd">toq kunlar</option>
                         <option value="even">juft kunlar</option>
@@ -124,11 +130,11 @@ function Studentlist() {
                             <h1>loading...</h1>
                         ) : (
                             <div className="list_collection">
-                                {!weekdays || !lessonTime ?
-                                    Data.map((userl) => (
+                                {weekdays || lessonTime ?
+                                    filteredData.map((userl) => (
                                         <Liststudents key={userl._id} users={userl} />
                                     )) :
-                                    filteredData.map((userl) => (
+                                    Data.map((userl) => (
                                         <Liststudents key={userl._id} users={userl} />
                                     ))
                                 }
