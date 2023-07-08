@@ -34,7 +34,7 @@ const Header = () => {
             </button>
             <div className="container">
                 <Link to="/">
-                    <h1>Coin list</h1>
+                    Coin list
                 </Link>
                 <div className="header_media_wrap">{
                     user ?

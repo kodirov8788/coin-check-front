@@ -17,23 +17,21 @@ function Teachers() {
     const fetchData = async () => {
         setIsLoading(true);
 
-        setTimeout(async () => {
 
-            try {
-                const response = await Axios.get('/user/getusers', {
-                    headers: {
-                        Authorization: `Bearer ${user.token}`,
-                    },
-                });
+        try {
+            const response = await Axios.get('/user/getusers', {
+                headers: {
+                    Authorization: `Bearer ${user.token}`,
+                },
+            });
 
-                setData(response.data);
-            } catch (error) {
-                console.error(error);
-                // console.log('Error occurred while fetching data');
-            }
-            setIsLoading(false);
+            setData(response.data);
+        } catch (error) {
+            console.error(error);
+            // console.log('Error occurred while fetching data');
+        }
+        setIsLoading(false);
 
-        }, 1000);
 
     };
 
@@ -42,23 +40,18 @@ function Teachers() {
     }, [user, sensor]);
 
     const deleteUser = async (id) => {
-        setTimeout(async () => {
-            setIsLoading(true);
-            try {
-                await Axios.delete(`/user/delete/${id}`, {
-                    headers: {
-                        Authorization: `Bearer ${user.token}`,
-                    },
-                })
-                    .then(res => console.log(res.data))
-                    .catch(error => console.log(error))
-
-            } catch (error) {
-                console.error(error);
-                ;
-            }
-
-        }, 1000);
+        setIsLoading(true);
+        try {
+            await Axios.delete(`/user/delete/${id}`, {
+                headers: {
+                    Authorization: `Bearer ${user.token}`,
+                },
+            })
+                .then(res => console.log(res.data))
+                .catch(error => console.log(error))
+        } catch (error) {
+            console.error(error);
+        }
 
         setIsLoading(false);
     }
@@ -70,11 +63,12 @@ function Teachers() {
                 {data.map(teacher => (
                     <li className='teacher_list' key={teacher._id}>
                         <span className='teacher_username'>{teacher.username}</span>
-                        <Link to={`/teachers/${teacher._id}`} state={teacher}>o`quvchilarini ko`rish</Link>
+                        {teacher.role === "user" ? <Link to={`/teachers/${teacher._id}`} state={teacher}>o`quvchilarini ko`rish</Link> : ""}
+
                         <p className='teacher_role'> role:<span >{teacher.role}</span></p>
 
                         {
-                            teacher.role === "user" ? <button onClick={() => deleteUser(teacher._id)}>Delete</button> : <></>
+                            teacher.role === "user" ? <button className='teacher_delete_btn' onClick={() => deleteUser(teacher._id)}>Delete</button> : <></>
                         }
 
                     </li>
