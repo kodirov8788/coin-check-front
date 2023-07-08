@@ -29,7 +29,7 @@ function Studentlist() {
             if (user.role === "root") {
                 setData(data)
             } else {
-                setData(data.filter(use => use.teacher === user.username));
+                setData(data.filter(use => use.teacherid === user.id));
             }
         } catch (error) {
             console.error(error);
@@ -144,6 +144,8 @@ function Studentlist() {
                     :
                     <div className='userlist'>
                         <h2>O`quvchilar ro`yhati</h2>
+
+
                         {filteredData.length === 0 ? (
                             <h1>loading...</h1>
                         ) : (

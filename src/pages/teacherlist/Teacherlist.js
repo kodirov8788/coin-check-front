@@ -22,7 +22,7 @@ function Teacherlist() {
                     Authorization: `Bearer ${user.token}`,
                 },
             });
-            let filtereddata = response.data.filter(student => student.teacher === teachers.username)
+            let filtereddata = response.data.filter(student => student.teacherid === teachers.id)
 
             setData(filtereddata);
         } catch (error) {

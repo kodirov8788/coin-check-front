@@ -16,7 +16,7 @@
     margin: auto;
 }
 
-a {
+/* a {
     background: #fff;
     color: var(--primary);
     border: 2px solid var(--primary);
@@ -29,7 +29,7 @@ a {
     margin-bottom: 10px;
 
 
-}
+} */
 
 .main_wrap>a {
     transform: translateX(-20px);

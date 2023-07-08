@@ -5,188 +5,103 @@
 
 .userlist h1 {
     text-align: center;
+    /* border: 2px solid red; */
 
 }
 
-.list_collection {
-    /* border: 2px solid blue; */
-    height: 80%;
-    overflow-y: auto;
+.user_collection {
+    /* border: 2px solid red; */
+
+}
+
+.user_list_item {
+    border: 2px solid var(--primary);
     border-radius: 4px;
-    margin: auto;
-}
-
-.userlist li {
     display: flex;
-    /* justify-content: space-between; */
+    height: 40px;
     align-items: center;
-    border: 2px solid blue;
-    border-radius: 4px;
+    font-size: 14px;
     width: fit-content;
+    padding-left: 10px;
+    padding-right: 10px;
     margin: auto;
     margin-bottom: 5px;
-    margin-top: 5px;
-    font-size: 20px;
-    padding: 5px;
-
 
 }
 
-/* .list {
-    display: flex;
-    justify-content: space-around;
-    font-size: 16px;
-    border: 2px solid blue;
-
-} */
-
-
-
-.userlist li a {
-    text-decoration: none;
-    /* border: 2px solid blue; */
-    padding: 3px;
-    border-radius: 4px;
-    transition: 0.3s;
-
+.userlist_name,
+.userlist_lastname {
+    /* border: 2px solid red; */
+    width: 200px;
+    margin: 0;
 }
 
-.userlist li a:hover {
-    transform: scale(1.02);
-}
-
-.userlist_name {
-    display: inline-flex;
-    padding: 3px;
-    width: 250px;
-    /* border: 2px solid blue; */
-}
-
+.userlist_weekday,
+.userlist_time,
 .userlist_coin {
-    width: 300px;
-}
+    /* border: 2px solid red; */
+    width: 100px;
+    margin: 0;
 
-.userlist li p b {
-    margin-left: 10px;
-    color: red;
-
-}
-
-.userlist li button {
-    /* background-color: red; */
-    width: fit-content;
-    height: 30px;
-    font-size: 16px;
-    padding: 0 10px;
-    cursor: pointer;
-    color: white;
-    opacity: 0.8;
-}
-
-p .userlist li button:hover {
-    opacity: 1;
 }
 
 .userlist_number {
-    margin-right: 20px;
-    border: none;
-    color: blue;
+    /* border: 2px solid red; */
+    width: 150px;
+    margin: 0;
+
 }
 
-.userlist_time {
-    margin-right: 20px;
+.user_list_link {
+    background: #fff;
+    color: var(--primary);
+    border: 2px solid var(--primary);
+    padding: 2px 5px;
+    border-radius: 4px;
+    font-family: "Poppins";
+    cursor: pointer;
+    font-size: 1em;
+    text-decoration: none;
+
 }
+
 
 @media screen and (max-width:500px) {
-    .userlist li {
-        /* display: flex; */
-        /* justify-content: space-between; */
-        /* align-items: center; */
-        /* border: 2px solid blue; */
-        border-radius: 4px;
+
+    .user_list_item {
+        flex-direction: column;
+        min-height: 160px;
+        align-items: flex-start;
+        padding: 20px;
+        width: 80%;
         margin: auto;
         margin-bottom: 5px;
-        margin-top: 5px;
-        font-size: 16px;
-        padding: 0px;
-
-
-        display: grid;
-        grid-template-columns: 1fr;
-        /* border: 2px solid blue; */
-        width: 90%;
-        padding-left: 20px;
-    }
-
-
-
-
-
-    .userlist li a {
-        text-decoration: none;
-        /* border: 2px solid blue; */
-        padding: 3px;
-        border-radius: 4px;
-        transition: 0.3s;
 
     }
 
-    .userlist li a:hover {
-        transform: scale(1.02);
-    }
-
-    .userlist_name {
-        display: inline-flex;
-        padding: 2px;
-        width: 80%;
-
-        /* border: 2px solid blue; */
+    .userlist_name,
+    .userlist_lastname {
+        width: 200px;
         margin: 0;
-        /* border: 2px solid blue; */
+        margin-top: 2px;
+
     }
 
+    .userlist_weekday,
+    .userlist_time,
     .userlist_coin {
-        width: 80%;
+        width: 100px;
         margin: 0;
-
-        /* border: 2px solid blue; */
-
-    }
-
-    .userlist li p b {
-        margin-left: 10px;
-        color: red;
-        margin: 0;
+        margin-top: 2px;
 
 
-    }
-
-    .userlist li button {
-        background-color: red;
-        width: fit-content;
-        /* height: 30px; */
-        font-size: 16px;
-        padding: 0 5px;
-        cursor: pointer;
-        color: white;
-        opacity: 0.8;
-        margin: 0;
-        width: 80%;
-
-
-    }
-
-    .userlist_link {
-        width: 80%;
-        display: flex;
-    }
-
-    p .userlist li button:hover {
-        opacity: 1;
     }
 
     .userlist_number {
-        margin-right: 0px;
+        width: 150px;
+        margin: 0;
+        margin-top: 2px;
     }
+
 
 }

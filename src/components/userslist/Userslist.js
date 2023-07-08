@@ -4,6 +4,7 @@ import Axios from '../../api/api';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthContext';
 import { useAuthContext } from '../../hooks/useAuthContext';
+import Liststudents from '../../pages/studentList/Liststudents';
 
 function Userslist() {
     const [data, setData] = useState([]);
@@ -12,7 +13,7 @@ function Userslist() {
     const { setIsLoading: setContextIsLoading, sensor, setSensor } = useContext(AuthContext);
     const { user } = useAuthContext();
 
-    // console.log(data);
+    console.log(data);
 
     const fetchData = async () => {
         setIsLoading(true);
@@ -22,7 +23,7 @@ function Userslist() {
                     Authorization: `Bearer ${user.token}`,
                 },
             });
-            let filteredData = response.data.filter(student => student.teacher === user.username)
+            let filteredData = response.data.filter(student => student.teacherid === user.id)
             setData(filteredData);
         } catch (error) {
             console.log(error);
@@ -43,23 +44,10 @@ function Userslist() {
             {data.length === 0 ? (
                 <h1>loading...</h1>
             ) : (
-                <div className="list_collection">
+                <div className="user_collection">
                     {
                         data.map((user) => (
-                            <li key={user._id} >
-                                <p className='userlist_name'>
-                                    ismi: <b>{user.name}</b>
-                                </p>
-                                <p className='userlist_time'>{user.time}</p>
-                                <a href={`tel:+998${user?.number}`}>{user.number ? user.number : "nomer yo'q"}</a>
-                                <p className='userlist_coin'>
-                                    coin : <b style={{ color: 'red' }}>{user.coin}</b>
-                                </p>
-                                <Link className='link' to={`/debt/${user._id}`}>
-                                    Taxrirlash
-                                </Link>
-
-                            </li>
+                            <Liststudents key={user._id} users={user} />
                         ))
                     }
                 </div>

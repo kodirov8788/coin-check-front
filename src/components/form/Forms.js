@@ -14,21 +14,24 @@ function Forms() {
         setSensor(false)
         setIsLoading(true)
         let name = e.target[0].value
-        let coin = e.target[1].value
-        let weekdays = e.target[2].value
-        let lessontime = e.target[3].value
-        let number = e.target[4].value
+        let lastname = e.target[1].value
+        let number = e.target[2].value
+        let coin = e.target[3].value
+        let weekdays = e.target[4].value
+        let lessontime = e.target[5].value
 
+        let newuser = {
+            name,
+            lastname,
+            coin,
+            teacherid: user.id,
+            weekday: weekdays,
+            time: lessontime,
+            number: number,
+        }
+        console.log(newuser)
         setTimeout(async () => {
-            await Axios.post("/client/create", {
-                name,
-                coin,
-                teacher: user.username,
-                weekday: weekdays,
-                time: lessontime,
-                number: number,
-                comments: [],
-            }, {
+            await Axios.post("/client/create", newuser, {
                 headers: {
                     'Authorization': `Bearer ${user.token}`
                 }
@@ -41,6 +44,7 @@ function Forms() {
             e.target[2].value = ''
             e.target[3].value = ''
             e.target[4].value = ""
+            e.target[5].value = ""
         }, 500);
 
 
@@ -55,8 +59,10 @@ function Forms() {
                 <h3>O'quvchi qo'shish:</h3>
             </div>
             <div className="inputs">
-                <input type="text" placeholder='student name' required />
-                <select required>
+                <input type="text" placeholder='Ismni kiriting...' required />
+                <input type="text" placeholder='Familiyani kiriting...' required />
+                <input type="number" placeholder='tel raqam' required />
+                <select required >
                     <option value="">coin tanglang</option>
                     <option value="1">1</option>
                     <option value="2">2</option>
@@ -76,7 +82,7 @@ function Forms() {
                     <option value="14-16">14-16</option>
                     <option value="16-18">16-18</option>
                 </select>
-                <input type="number" placeholder='tel raqam' required />
+
 
                 <button className='btn'>Qo'shish</button>
 
