@@ -11,6 +11,8 @@ const Signup = () => {
   const { user } = useAuthContext()
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
+  const [number, setNumber] = useState('')
+  const [subject, setSubject] = useState('')
   const { signup, error } = useSignup()
 
 
@@ -19,7 +21,7 @@ const Signup = () => {
     setIsLoading(true)
 
     setTimeout(async () => {
-      await signup(username, password)
+      await signup(username, password, number, subject)
         .then(res => {
           navigate("/login")
           console.log(res)
@@ -42,13 +44,29 @@ const Signup = () => {
         type="text"
         onChange={(e) => setUsername(e.target.value)}
         value={username}
+        required
       />
       <label>Password:</label>
       <input
         type="password"
         onChange={(e) => setPassword(e.target.value)}
         value={password}
+        required
       />
+      <label>Telefon raqam:</label>
+      <input
+        type="number"
+        onChange={(e) => setNumber(e.target.value)}
+        value={number}
+        required
+      />
+      <label>Fani:</label>
+      <select required onChange={(e) => setSubject(e.target.value)} >
+        <option value="">O'quv fanini tanglang!</option>
+        <option value="it">Dasturlash</option>
+        <option value="eng">Ingliz tili</option>
+        <option value="ru">Rus tili</option>
+      </select>
 
       <button disabled={isLoading}>Sign up</button>
       {error && <div className="error">{error}</div>}

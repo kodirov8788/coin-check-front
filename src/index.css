@@ -67,10 +67,12 @@ form.login {
 }
 
 form.signup input,
-form.login input {
+form.login input,
+form.signup select {
   width: 90%;
   height: 30px;
   font-size: 20px;
+
 }
 
 form.signup button,
@@ -78,6 +80,14 @@ form.login button {
   width: 200px;
   margin-top: 10px;
   font-size: 20px;
+}
+
+form.login .natija {
+  margin-top: 20px;
+  border: #1aac83 2px solid;
+  padding: 5px 10px;
+  text-decoration: none;
+  color: #1aac83;
 }
 
 @media screen and (max-width:500px) {

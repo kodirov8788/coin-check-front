@@ -18,6 +18,7 @@ import Teachers from './pages/teachers/Teachers'
 import Teacherlist from './pages/teacherlist/Teacherlist'
 import Addstudent from './pages/addStudent/Addstudent'
 import Studentlist from './pages/studentList/Studentlist'
+import Clientwatch from './pages/clientWatch/Clientwatch'
 
 function App() {
   const { user } = useAuthContext()
@@ -74,6 +75,10 @@ function App() {
             <Route
               path="/addstudent"
               element={user ? <Addstudent /> : <Navigate to="/login" />}
+            />
+            <Route
+              path="/client"
+              element={<Clientwatch />}
             />
           </Routes>
         </div>

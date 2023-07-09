@@ -20,10 +20,15 @@ function Liststudents({ users }) {
             <p className='userlist_coin'>
                 <b style={{ color: 'red' }}>{users.coin}</b>
             </p>
+            {
+                users._id ? <Link className='user_list_link' to={`/debt/${users._id}`}>
+                    Taxrirlash
+                </Link> : <></>
+            }
+            <p className='userlist_subject'>
+                {users?.subject ? "dasturlash" : ""}
+            </p>
 
-            <Link className='user_list_link' to={`/debt/${users._id}`}>
-                Taxrirlash
-            </Link>
 
         </li>
     )

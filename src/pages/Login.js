@@ -1,6 +1,7 @@
 import { useContext, useState } from "react"
 import { useLogin } from "../hooks/useLogin"
 import { AuthContext } from "../context/AuthContext"
+import { Link } from "react-router-dom"
 
 const Login = () => {
   const [username, setUsername] = useState('')
@@ -37,6 +38,7 @@ const Login = () => {
 
       <button disabled={isLoading}>Log in</button>
       {error && <div className="error">{error}</div>}
+      <Link className="natija" to={"/client"}>Faqat natijani ko`rish</Link>
     </form>
   </div>)
 }

@@ -15,7 +15,7 @@ function Studentlist() {
     const { isLoading, setIsLoading, sensor, setSensor } = useContext(AuthContext);
     const { user } = useAuthContext();
     // console.log(filteredData)
-    // console.log(Data)
+    console.log(Data)
     const fetchData = async () => {
         setIsLoading(true);
 
