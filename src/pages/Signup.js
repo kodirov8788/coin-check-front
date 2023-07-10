@@ -10,6 +10,8 @@ const Signup = () => {
 
   const { user } = useAuthContext()
   const [username, setUsername] = useState('')
+  const [name, setName] = useState('')
+  const [lastname, setLastname] = useState('')
   const [password, setPassword] = useState('')
   const [number, setNumber] = useState('')
   const [subject, setSubject] = useState('')
@@ -21,7 +23,7 @@ const Signup = () => {
     setIsLoading(true)
 
     setTimeout(async () => {
-      await signup(username, password, number, subject)
+      await signup(username, password, name, lastname, number, subject)
         .then(res => {
           navigate("/login")
           console.log(res)
@@ -51,6 +53,20 @@ const Signup = () => {
         type="password"
         onChange={(e) => setPassword(e.target.value)}
         value={password}
+        required
+      />
+      <label>Ismi:</label>
+      <input
+        type="text"
+        onChange={(e) => setName(e.target.value)}
+        value={name}
+        required
+      />
+      <label>Familiya:</label>
+      <input
+        type="text"
+        onChange={(e) => setLastname(e.target.value)}
+        value={lastname}
         required
       />
       <label>Telefon raqam:</label>

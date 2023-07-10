@@ -36,12 +36,12 @@ function Forms() {
                 number: number,
             }
             console.log(newuser)
-            // await Axios.post("/client/create", newuser, {
-            //     headers: {
-            //         'Authorization': `Bearer ${user.token}`
-            //     }
-            // }).then(res => console.log(res))
-            //     .catch(() => console.log("error chiqdi"))
+            await Axios.post("/client/create", newuser, {
+                headers: {
+                    'Authorization': `Bearer ${user.token}`
+                }
+            }).then(res => console.log(res))
+                .catch(() => console.log("error chiqdi"))
             setIsLoading(false)
             setSensor(true)
             e.target[0].value = ''

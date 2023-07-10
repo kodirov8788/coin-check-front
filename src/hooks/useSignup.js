@@ -9,16 +9,19 @@ export const useSignup = () => {
   const { isLoading, setIsLoading } = useContext(AuthContext)
 
 
-  const signup = async (username, password, number, subject) => {
+  const signup = async (username, password, name, lastname, number, subject) => {
     setIsLoading(true);
     setError(null);
+    console.log("username: ", username)
+    console.log("lastname: ", lastname)
+    console.log("password: ", password)
+    console.log("number: ", number)
+    console.log("subject: ", subject)
+    console.log("name: ", name)
     if (user.role === "root") {
       try {
         const response = await axios.post('/user/register', {
-          username,
-          password,
-          number,
-          subject
+          username, password, name, lastname, number, subject
         }, {
           headers: { 'Content-Type': 'application/json' }
         });
