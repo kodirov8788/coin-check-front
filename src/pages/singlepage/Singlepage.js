@@ -24,7 +24,7 @@ function Singlepage() {
     const getApi = async () => {
         setIsLoading(true)
         if (user) {
-            await Axios.get("/client/get", {
+            await Axios.get("/auth/get", {
                 headers: {
                     'Authorization': `Bearer ${user.token}`
                 }

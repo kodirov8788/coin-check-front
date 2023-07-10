@@ -20,7 +20,7 @@ function Studentlist() {
         setIsLoading(true);
 
         try {
-            const { data } = await Axios.get('/client/get', {
+            const { data } = await Axios.get('/auth/get', {
                 headers: {
                     Authorization: `Bearer ${user?.token}`,
                 },

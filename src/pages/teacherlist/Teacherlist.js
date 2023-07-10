@@ -17,7 +17,7 @@ function Teacherlist() {
     const fetchData = async () => {
         setIsLoading(true);
         try {
-            const response = await axios.get('/client/get', {
+            const response = await axios.get('/auth/get', {
                 headers: {
                     Authorization: `Bearer ${user.token}`,
                 },

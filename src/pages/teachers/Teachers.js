@@ -41,6 +41,7 @@ function Teachers() {
 
     const deleteUser = async (id) => {
         setIsLoading(true);
+        setSensor(true)
         try {
             await Axios.delete(`/user/delete/${id}`, {
                 headers: {
@@ -52,7 +53,7 @@ function Teachers() {
         } catch (error) {
             console.error(error);
         }
-
+        setSensor(false)
         setIsLoading(false);
     }
 
@@ -70,6 +71,7 @@ function Teachers() {
                         {
                             teacher.role === "user" ? <button className='teacher_delete_btn' onClick={() => deleteUser(teacher._id)}>Delete</button> : <></>
                         }
+                        <p className='teacher_role'> fan:<span >{teacher.subject === "it" ? "dasturlash" : teacher.subject === "eng" ? "english" : teacher.subject === "ru" ? "russion" : ""}</span></p>
 
                     </li>
                 ))}

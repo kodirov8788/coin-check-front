@@ -18,12 +18,17 @@ export const useSignup = () => {
     console.log("number: ", number)
     console.log("subject: ", subject)
     console.log("name: ", name)
-    if (user.role === "root") {
+
+    if (!user.role === "root" || !username || !lastname || !password || !number || !subject || !name) {
+      alert("user root admin bolishi kerak")
+    } else {
       try {
         const response = await axios.post('/user/register', {
           username, password, name, lastname, number, subject
         }, {
-          headers: { 'Content-Type': 'application/json' }
+          headers: {
+            'Authorization': `Bearer ${user.token}`
+          }
         });
 
         if (response.status !== 200) {
@@ -45,8 +50,6 @@ export const useSignup = () => {
         setIsLoading(false);
         setError('An error occurred during signup.');
       }
-    } else {
-      console.log("user root admin bolishi kerak")
     }
 
   };

@@ -20,7 +20,7 @@ function Clientwatch() {
         setIsLoading(true);
 
         try {
-            const { data } = await Axios.get('/client/get');
+            const { data } = await Axios.get('/auth/get');
             setData(data.filter(user => user.number == number));
         } catch (error) {
             console.error(error);
@@ -53,7 +53,8 @@ function Clientwatch() {
             lastname: user.user.lastname,
             coin: user.user.coin,
             number: user.user.number,
-            subject: user.user.subject
+            subject: user.user.subject,
+            weekday: user.user.weekday,
         }
         console.log(newuser)
 

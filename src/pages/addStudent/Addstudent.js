@@ -14,7 +14,7 @@ function Main() {
     useEffect(() => {
         const fetchWorkouts = async () => {
             try {
-                const response = await axios.get('/client/get', {
+                const response = await axios.get('/auth/get', {
                     headers: { 'Authorization': `Bearer ${user.token}` }
                 });
 

@@ -26,7 +26,7 @@ function Liststudents({ users }) {
                 </Link> : <></>
             }
             <p className='userlist_subject'>
-                {users?.subject ? "dasturlash" : ""}
+                {users.subject === "it" ? "dasturlash" : users.subject === "eng" ? "ingliz" : users.subject === "ru" ? "rus tili" : ""}
             </p>
 
 
