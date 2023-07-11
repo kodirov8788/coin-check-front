@@ -18,11 +18,7 @@ function Userslist() {
     const fetchData = async () => {
         setIsLoading(true);
         try {
-            const response = await Axios.get('/auth/get', {
-                headers: {
-                    Authorization: `Bearer ${user.token}`,
-                },
-            });
+            const response = await Axios.get('/auth/get');
             let filteredData = response.data.filter(student => student.teacherid === user.id)
             setData(filteredData);
         } catch (error) {

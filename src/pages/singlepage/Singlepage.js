@@ -10,14 +10,8 @@ function Singlepage() {
     const navigate = useNavigate()
     const { isLoading, setIsLoading, sensor, setSensor } = useContext(AuthContext)
     const { user } = useAuthContext()
-    const [ayiruvQiymat, setAyiruvQiymat] = useState({
-        coin: 0,
-        info: ""
-    })
-    const [qoshuvQiymat, setQoshuvQiymat] = useState({
-        coin: 0,
-        info: ""
-    })
+    const [ayiruvQiymat, setAyiruvQiymat] = useState("")
+    const [qoshuvQiymat, setQoshuvQiymat] = useState("")
 
     const [userData, setUserData] = useState([])
     // console.log(userData)
@@ -45,7 +39,7 @@ function Singlepage() {
     const ayirish = async () => {
         setSensor(false)
         setIsLoading(true)
-        await Axios.put(`/client/minus/${id}`, ayiruvQiymat, {
+        await Axios.put(`/client/minus/${id}`, { coin: ayiruvQiymat }, {
             headers: {
                 'Authorization': `Bearer ${user.token}`
             }
@@ -54,14 +48,14 @@ function Singlepage() {
             .catch((error) => console.log("error bor", error))
         setIsLoading(false)
         setSensor(true)
-        setQoshuvQiymat({ ...qoshuvQiymat, coin: 0, info: "" })
-        setAyiruvQiymat({ ...ayiruvQiymat, coin: 0, info: "" })
+        setQoshuvQiymat(0)
+        setAyiruvQiymat(0)
     }
 
     const qoshish = async () => {
         setSensor(false)
         setIsLoading(true)
-        await Axios.put(`/client/plus/${id}`, qoshuvQiymat, {
+        await Axios.put(`/client/plus/${id}`, { coin: qoshuvQiymat }, {
             headers: {
                 'Authorization': `Bearer ${user.token}`
             }
@@ -70,8 +64,8 @@ function Singlepage() {
             .catch((error) => console.log("error bor", error))
         setIsLoading(false)
         setSensor(true)
-        setQoshuvQiymat({ ...qoshuvQiymat, coin: 0, info: "" })
-        setAyiruvQiymat({ ...ayiruvQiymat, coin: 0, info: "" })
+        setQoshuvQiymat(0)
+        setAyiruvQiymat(0)
     }
     const deleteUser = async (id) => {
         setIsLoading(true);
@@ -96,9 +90,7 @@ function Singlepage() {
             <div className="singlepage_top">
                 {
                     user.role === "root" ? <div className="singlepage_topCover">
-                        <input onChange={(e) => setAyiruvQiymat({ ...ayiruvQiymat, coin: Number(e.target.value) })} type="number" value={ayiruvQiymat.coin < 1 ? "" : ayiruvQiymat.coin} placeholder='coindan yechish' />
-
-                        <input type="text" placeholder='nima oldi?' onChange={(e) => setAyiruvQiymat({ ...ayiruvQiymat, info: e.target.value })} value={ayiruvQiymat.info.length < 1 ? "" : ayiruvQiymat.info} />
+                        <input onChange={(e) => setAyiruvQiymat(Number(e.target.value))} type="number" value={ayiruvQiymat < 1 ? "" : ayiruvQiymat} placeholder='coindan yechish' />
 
                         <button onClick={ayirish}>coinni yechish</button>
 
@@ -106,16 +98,10 @@ function Singlepage() {
                 }
                 <div className="singlepage_topCover">
 
-                    <select required onChange={(e) => setQoshuvQiymat({ ...qoshuvQiymat, coin: Number(e.target.value) })} value={qoshuvQiymat.coin}>
-                        <option value="">coin tanglang</option>
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="5">5</option>
-                        <option value="7">7</option>
-                        <option value="10">10</option>
-                    </select>
 
-                    <button onClick={qoshish}>coin qo`shish</button>
+                    <input type="number" required onChange={(e) => setQoshuvQiymat(Number(e.target.value))} placeholder='tanga miqdorini kiriting...' />
+
+                    <button disabled={qoshuvQiymat < 1 ? true : false} onClick={qoshish}>coin qo`shish</button>
                 </div>
             </div>
 
@@ -137,12 +123,12 @@ function Singlepage() {
                                     <div className="singlepage_plus">
                                         <h2>Qo`shilgan: <span>{comment.amount}</span> </h2>
 
-                                        <span><b>sana:</b> {(new Date((comment.updatedAt)).toDateString()) + " " + (new Date((comment.updatedAt)).toLocaleTimeString())}</span>
+                                        <span><b>sana:</b> {(new Date((comment.updatedAt)).getDate()) + "." + (new Date((comment.updatedAt)).getMonth()) + "." + (new Date((comment.updatedAt)).getFullYear())}</span>
                                     </div>
                                     :
                                     <div className="singlepage_minus">
                                         <h2>ayirilgan miqdor: <span>{comment.amount} </span> </h2>
-                                        <span>{(new Date((comment.updatedAt)).toDateString()) + " " + (new Date((comment.updatedAt)).toLocaleTimeString())}</span>
+                                        <span>{(new Date((comment.updatedAt)).toDateString()()) + " " + (new Date((comment.updatedAt)).toLocaleTimeString())}</span>
                                     </div>
                                 }
                             </div>))
