@@ -8,12 +8,18 @@ import { useAuthContext } from '../../hooks/useAuthContext'
 function Singlepage() {
     const { id } = useParams()
     const navigate = useNavigate()
+
+    const [Name, setName] = useState("")
+    const [Lastname, setLastname] = useState("")
+    const [NumberInput, setNumberInput] = useState("")
+
     const { isLoading, setIsLoading, sensor, setSensor } = useContext(AuthContext)
     const { user } = useAuthContext()
     const [ayiruvQiymat, setAyiruvQiymat] = useState("")
     const [qoshuvQiymat, setQoshuvQiymat] = useState("")
-
+    const [clientEdit, setClientEdit] = useState(false)
     const [userData, setUserData] = useState([])
+    console.log(clientEdit)
     // console.log(userData)
     const getApi = async () => {
         setIsLoading(true)
@@ -85,6 +91,34 @@ function Singlepage() {
         setSensor(true)
         navigate("/")
     };
+
+    const editClient = async () => {
+        console.log(id)
+        setIsLoading(true)
+        setSensor(true)
+
+        let newuser = {
+            name: Name,
+            lastname: Lastname,
+            number: NumberInput
+        }
+        await Axios.put(`/client/update/${id}`, newuser, {
+            headers: {
+                'Authorization': `Bearer ${user.token}`
+            }
+        }).then((res) => {
+            console.log(res)
+            setIsLoading(false)
+            setSensor(false)
+        })
+            .catch((error) => {
+                console.log("error bor")
+                setIsLoading(false)
+                setSensor(false)
+            })
+        setName("")
+
+    }
     return (
         <div>
             <div className="singlepage_top">
@@ -105,7 +139,28 @@ function Singlepage() {
                 </div>
             </div>
 
+            <button className='single_page_editBtn' onClick={() => setClientEdit(!clientEdit ? true : false)}>Edit</button>
             <div className="singlepage_main">
+                {clientEdit ? <div className="singlepage_update_container">
+                    <div className="singlepage_name">
+                        <h2><span>{userData.name}</span></h2>
+                        <input onChange={(e) => setName(e.target.value)} type="text" placeholder='ismni o`zgartirish' />
+                        <button onClick={editClient}>Jo'natish</button>
+                    </div>
+                    <div className="singlepage_name">
+                        <h2><span>{userData.lastname}</span></h2>
+                        <input onChange={(e) => setLastname(e.target.value)} type="text" placeholder='familiyani o`zgartirish' />
+                        <button onClick={editClient}>Jo'natish</button>
+                    </div>
+                    <div className="singlepage_name">
+                        <h2><span>{userData.number}</span></h2>
+                        <input onChange={(e) => setNumberInput(e.target.value)} type="text" placeholder='tel raqanni o`zgartirish' />
+                        <button onClick={editClient}>Jo'natish</button>
+                    </div>
+                </div>
+                    : <></>}
+
+
                 <div className="singlepage_title">
                     <h1>Ismi: <span> {userData?.name}</span></h1>
                     <h2>Umumiy coinlar: <span>{userData?.coin}</span> </h2>

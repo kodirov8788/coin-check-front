@@ -6,11 +6,11 @@ import { useAuthContext } from '../../hooks/useAuthContext'
 function Forms() {
     const { isLoading, setIsLoading, sensor, setSensor } = useContext(AuthContext)
 
+
+
     const [inputRadio, setinputRadio] = useState("")
     const { user } = useAuthContext()
     console.log(inputRadio)
-    // console.log(user)
-    // console.log(isLoading)
     const sendForm = async (e) => {
         e.preventDefault()
 

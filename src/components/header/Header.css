@@ -50,7 +50,7 @@
 
 @media screen and (max-width:500px) {
     header {
-        height: 100px;
+        height: 120px;
         /* border: 2px solid red; */
         width: 100%;
         display: flex;

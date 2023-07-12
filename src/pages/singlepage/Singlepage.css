@@ -112,6 +112,64 @@
     height: 30px;
 }
 
+
+
+.singlepage_update_container {
+    /* min-height: 100vh; */
+}
+
+.singlepage_name {
+    border: 2px solid green;
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    border-radius: 4px;
+
+}
+
+.singlepage_name span {
+    color: red;
+    /* border: 2px solid black; */
+    min-width: 250px;
+    display: inline-flex;
+    margin-left: 10px;
+
+}
+
+.singlepage_name input {
+    min-width: 200px;
+    text-indent: 10px;
+    height: 30px;
+    font-size: 16px;
+    margin-right: 20px;
+}
+
+.singlepage_name button {
+
+    width: 150px;
+    height: 30px;
+    cursor: pointer;
+    border: 1px solid green;
+    color: green;
+    background-color: white;
+    border-radius: 4px;
+}
+
+.singlepage_name button:hover {
+    background-color: #f8f8f8;
+}
+
+.single_page_editBtn {
+    width: 150px;
+    height: 30px;
+    cursor: pointer;
+    border: 1px solid green;
+    color: green;
+    background-color: white;
+    border-radius: 4px;
+    margin-top: 30px;
+}
+
 @media screen and (max-width:500px) {
     .singlepage_topCover {
         width: 100%;
@@ -121,6 +179,7 @@
 
     .singlepage_topCover input {
         font-size: 16px;
+        width: 95%;
     }
 
     .singlepage_topCover button {
@@ -164,5 +223,16 @@
     .singlepage_minus h2 span,
     .singlepage_plus h2 span {
         margin-left: 5px;
+    }
+
+    .singlepage_name {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 10px;
+
+    }
+
+    .singlepage_name input {
+        margin-bottom: 20px;
     }
 }

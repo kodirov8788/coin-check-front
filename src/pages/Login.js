@@ -18,7 +18,7 @@ const Login = () => {
     }, 1000);
   }
 
-  return (<div className="">
+  return (<div className="login">
     <h1>Welcome to Coin check</h1>
     <form className="login" onSubmit={handleSubmit}>
       <h3>Log In</h3>

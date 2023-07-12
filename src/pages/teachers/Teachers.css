@@ -36,6 +36,7 @@
 .teacher_role {
     /* border: 2px solid green; */
     margin-left: 20px;
+    margin-right: 20px;
 }
 
 .teacher_role span {
@@ -43,6 +44,7 @@
     color: blue;
 
 }
+
 
 .teacher_delete_btn {
     font-size: 16px;
@@ -54,6 +56,30 @@
     cursor: pointer;
 
 }
+
+.teacher_subject {
+    /* border: 2px solid green; */
+    margin-left: 20px;
+    margin-right: 20px;
+    width: 150px;
+}
+
+.teacher_subject span {
+    margin-left: 10px;
+    color: blue;
+
+}
+
+.teacher_edit {
+    margin-left: 20px;
+    display: inline-flex;
+    text-decoration: none;
+    border: 2px solid green;
+    padding: 5px 10px;
+    border-radius: 4px;
+
+}
+
 
 @media screen and (max-width:500px) {
 

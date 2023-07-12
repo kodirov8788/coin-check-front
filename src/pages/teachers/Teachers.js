@@ -71,7 +71,9 @@ function Teachers() {
                         {
                             teacher.role === "user" ? <button className='teacher_delete_btn' onClick={() => deleteUser(teacher._id)}>Delete</button> : <></>
                         }
-                        <p className='teacher_role'> fan:<span >{teacher.subject === "it" ? "dasturlash" : teacher.subject === "eng" ? "english" : teacher.subject === "ru" ? "russion" : ""}</span></p>
+                        <p className='teacher_subject'> fan:<span >{teacher.subject === "it" ? "dasturlash" : teacher.subject === "eng" ? "english" : teacher.subject === "ru" ? "russion" : ""}</span></p>
+
+                        <Link className='teacher_edit' state={teacher} to={`/teacherupdate/${teacher._id}`}>Teacher update</Link>
 
                     </li>
                 ))}

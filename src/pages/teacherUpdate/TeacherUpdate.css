@@ -1,0 +1,59 @@
+.teacher_update_container {
+    min-height: 100vh;
+}
+
+.teacher_update_name {
+    border: 2px solid green;
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    border-radius: 4px;
+
+}
+
+.teacher_update_name span {
+    color: red;
+    /* border: 2px solid black; */
+    min-width: 250px;
+    display: inline-flex;
+    margin-left: 10px;
+
+}
+
+.teacher_update_name input {
+    min-width: 200px;
+    text-indent: 10px;
+    height: 30px;
+    font-size: 16px;
+    margin-right: 20px;
+}
+
+.teacher_update_name button {
+
+    width: 150px;
+    height: 30px;
+    cursor: pointer;
+    border: 1px solid green;
+    color: green;
+    background-color: white;
+    border-radius: 4px;
+}
+
+.teacher_update_name button:hover {
+    background-color: #f8f8f8;
+}
+
+@media screen and (max-width:500px) {
+
+
+    .teacher_update_name {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 10px;
+
+    }
+
+    .teacher_update_name input {
+        margin-bottom: 20px;
+    }
+}
