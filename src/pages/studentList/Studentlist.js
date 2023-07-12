@@ -8,14 +8,14 @@ import Liststudents from './Liststudents';
 
 function Studentlist() {
     const [Data, setData] = useState([]);
-
+    // console.log(Data)
     const [weekdays, setWeekday] = useState("");
     const [lessonTime, setLessonTime] = useState("");
     const [filteredData, setFilteredData] = useState([]);
+
     const { isLoading, setIsLoading, sensor, setSensor } = useContext(AuthContext);
     const { user } = useAuthContext();
     // console.log(filteredData)
-    console.log(Data)
     const fetchData = async () => {
         setIsLoading(true);
 
@@ -37,6 +37,7 @@ function Studentlist() {
         }
         setIsLoading(false);
 
+
     };
 
     const sendForm = (e) => {
@@ -45,7 +46,6 @@ function Studentlist() {
         // console.log("ishladi")
         setTimeout(async () => {
             if (user.role === "root") {
-
                 if (weekdays && lessonTime) {
                     let filt = Data.filter((use) => {
                         return use.weekday === weekdays && use.time === lessonTime
@@ -106,11 +106,17 @@ function Studentlist() {
                     <h3>Dars kuni va vaqtini tanglang!</h3>
                 </div>
                 <div className="studentlist_inputs">
-                    <select onChange={(e) => (setWeekday(e.target.value))} >
+                    {/* <select onChange={(e) => (setWeekday(e.target.value))} >
                         <option value="">hafta kunini tanglang</option>
                         <option value="odd">toq kunlar</option>
                         <option value="even">juft kunlar</option>
-                    </select>
+                    </select> */}
+                    <div class="radio-group" onChange={(e) => setWeekday(e.target.value)} required>
+                        <input type="radio" value={"odd"} id="option-one" name="selector" />
+                        <label for="option-one">Toq</label>
+                        <input type="radio" value={"even"} id="option-two" name="selector" />
+                        <label for="option-two" >Juft</label>
+                    </div>
                     <select onChange={(e) => (setLessonTime(e.target.value))}>
                         <option value="">all</option>
                         <option value="8-10">8-10</option>
@@ -146,13 +152,17 @@ function Studentlist() {
                         <h2>O`quvchilar ro`yhati</h2>
 
 
-                        {filteredData.length === 0 ? (
+                        {Data.length === 0 ? (
                             <h1>loading...</h1>
                         ) : (
                             <div className="list_collection">
-                                {filteredData.map((userl) => (
-                                    <Liststudents key={userl._id} users={userl} />
-                                ))
+                                {weekdays || lessonTime ?
+                                    filteredData.map((userl) => (
+                                        <Liststudents key={userl._id} users={userl} />
+                                    )) :
+                                    Data.map((userl) => (
+                                        <Liststudents key={userl._id} users={userl} />
+                                    ))
                                 }
                             </div>
                         )}

@@ -90,7 +90,7 @@
 }
 
 .singlepage_minus {
-    /* border: 2px solid green; */
+    /* border: 2px solid var( --primary); */
     margin-top: 20px;
     width: 80%;
     border-radius: 4px;
@@ -119,7 +119,7 @@
 }
 
 .singlepage_name {
-    border: 2px solid green;
+    border: 2px solid var(--primary);
     display: flex;
     align-items: center;
     margin-bottom: 20px;
@@ -149,8 +149,8 @@
     width: 150px;
     height: 30px;
     cursor: pointer;
-    border: 1px solid green;
-    color: green;
+    border: 1px solid var(--primary);
+    color: var(--primary);
     background-color: white;
     border-radius: 4px;
 }
@@ -163,8 +163,8 @@
     width: 150px;
     height: 30px;
     cursor: pointer;
-    border: 1px solid green;
-    color: green;
+    border: 1px solid var(--primary);
+    color: var(--primary);
     background-color: white;
     border-radius: 4px;
     margin-top: 30px;

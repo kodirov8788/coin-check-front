@@ -8,7 +8,7 @@
 .teacher_wrap li {
     width: 80%;
     height: 50px;
-    border: 2px solid green;
+    border: 2px solid var(--primary);
     display: flex;
     align-items: center;
     /* padding: 0 10px; */
@@ -29,12 +29,12 @@
     font-weight: 600;
     color: red;
     margin-left: 20px;
-    /* border: 2px solid green; */
+    /* border: 2px solid var( --primary); */
     /* margin-bottom: 5px; */
 }
 
 .teacher_role {
-    /* border: 2px solid green; */
+    /* border: 2px solid var( --primary); */
     margin-left: 20px;
     margin-right: 20px;
 }
@@ -58,7 +58,7 @@
 }
 
 .teacher_subject {
-    /* border: 2px solid green; */
+    /* border: 2px solid var( --primary); */
     margin-left: 20px;
     margin-right: 20px;
     width: 150px;
@@ -74,7 +74,7 @@
     margin-left: 20px;
     display: inline-flex;
     text-decoration: none;
-    border: 2px solid green;
+    border: 2px solid var(--primary);
     padding: 5px 10px;
     border-radius: 4px;
 
@@ -91,7 +91,7 @@
     .teacher_wrap li {
         width: 80%;
         height: auto;
-        border: 2px solid green;
+        border: 2px solid var(--primary);
         display: flex;
         align-items: start;
         flex-direction: column;

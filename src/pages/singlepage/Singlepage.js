@@ -12,7 +12,9 @@ function Singlepage() {
     const [Name, setName] = useState("")
     const [Lastname, setLastname] = useState("")
     const [NumberInput, setNumberInput] = useState("")
-
+    const [weekdays, setWeekday] = useState("");
+    const [lessonTime, setLessonTime] = useState("");
+    console.log(lessonTime)
     const { isLoading, setIsLoading, sensor, setSensor } = useContext(AuthContext)
     const { user } = useAuthContext()
     const [ayiruvQiymat, setAyiruvQiymat] = useState("")
@@ -100,7 +102,9 @@ function Singlepage() {
         let newuser = {
             name: Name,
             lastname: Lastname,
-            number: NumberInput
+            number: NumberInput,
+            weekday: weekdays,
+            time: lessonTime
         }
         await Axios.put(`/client/update/${id}`, newuser, {
             headers: {
@@ -123,20 +127,24 @@ function Singlepage() {
         <div>
             <div className="singlepage_top">
                 {
-                    user.role === "root" ? <div className="singlepage_topCover">
-                        <input onChange={(e) => setAyiruvQiymat(Number(e.target.value))} type="number" value={ayiruvQiymat < 1 ? "" : ayiruvQiymat} placeholder='coindan yechish' />
+                    user.role === "root" ? <>
+                        <div className="singlepage_topCover">
+                            <input onChange={(e) => setAyiruvQiymat(Number(e.target.value))} type="number" value={ayiruvQiymat < 1 ? "" : ayiruvQiymat} placeholder='coindan yechish' />
 
-                        <button onClick={ayirish}>coinni yechish</button>
+                            <button onClick={ayirish}>coinni yechish</button>
 
-                    </div> : <></>
+                        </div>
+                        <div className="singlepage_topCover">
+
+
+                            <input type="number" required onChange={(e) => setQoshuvQiymat(Number(e.target.value))} placeholder='tanga miqdorini kiriting...' />
+
+                            <button disabled={qoshuvQiymat < 1 ? true : false} onClick={qoshish}>coin qo`shish</button>
+                        </div>
+                    </>
+                        : <></>
                 }
-                <div className="singlepage_topCover">
 
-
-                    <input type="number" required onChange={(e) => setQoshuvQiymat(Number(e.target.value))} placeholder='tanga miqdorini kiriting...' />
-
-                    <button disabled={qoshuvQiymat < 1 ? true : false} onClick={qoshish}>coin qo`shish</button>
-                </div>
             </div>
 
             <button className='single_page_editBtn' onClick={() => setClientEdit(!clientEdit ? true : false)}>Edit</button>
@@ -155,6 +163,25 @@ function Singlepage() {
                     <div className="singlepage_name">
                         <h2><span>{userData.number}</span></h2>
                         <input onChange={(e) => setNumberInput(e.target.value)} type="text" placeholder='tel raqanni o`zgartirish' />
+                        <button onClick={editClient}>Jo'natish</button>
+                    </div>
+                    <div className="singlepage_name">
+                        <select onChange={(e) => setWeekday(e.target.value)} >
+                            <option value="">hafta kunini tanglang</option>
+                            <option value="odd">toq kunlar</option>
+                            <option value="even">juft kunlar</option>
+                        </select>
+
+                        <button onClick={editClient}>Jo'natish</button>
+                    </div>
+                    <div className="singlepage_name">
+                        <select onChange={(e) => setLessonTime(e.target.value)}>
+                            <option value="">all</option>
+                            <option value="8-10">8-10</option>
+                            <option value="10-12">10-12</option>
+                            <option value="14-16">14-16</option>
+                            <option value="16-18">16-18</option>
+                        </select>
                         <button onClick={editClient}>Jo'natish</button>
                     </div>
                 </div>

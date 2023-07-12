@@ -54,9 +54,12 @@
 
 
 .radio-group {
-    height: 100%;
+    /* height: 100%; */
+    width: fit-content;
     margin-left: 5px;
     margin-right: 5px;
+    border: 2px solid black;
+
 }
 
 input[type=radio] {
@@ -69,13 +72,22 @@ label {
     color: black;
     display: inline-block;
     cursor: pointer;
-    padding: 5px 15px;
+    padding: 10px 15px;
+
+
+    /* border-left: 2px solid black; */
+
+}
+
+label:nth-child(1) {
+    border-right: 1px solid black;
 }
 
 input[type=radio]:checked+label {
     color: white;
     background: black;
     height: 100%;
+    border: 2px solid black;
 }
 
 label+input[type=radio]+label {
