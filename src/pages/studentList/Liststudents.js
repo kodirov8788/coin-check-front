@@ -31,14 +31,12 @@ function Liststudents({ users }) {
                 })
         }
 
-        return () => {
-            if (users._id) {
-                getData()
-            } else {
-                setNewUser(users)
-            }
-
+        if (users._id) {
+            getData()
+        } else {
+            setNewUser(users)
         }
+
     }, [sensor])
 
 
