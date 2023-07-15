@@ -2,6 +2,14 @@
     margin-right: 10px;
 }
 
+.admin_link a {
+    margin: 0 5px;
+}
+
+.header_logo {
+    margin-left: 20px;
+}
+
 .header_media_wrap {
     display: flex;
     align-items: center;
@@ -32,6 +40,7 @@
     border-radius: 4px;
     cursor: pointer;
     background-color: white;
+    margin-right: 20px;
 
 }
 
@@ -57,6 +66,10 @@
         align-items: center;
         overflow: hidden;
 
+    }
+
+    .header_logo {
+        margin-left: 0px;
     }
 
     .container {

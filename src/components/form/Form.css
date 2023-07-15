@@ -54,12 +54,10 @@
 
 
 .radio-group {
-    /* height: 100%; */
-    width: fit-content;
+    min-width: 100px;
     margin-left: 5px;
-    margin-right: 5px;
-    border: 2px solid black;
-
+    margin-right: 0;
+    /* border: 2px solid black; */
 }
 
 input[type=radio] {
@@ -72,10 +70,12 @@ label {
     color: black;
     display: inline-block;
     cursor: pointer;
-    padding: 10px 15px;
+    padding: 10px 7px;
+    box-shadow: rgba(17, 17, 26, 0.05) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 0px 8px;
+    height: 100%;
+    overflow: hidden;
 
-
-    /* border-left: 2px solid black; */
+    /* border: 2px solid black; */
 
 }
 
@@ -94,14 +94,6 @@ label+input[type=radio]+label {
     /* border-left: solid 1px black; */
     height: 100%;
 
-}
-
-.radio-group {
-    /* border: solid 1px black; */
-    display: inline-block;
-    /* margin: 20px; */
-    /* border-radius: 10px; */
-    overflow: hidden;
 }
 
 

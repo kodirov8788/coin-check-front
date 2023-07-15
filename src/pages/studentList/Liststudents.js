@@ -78,7 +78,9 @@ function Liststudents({ users }) {
                 <div className="userlist_addcoin">
                     <input type="number" value={qoshuvQiymat} required onChange={(e) => setQoshuvQiymat(Number(e.target.value))} placeholder='tanga kiriting...' />
 
-                    <button onClick={() => qoshish(newUser._id)}>qo'shish</button>
+                    <button style={qoshuvQiymat ? { borderColor: "green" } : { borderColor: "gray", color: "gray" }}
+
+                        disabled={qoshuvQiymat === "" || qoshuvQiymat < 0 ? true : false} onClick={() => qoshish(newUser._id)}>qo'shish</button>
                 </div> : <></>
             }
 

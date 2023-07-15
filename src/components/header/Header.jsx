@@ -33,7 +33,7 @@ const Header = () => {
                 <img src={Menu} alt="" />
             </button>
             <div className="container">
-                <Link to="/">
+                <Link className='header_logo' to="/">
                     Coin list
                 </Link>
                 <div className="header_media_wrap">{
