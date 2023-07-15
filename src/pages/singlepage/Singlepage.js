@@ -166,7 +166,8 @@ function Singlepage() {
                         <button onClick={editClient}>Jo'natish</button>
                     </div>
                     <div className="singlepage_name">
-                        <select onChange={(e) => setWeekday(e.target.value)} >
+                        <h2><span>{userData.weekday === "odd" ? "toq kunlari" : "juft kunlari"}</span></h2>
+                        <select className='singlepage_name_select' onChange={(e) => setWeekday(e.target.value)} >
                             <option value="">hafta kunini tanglang</option>
                             <option value="odd">toq kunlar</option>
                             <option value="even">juft kunlar</option>
@@ -175,7 +176,8 @@ function Singlepage() {
                         <button onClick={editClient}>Jo'natish</button>
                     </div>
                     <div className="singlepage_name">
-                        <select onChange={(e) => setLessonTime(e.target.value)}>
+                        <h2><span>{userData.time} vaqtida</span></h2>
+                        <select className='singlepage_name_select' onChange={(e) => setLessonTime(e.target.value)}>
                             <option value="">all</option>
                             <option value="8-10">8-10</option>
                             <option value="10-12">10-12</option>
