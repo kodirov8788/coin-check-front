@@ -50,6 +50,15 @@
     margin-top: 20px;
 }
 
+.userlist_student_count {
+    font-weight: 300;
+    font-size: 12px;
+    letter-spacing: 2px;
+}
+
+.userlist_student_count span {
+    color: red !important;
+}
 
 
 

@@ -106,11 +106,6 @@ function Studentlist() {
                     <h3>Dars kuni va vaqtini tanglang!</h3>
                 </div>
                 <div className="studentlist_inputs">
-                    {/* <select onChange={(e) => (setWeekday(e.target.value))} >
-                        <option value="">hafta kunini tanglang</option>
-                        <option value="odd">toq kunlar</option>
-                        <option value="even">juft kunlar</option>
-                    </select> */}
                     <div class="radio-group" onChange={(e) => setWeekday(e.target.value)} required>
                         <input type="radio" value={"odd"} id="option-one" name="selector" />
                         <label for="option-one">Toq</label>
@@ -131,7 +126,20 @@ function Studentlist() {
             {
                 user.role === "root" ?
                     < div className='userlist'>
-                        <h2>O`quvchilar ro`yhati</h2>
+                        <div className="userlist_student_count">
+                            <h1 style={{ textAlign: "center" }}>O`quvchilar ro`yhati.</h1>
+                            {Data.length === 0 ? (
+                                <></>
+                            ) : (
+                                <h1>Sizning <span>{Data.length}</span>ta o'quvchingiz bor</h1>
+                            )}
+                            {filteredData.length === 0 ? (
+                                <></>
+                            ) : (
+                                <h1>sizning <span>{Data.length}</span>ta o'quvchingiz bor</h1>
+                            )}
+
+                        </div>
                         {Data.length === 0 ? (
                             <h1>loading...</h1>
                         ) : (
@@ -149,7 +157,15 @@ function Studentlist() {
                     </div >
                     :
                     <div className='userlist'>
-                        <h2>O`quvchilar ro`yhati</h2>
+                        <div className="userlist_student_count">
+                            <h1 style={{ textAlign: "center" }}>O`quvchilar ro`yhati.</h1>
+
+                            {filteredData.length === 0 ? (
+                                <h1> Sizning <span>{Data.length}</span>ta o'quvchingiz bor</h1>
+                            ) : (
+                                <h1>Sizning <span>{filteredData.length}</span>ta o'quvchingiz bor</h1>
+                            )}
+                        </div>
 
 
                         {Data.length === 0 ? (

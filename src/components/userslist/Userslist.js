@@ -36,7 +36,11 @@ function Userslist() {
 
     return (
         <div className='userlist'>
-            <h1>O`quvchilar ro`yhati</h1>
+            <div className="userlist_student_count">
+                <h1 style={{ textAlign: "center" }}>O`quvchilar ro`yhati.</h1>
+                <h1>Sizning <span>{data.length}</span>ta o'quvchingiz bor</h1>
+            </div>
+
             {data.length === 0 ? (
                 <h1>loading...</h1>
             ) : (

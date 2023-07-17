@@ -43,7 +43,7 @@ function Teacherlist() {
             ) : (
                 <div className="list_collection">
                     {data.map((user) => (
-                        <Liststudents users={user} />
+                        <Liststudents totalstudent={data.length} users={user} />
                     ))
                     }
                 </div>

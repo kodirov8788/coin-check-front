@@ -58,7 +58,7 @@ function Clientwatch() {
         }
         console.log(newuser)
 
-        return <Liststudents users={newuser} />
+        return <Liststudents totalstudent={Data.length} users={newuser} />
     }
 
     return (

@@ -3,10 +3,11 @@ import { useSignup } from "../hooks/useSignup"
 import { AuthContext } from "../context/AuthContext"
 import { useAuthContext } from "../hooks/useAuthContext"
 import { useNavigate } from "react-router-dom"
-
+import { AiFillEyeInvisible, AiFillEye } from "react-icons/ai"
 const Signup = () => {
   const navigate = useNavigate()
   const { isLoading, setIsLoading } = useContext(AuthContext)
+  const [visible, setVisible] = useState(false)
 
   const { user } = useAuthContext()
   const [username, setUsername] = useState('')
@@ -51,12 +52,14 @@ const Signup = () => {
         required
       />
       <label>Password:</label>
-      <input
-        type="password"
-        onChange={(e) => setPassword(e.target.value)}
-        value={password}
-        required
-      />
+      <div className="login_password">
+        <input
+          type={`${visible ? "text" : "password"}`}
+          onChange={(e) => setPassword(e.target.value)}
+          value={password}
+        />
+        {visible ? <AiFillEyeInvisible onClick={() => setVisible(!visible)} className="aye_svg" /> : <AiFillEye onClick={() => setVisible(!visible)} className="aye_svg" />}
+      </div>
       <label>Ismi:</label>
       <input
         type="text"

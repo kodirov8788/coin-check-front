@@ -74,6 +74,7 @@ form.signup select {
   font-size: 20px;
   border: 2px solid var(--primary);
   border-radius: 4px;
+  text-indent: 10px;
 
 }
 
@@ -93,12 +94,42 @@ form.login button {
 
 }
 
+.login>h1 span {
+  color: red;
+}
+
 form.login .natija {
   margin-top: 20px;
   border: #1aac83 2px solid;
   padding: 5px 10px;
   text-decoration: none;
   color: #1aac83;
+}
+
+.login_password {
+  display: flex;
+  align-items: center;
+  width: 90%;
+  border: 2px solid var(--primary);
+  border-radius: 4px;
+}
+
+.login_password input {
+  width: 100%;
+  height: 30px;
+  font-size: 20px;
+  border: none !important;
+
+
+}
+
+.login_password input:focus {
+  outline: none;
+}
+
+.aye_svg {
+  font-size: 26px;
+  cursor: pointer;
 }
 
 @media screen and (max-width:500px) {

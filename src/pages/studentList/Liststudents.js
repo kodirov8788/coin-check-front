@@ -10,7 +10,6 @@ function Liststudents({ users }) {
     const [newUser, setNewUser] = useState([])
     const { user } = useAuthContext()
 
-
     useEffect(() => {
 
         const getData = async () => {
@@ -52,18 +51,13 @@ function Liststudents({ users }) {
             })
                 .then(res => console.log(res))
                 .catch((error) => console.log("error bor", error))
-
-
             setIsLoading(false)
             setSensor(false)
             setQoshuvQiymat("")
         }
-
-
-
     }
     return (
-        <li key={newUser._id} className='user_list_item'>
+        <li className='user_list_item'>
 
             <div className="userlist_fullname">
                 <p className='userlist_name'>
