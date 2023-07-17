@@ -12,10 +12,8 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault()
     setIsLoading(true)
-    setTimeout(async () => {
-      await login(username, password)
-      setIsLoading(false)
-    }, 1000);
+    await login(username, password)
+    setIsLoading(false)
   }
 
   return (<div className="login">

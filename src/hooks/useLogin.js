@@ -13,21 +13,20 @@ export const useLogin = () => {
   const login = async (username, password) => {
     setIsLoading(true);
     setError(null);
-    console.log(username.toUpperCase())
+    console.log(username)
+    console.log(password)
     // console.log(password)
     try {
       const response = await axios.post('/auth/login', {
         username,
         password
-      }, {
-        headers: { 'Content-Type': 'application/json' }
       });
-
       if (response.status !== 200) {
         setIsLoading(false);
         setError(response.data.error);
       } else {
         const json = response.data;
+        console.log(json)
 
         // Save the user to local storage
         localStorage.setItem('user', JSON.stringify(json));
