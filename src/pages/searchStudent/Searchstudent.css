@@ -1,0 +1,10 @@
+.searchstudent_input {
+    width: 300px;
+    height: 40px;
+    font-size: 18px;
+    border: green 2px solid;
+    border-radius: 4px;
+    text-indent: 10px;
+    display: block;
+    margin: auto;
+}

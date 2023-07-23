@@ -6,7 +6,7 @@
 }
 
 .teacher_wrap li {
-    width: 80%;
+    width: 95%;
     height: 50px;
     border: 2px solid var(--primary);
     display: flex;
@@ -80,27 +80,39 @@
 
 }
 
+.teacher_number {
+    border: 2px solid green;
+    width: 100px;
+    height: 30px;
+    margin-right: 20px !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+}
+
 
 @media screen and (max-width:500px) {
 
     .teacher_wrap {
-        height: 60vh;
+        min-height: 60vh;
         overflow-y: auto;
     }
 
     .teacher_wrap li {
-        width: 80%;
+        width: 90%;
         height: auto;
         border: 2px solid var(--primary);
         display: flex;
         align-items: start;
         flex-direction: column;
         padding: 0;
-        padding-left: 10px;
+        padding: 10px;
         margin: auto;
         margin-top: 2px;
         margin-bottom: 0;
         border-radius: 4px;
+        margin-top: 20px;
     }
 
     .teacher_role {
@@ -108,13 +120,24 @@
         margin-left: 0;
     }
 
-    .teacher_role span {
-        margin-left: 10px;
-        color: blue;
+    .teacher_username {
+        margin-left: 0px;
+    }
 
+    .teacher_delete_btn {
+        margin-left: 0px;
+    }
+
+    .teacher_subject {
+        margin-left: 0px;
+    }
+
+    .teacher_role span {
+        margin-left: 0;
+        color: blue;
     }
 
     .teacher_wrap li a {
-        margin: 0;
+        margin-top: 10px;
     }
 }

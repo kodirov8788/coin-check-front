@@ -52,6 +52,7 @@ const Header = () => {
                         </div>
                         : <div className='admin_link'>
                             <Link to="/addstudent">O`quvchini qo`shish</Link>
+                            <Link to="/searchstudent">O`quvchini qidirish</Link>
                             <Link to="/studentlist">Student list</Link>
                         </div>
                     }
