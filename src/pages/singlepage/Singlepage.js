@@ -212,7 +212,7 @@ function Singlepage() {
                                     :
                                     <div className="singlepage_minus">
                                         <h2>ayirilgan miqdor: <span>{comment.amount} </span> </h2>
-                                        <span>{(new Date((comment.updatedAt)).toDateString()()) + " " + (new Date((comment.updatedAt)).toLocaleTimeString())}</span>
+                                        {/* <span>{(new Date((comment?.updatedAt))) + " " + (new Date((comment?.updatedAt)))}</span> */}
                                     </div>
                                 }
                             </div>))

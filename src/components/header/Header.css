@@ -8,6 +8,7 @@
 
 .header_logo {
     margin-left: 20px;
+    width: 100px;
 }
 
 .header_media_wrap {
@@ -16,9 +17,14 @@
     /* border: 2px solid red; */
 }
 
+.header_media_wrap>h1 {
+    font-size: 20px;
+}
+
 .header_media_wrap>h1 span {
     color: red;
     margin-right: 30px;
+
 }
 
 .container a {
