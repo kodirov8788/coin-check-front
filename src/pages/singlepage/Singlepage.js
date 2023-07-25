@@ -23,19 +23,22 @@ function Singlepage() {
     const [userData, setUserData] = useState([])
     console.log(clientEdit)
     // console.log(userData)
-    const getApi = async () => {
+    const getApi = () => {
         setIsLoading(true)
         if (user) {
-            await Axios.get("/auth/get", {
-                headers: {
-                    'Authorization': `Bearer ${user.token}`
-                }
-            })
-                .then((res) => {
-                    setUserData(res.data.find(us => us._id === id))
-                    setIsLoading(false)
+            setTimeout(async () => {
+                await Axios.get("/auth/get", {
+                    headers: {
+                        'Authorization': `Bearer ${user.token}`
+                    }
                 })
-                .catch((error) => console.log("error bor"))
+                    .then((res) => {
+                        setUserData(res.data.find(us => us._id === id))
+                        setIsLoading(false)
+                    })
+                    .catch((error) => console.log("error bor"))
+            }, 500);
+
         }
 
     }

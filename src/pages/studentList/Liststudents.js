@@ -3,31 +3,38 @@ import { Link } from 'react-router-dom'
 import { AuthContext } from '../../context/AuthContext'
 import { useAuthContext } from '../../hooks/useAuthContext'
 import axios from '../../api/api'
+import List from './List'
 
 function Liststudents({ users }) {
     const { isLoading, setIsLoading, sensor, setSensor } = useContext(AuthContext)
-    const [qoshuvQiymat, setQoshuvQiymat] = useState("")
     const [newUser, setNewUser] = useState([])
+
+    const [qoshuvQiymat, setQoshuvQiymat] = useState("")
+    const [userData, setUserData] = useState("")
     const { user } = useAuthContext()
 
+    // console.log(newUser)
     useEffect(() => {
 
-        const getData = async () => {
+        const getData = () => {
             setIsLoading(true)
-            await axios.get(`/client/getsingle/${users._id}`, {
-                headers: {
-                    'Authorization': `Bearer ${user?.token}`
-                }
-            })
-                .then(res => {
-                    setNewUser(res.data)
-                    setIsLoading(false)
-                }
-                )
-                .catch((error) => {
-                    console.log("error bor", error)
-                    setIsLoading(false)
+            setTimeout(async () => {
+                await axios.get(`/client/getsingle/${users._id}`, {
+                    headers: {
+                        'Authorization': `Bearer ${user?.token}`
+                    }
                 })
+                    .then(res => {
+                        setNewUser(res.data)
+                        setIsLoading(false)
+                    }
+                    )
+                    .catch((error) => {
+                        console.log("error bor", error)
+                        setIsLoading(false)
+                    })
+            }, 1000);
+
         }
 
         if (users._id) {
@@ -36,7 +43,7 @@ function Liststudents({ users }) {
             setNewUser(users)
         }
 
-    }, [sensor])
+    }, [sensor, userData])
 
 
     const qoshish = async (id) => {
@@ -49,11 +56,14 @@ function Liststudents({ users }) {
                     'Authorization': `Bearer ${user.token}`
                 }
             })
-                .then(res => console.log(res))
+                .then(res => {
+                    setIsLoading(false)
+                    setSensor(false)
+                    setQoshuvQiymat("")
+                    console.log(res.data)
+                })
                 .catch((error) => console.log("error bor", error))
-            setIsLoading(false)
-            setSensor(false)
-            setQoshuvQiymat("")
+
         }
     }
     return (
@@ -85,7 +95,8 @@ function Liststudents({ users }) {
             <a className='userlist_number' href={`tel:+998${newUser?.number}`}>{newUser.number ? newUser.number : "nomer yo'q"}</a>
 
             <p className='userlist_coin'>
-                <b style={{ color: 'red' }}>{newUser.coin}</b>
+                {/* <b style={{ color: 'red' }}>{newUser.coin}</b> */}
+                <List newUser={newUser} />
             </p>
             {
                 newUser._id ? <Link className='user_list_link' to={`/debt/${newUser._id}`}>
