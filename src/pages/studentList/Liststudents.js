@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom'
 import { AuthContext } from '../../context/AuthContext'
 import { useAuthContext } from '../../hooks/useAuthContext'
 import axios from '../../api/api'
-import List from './List'
 
 function Liststudents({ users }) {
     const { isLoading, setIsLoading, sensor, setSensor } = useContext(AuthContext)
@@ -60,7 +59,6 @@ function Liststudents({ users }) {
                     setIsLoading(false)
                     setSensor(false)
                     setQoshuvQiymat("")
-                    console.log(res.data)
                 })
                 .catch((error) => console.log("error bor", error))
 
@@ -95,8 +93,7 @@ function Liststudents({ users }) {
             <a className='userlist_number' href={`tel:+998${newUser?.number}`}>{newUser.number ? newUser.number : "nomer yo'q"}</a>
 
             <p className='userlist_coin'>
-                {/* <b style={{ color: 'red' }}>{newUser.coin}</b> */}
-                <List newUser={newUser} />
+                <b style={{ color: 'red' }}>{newUser.coin}</b>
             </p>
             {
                 newUser._id ? <Link className='user_list_link' to={`/debt/${newUser._id}`}>
