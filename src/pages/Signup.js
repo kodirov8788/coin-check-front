@@ -87,6 +87,7 @@ const Signup = () => {
         <option value="it">Dasturlash</option>
         <option value="eng">Ingliz tili</option>
         <option value="ru">Rus tili</option>
+        <option value="math">Matematika</option>
       </select>
 
       <button disabled={isLoading}>Sign up</button>
