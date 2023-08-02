@@ -80,6 +80,7 @@ function Forms() {
                     <option value="">dars vaqtini tanglang</option>
                     <option value="8-10">8-10</option>
                     <option value="10-12">10-12</option>
+                    <option value="12-14">12-14</option>
                     <option value="14-16">14-16</option>
                     <option value="16-18">16-18</option>
                 </select>
