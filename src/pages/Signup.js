@@ -88,6 +88,8 @@ const Signup = () => {
         <option value="eng">Ingliz tili</option>
         <option value="ru">Rus tili</option>
         <option value="math">Matematika</option>
+        <option value="chemistry">Kimyo</option>
+        <option value="law">Huquq</option>
       </select>
 
       <button disabled={isLoading}>Sign up</button>
