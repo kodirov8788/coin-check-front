@@ -8,7 +8,7 @@ import Liststudents from '../studentList/Liststudents';
 function Teacherlist() {
     const teachers = useParams().id
     const [data, setData] = useState([]);
-
+    console.log(data)
     const [isLoading, setIsLoading] = useState(false);
     const { setIsLoading: setContextIsLoading, sensor, setSensor } = useContext(AuthContext);
     const { user } = useAuthContext();
@@ -22,7 +22,6 @@ function Teacherlist() {
             let filtereddata = response.data.filter(student => student.teacherid === teachers)
             // console.log(response)
             setData(filtereddata);
-            console.log(filtereddata)
         } catch (error) {
             console.error(error);
             console.log('Error occurred while fetching data');
@@ -38,12 +37,13 @@ function Teacherlist() {
     return (
         <div className='userlist'>
             <h1>User lists</h1>
+            <h1>o`quchilar soni <span className='student_count'>{data.length}</span></h1>
             {data.length === 0 ? (
                 <h1>loading...</h1>
             ) : (
                 <div className="list_collection">
                     {data.map((user) => (
-                        <Liststudents totalstudent={data.length} users={user} />
+                        <Liststudents key={user._id} totalstudent={data.length} users={user} />
                     ))
                     }
                 </div>

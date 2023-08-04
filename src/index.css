@@ -132,6 +132,11 @@ form.login .natija {
   cursor: pointer;
 }
 
+
+.student_count {
+  color: red;
+}
+
 @media screen and (max-width:500px) {
   header {
     width: 100%;

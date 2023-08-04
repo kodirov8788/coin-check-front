@@ -16,8 +16,6 @@ function Teachers() {
 
     const fetchData = async () => {
         setIsLoading(true);
-
-
         try {
             const response = await Axios.get('/user/getusers', {
                 headers: {
@@ -31,8 +29,6 @@ function Teachers() {
             // console.log('Error occurred while fetching data');
         }
         setIsLoading(false);
-
-
     };
 
     useEffect(() => {
