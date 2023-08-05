@@ -43,7 +43,7 @@ function Statistics() {
     }, [])
 
     const Listuser = (user) => {
-        // console.log(user)
+        console.log(user)
 
         let newuser = {
             name: user.user.name,
@@ -52,6 +52,7 @@ function Statistics() {
             number: user.user.number,
             subject: user.user.subject,
             weekday: user.user.weekday,
+            teacher: user.user.teacherid
         }
         // console.log(newuser)
 
