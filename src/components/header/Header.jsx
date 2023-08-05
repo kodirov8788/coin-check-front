@@ -45,8 +45,8 @@ const Header = () => {
                     {user?.role === "root" ?
                         <div className='admin_link'>
                             <Link to="/signup">Teacher qo`shish</Link>
-                            {/* <Link to="/archives">archives</Link>
-                            <Link to="/admin">admin</Link> */}
+                            {/* <Link to="/archives">archives</Link> */}
+                            {/* <Link to="/admin">admin</Link> */}
                             <Link to="/teachers">Teacher</Link>
                             <Link to="/statistics">Statistika</Link>
 
