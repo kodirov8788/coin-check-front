@@ -129,24 +129,20 @@ function Singlepage() {
     return (
         <div>
             <div className="singlepage_top">
-                {
-                    user.role === "root" ? <>
-                        <div className="singlepage_topCover">
-                            <input onChange={(e) => setAyiruvQiymat(Number(e.target.value))} type="number" value={ayiruvQiymat < 1 ? "" : ayiruvQiymat} placeholder='coindan yechish' />
 
-                            <button onClick={ayirish}>coinni yechish</button>
+                <div className="singlepage_topCover">
+                    <input onChange={(e) => setAyiruvQiymat(Number(e.target.value))} type="number" value={ayiruvQiymat < 1 ? "" : ayiruvQiymat} placeholder='raqam kiriting...' />
 
-                        </div>
-                        <div className="singlepage_topCover">
+                    <button onClick={ayirish} disabled={ayiruvQiymat < 1}>coindan ayirish</button>
+
+                </div>
+                {/* <div className="singlepage_topCover">
 
 
-                            <input type="number" required onChange={(e) => setQoshuvQiymat(Number(e.target.value))} placeholder='tanga miqdorini kiriting...' />
+                    <input type="number" required onChange={(e) => setQoshuvQiymat(Number(e.target.value))} placeholder='tanga miqdorini kiriting...' />
 
-                            <button disabled={qoshuvQiymat < 1 ? true : false} onClick={qoshish}>coin qo`shish</button>
-                        </div>
-                    </>
-                        : <></>
-                }
+                    <button disabled={qoshuvQiymat < 1 ? true : false} onClick={qoshish}>coin qo`shish</button>
+                </div> */}
 
             </div>
 

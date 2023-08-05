@@ -48,12 +48,15 @@ const Header = () => {
                             {/* <Link to="/archives">archives</Link>
                             <Link to="/admin">admin</Link> */}
                             <Link to="/teachers">Teacher</Link>
+                            <Link to="/statistics">Statistika</Link>
 
                         </div>
                         : <div className='admin_link'>
                             <Link to="/addstudent">O`quvchini qo`shish</Link>
                             <Link to="/searchstudent">O`quvchini qidirish</Link>
                             <Link to="/studentlist">Student list</Link>
+                            <Link to="/statistics">Statistika</Link>
+
                         </div>
                     }
                     {user ? (
