@@ -37,14 +37,12 @@ function Sidebar({ sidebarstate, sidebarOpen }) {
                         <Link to="/studentlist">Student list</Link>
                         <Link to="/searchstudent">O`quvchini qidirish</Link>
                         <Link to="/statistics">Statistika</Link>
-
                     </div>
                 }
                 {user ? (
                     <div>
                         <span>{user.email}</span>
                         <button className='sidebar_logout' onClick={handleClick}>Log out</button>
-
                     </div>
                 ) : <Link to="/login">Login</Link>
                 }

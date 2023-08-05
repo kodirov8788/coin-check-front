@@ -63,24 +63,22 @@ function Singlepage() {
         setAyiruvQiymat(0)
     }
 
-    const qoshish = async () => {
-        setSensor(false)
-        setIsLoading(true)
-        await Axios.put(`/client/plus/${id}`, { coin: qoshuvQiymat }, {
-            headers: {
-                'Authorization': `Bearer ${user.token}`
-            }
-        })
-            .then(res => console.log(res))
-            .catch((error) => console.log("error bor", error))
-        setIsLoading(false)
-        setSensor(true)
-        setQoshuvQiymat(0)
-        setAyiruvQiymat(0)
-    }
+    // const qoshish = async () => {
+    //     setSensor(false)
+    //     setIsLoading(true)
+    //     await Axios.put(`/client/plus/${id}`, { coin: qoshuvQiymat }, {
+    //         headers: {
+    //             'Authorization': `Bearer ${user.token}`
+    //         }
+    //     })
+    //         .then(res => console.log(res))
+    //         .catch((error) => console.log("error bor", error))
+    //     setIsLoading(false)
+    //     setSensor(true)
+    //     setQoshuvQiymat(0)
+    //     setAyiruvQiymat(0)
+    // }
     const deleteUser = async (id) => {
-        setIsLoading(true);
-        setSensor(false)
         try {
             const response = await Axios.delete(`/client/delete/${id}`, {
                 headers: {
@@ -134,19 +132,12 @@ function Singlepage() {
                     <input onChange={(e) => setAyiruvQiymat(Number(e.target.value))} type="number" value={ayiruvQiymat < 1 ? "" : ayiruvQiymat} placeholder='raqam kiriting...' />
 
                     <button onClick={ayirish} disabled={ayiruvQiymat < 1}>coindan ayirish</button>
-
                 </div>
-                {/* <div className="singlepage_topCover">
-
-
-                    <input type="number" required onChange={(e) => setQoshuvQiymat(Number(e.target.value))} placeholder='tanga miqdorini kiriting...' />
-
-                    <button disabled={qoshuvQiymat < 1 ? true : false} onClick={qoshish}>coin qo`shish</button>
-                </div> */}
-
             </div>
 
+
             <button className='single_page_editBtn' onClick={() => setClientEdit(!clientEdit ? true : false)}>Edit</button>
+
             <div className="singlepage_main">
                 {clientEdit ? <div className="singlepage_update_container">
                     <div className="singlepage_name">
@@ -192,12 +183,9 @@ function Singlepage() {
                 <div className="singlepage_title">
                     <h1>Ismi: <span> {userData?.name}</span></h1>
                     <h2>Umumiy coinlar: <span>{userData?.coin}</span> </h2>
-                    {
-                        user?.role === "root" ?
-                            <button className='deletebtn' onClick={() => deleteUser(userData._id)}>delete</button> : ""
-                    }
-
+                    <button className='deletebtn' onClick={() => deleteUser(userData._id)}>delete</button>
                 </div>
+
                 <div className="single_container">
                     {
                         userData.comments?.map(comment => (

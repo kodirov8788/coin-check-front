@@ -44,8 +44,7 @@ function Teacherlist() {
                 <div className="list_collection">
                     {data.map((user) => (
                         <Liststudents key={user._id} totalstudent={data.length} users={user} />
-                    ))
-                    }
+                    ))}
                 </div>
             )}
         </div>

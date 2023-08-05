@@ -8,7 +8,8 @@ import { Link } from 'react-router-dom';
 function Statistics() {
     const [Data, setData] = useState([]);
     const [total, setTotal] = useState(0);
-    const [number, setNumber] = useState("");
+    const [client, setclients] = useState([]);
+    console.log(client)
     const { isLoading, setIsLoading, sensor, setSensor } = useContext(AuthContext);
 
     const fetchData = async (e) => {
@@ -17,6 +18,9 @@ function Statistics() {
 
         try {
             const { data } = await Axios.get('/auth/get');
+
+           
+
             let sorted = data.sort((a, b) => b.coin - a.coin)
             setData(sorted);
         } catch (error) {
@@ -43,7 +47,7 @@ function Statistics() {
     }, [])
 
     const Listuser = (user) => {
-        console.log(user)
+        // console.log(user)
 
         let newuser = {
             name: user.user.name,
@@ -52,7 +56,8 @@ function Statistics() {
             number: user.user.number,
             subject: user.user.subject,
             weekday: user.user.weekday,
-            teacher: user.user.teacherid
+            teacher: user.user.teacherid,
+            
         }
         // console.log(newuser)
 
