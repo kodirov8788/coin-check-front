@@ -4,12 +4,27 @@
     border-radius: 4px;
 }
 
+.static_child_title h2 {
+    margin: 0;
+
+}
+
 .static_child_title h2 span {
     color: red;
+    margin: 0;
+
+}
+
+.static_child_title h1 {
+    color: red;
+    text-align: center;
+    margin: 0;
+
 }
 
 .static_child_title {
     display: flex;
+    /* height: 150px; */
 
 }
 

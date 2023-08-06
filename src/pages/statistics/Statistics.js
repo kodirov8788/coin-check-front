@@ -80,7 +80,7 @@ function Statistics() {
         const arrayData = newArr.sort((a, b) => b.allCoin - a.allCoin)
         // console.log("array data", arrayData)
         return arrayData.map((array, index) => (
-            <Staticchild key={index} arraydata={array} />
+            <Staticchild key={index} arraydata={array} inx={index} />
         ))
 
     }
