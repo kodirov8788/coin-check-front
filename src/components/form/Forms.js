@@ -69,11 +69,11 @@ function Forms() {
                 <input className='forms_input' type="text" placeholder='Familiyani kiriting...' required />
                 <input className='forms_input' type="number" placeholder='tel raqam' required />
                 <input type="number" className='forms_input' required placeholder='coin miqdori' />
-                <div class="radio-group" onChange={(e) => setinputRadio(e.target.value)} required>
+                <div className="radio-group" onChange={(e) => setinputRadio(e.target.value)} required>
                     <input type="radio" value={"odd"} id="option-one" name="selector" />
-                    <label for="option-one">Toq</label>
+                    <label htmlFor="option-one">Toq</label>
                     <input type="radio" value={"even"} id="option-two" name="selector" />
-                    <label for="option-two" >Juft</label>
+                    <label htmlFor="option-two" >Juft</label>
                 </div>
 
                 <select required>
@@ -89,7 +89,7 @@ function Forms() {
                 <button className='btn'>Qo'shish</button>
 
             </div>
-        </form>
+        </form >
     )
 }
 

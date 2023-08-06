@@ -1,0 +1,25 @@
+.static_child {
+    border: 2px solid green;
+    margin: 10px;
+    border-radius: 4px;
+}
+
+.static_child_title h2 span {
+    color: red;
+}
+
+.static_child_title {
+    display: flex;
+
+}
+
+.static_child_title h2 {
+    margin-left: 20px;
+}
+
+@media screen and (max-width:500px) {
+    .static_child_title {
+        display: flex;
+        flex-direction: column;
+    }
+}

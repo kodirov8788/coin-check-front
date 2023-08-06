@@ -114,11 +114,11 @@ function Searchstudent() {
                     <input type="text" onChange={(e) => setInputSearch(e.target.value)} />
                 </div>
                 <div className="studentlist_inputs">
-                    <div class="radio-group" onChange={(e) => setWeekday(e.target.value)} required>
+                    <div className="radio-group" onChange={(e) => setWeekday(e.target.value)} required>
                         <input type="radio" value={"odd"} id="option-one" name="selector" />
-                        <label for="option-one">Toq</label>
+                        <label htmlFor="option-one">Toq</label>
                         <input type="radio" value={"even"} id="option-two" name="selector" />
-                        <label for="option-two" >Juft</label>
+                        <label htmlFor="option-two" >Juft</label>
                     </div>
                     <select onChange={(e) => (setLessonTime(e.target.value))}>
                         <option value="">all</option>

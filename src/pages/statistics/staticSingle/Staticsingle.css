@@ -1,0 +1,20 @@
+.staticsingle {
+    border: 2px solid green;
+    padding: 10px;
+    border-radius: 4px;
+    margin: 2px;
+    display: flex;
+}
+
+.staticsingle_right {
+    margin-left: 20px;
+}
+
+.staticsingle h2 {
+    font-size: 16px;
+
+}
+
+.staticsingle h2 span {
+    color: red;
+}

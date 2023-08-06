@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import { AuthContext } from '../../context/AuthContext'
 import { useAuthContext } from '../../hooks/useAuthContext'
 import axios from '../../api/api'
-import Staticchild from '../../components/staticChild/Staticchild'
+import Staticchild from '../statistics/Staticchild'
 
 function Liststudents({ users }) {
     const { isLoading, setIsLoading, sensor, setSensor } = useContext(AuthContext)
@@ -12,7 +12,7 @@ function Liststudents({ users }) {
     const [qoshuvQiymat, setQoshuvQiymat] = useState("")
     const [userData, setUserData] = useState("")
     const { user } = useAuthContext()
-
+    // console.log(newUser)
     // console.log(newUser)
     useEffect(() => {
 
@@ -101,7 +101,7 @@ function Liststudents({ users }) {
                     Taxrirlash
                 </Link> : <></>
             }
-            {/* <Staticchild num={newUser?.number} /> */}
+            <Staticchild newUser={newUser} />
 
             <p className='userlist_subject'>
                 {newUser.subject === "it" ? "dasturlash" : newUser.subject === "eng" ? "ingliz" : newUser.subject === "ru" ? "rus tili" : newUser.subject === "math" ? "Matematika" : newUser.subject === "chemistry" ? "kimyo" : newUser.subject === "law" ? "huquq" : ""}
