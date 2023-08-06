@@ -16,7 +16,7 @@ function Statistics() {
 
     useEffect(() => {
         const fetchData = async () => {
-            setIsLoading(true);
+            // setIsLoading(true);
             setSensor(true)
             try {
                 const { data } = await Axios.get('/auth/get');
@@ -29,7 +29,7 @@ function Statistics() {
                 setSensor(false)
             }
         };
-        setIsLoading(false);
+        // setIsLoading(false);
         fetchData()
     }, [sensor])
 
