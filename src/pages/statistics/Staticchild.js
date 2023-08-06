@@ -3,24 +3,6 @@ import React, { useContext, useEffect, useState } from 'react'
 import Staticsingle from './staticSingle/Staticsingle';
 
 function Staticchild({ arraydata }) {
-    // console.log(arraydata)
-    // const [total, setTotal] = useState()
-    // console.log(total)
-
-    // console.log(arraydata)
-    // useEffect(() => {
-    //     const totalCoin = () => {
-    //         let box = []
-    //         arraydata?.forEach(user => box.push(user.coin))
-
-    //         setTotal(box.reduce((a, b) => a + b, 0))
-    //     }
-    //     if (arraydata?.length) {
-    //         totalCoin()
-    //     } else {
-    //         setTotal(0)
-    //     }
-    // }, [arraydata])
 
 
     return (

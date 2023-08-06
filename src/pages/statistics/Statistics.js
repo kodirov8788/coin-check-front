@@ -77,6 +77,7 @@ function Statistics() {
 
             return { allCoin, user }
         })
+
         const arrayData = newArr.sort((a, b) => b.allCoin - a.allCoin)
         // console.log(arrayData)
         return arrayData.map((array, index) => (

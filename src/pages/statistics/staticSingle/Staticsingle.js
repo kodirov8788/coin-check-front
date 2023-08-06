@@ -9,9 +9,9 @@ function Staticsingle({ userdata }) {
     const [teacher, setTeacher] = useState({})
     // console.log(teacher)
     const { user } = useAuthContext()
-    console.log(teacher)
+    // console.log(teacher)
 
-
+    console.log(userdata)
     useEffect(() => {
         const fetchData = async () => {
             setIsLoading(true);
@@ -26,7 +26,7 @@ function Staticsingle({ userdata }) {
             })
                 .catch(err => {
                     setIsLoading(false)
-                    console.log(err)
+                    // console.log(err)
                 })
         };
         fetchData();
