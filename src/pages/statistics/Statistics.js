@@ -6,101 +6,84 @@ import { AuthContext } from '../../context/AuthContext';
 import Axios from '../../api/api';
 import { Link } from 'react-router-dom';
 import Staticchild from './Staticchild';
+
 function Statistics() {
-    const [total, setTotal] = useState()
+    const [total, setTotal] = useState();
     const [Data, setData] = useState([]);
     const [selectData, setSelectData] = useState("");
     const [arraylist, setArraylist] = useState([]);
-
     const { isLoading, setIsLoading, sensor, setSensor } = useContext(AuthContext);
-    // console.log("data :", Data)
-
+    // console.log(Data)
     useEffect(() => {
         const fetchData = async () => {
-            // setIsLoading(true);
-            setSensor(true)
+            setSensor(true);
             try {
-                const { data } = await Axios.get('/auth/get');
-                setData(data)
-                setSensor(false)
-                // setIsLoading(false);
+                const { data } = await Axios.get('/auth/filter');
+                setData(data);
+                // console.log(data)
             } catch (error) {
                 console.error(error);
                 console.log('Error occurred while fetching data');
-                setSensor(false)
             }
         };
-        // setIsLoading(false);
-        fetchData()
-    }, [sensor])
+        fetchData();
+    }, []);
 
+    // useEffect(() => {
+    //     async function findDuplicateUsers(users) {
+    //         const phoneNumberGroups = await users.reduce((acc, user) => {
+    //             if (!acc[user.number]) {
+    //                 acc[user.number] = [];
+    //             }
+    //             acc[user.number].push(user);
+    //             return acc;
+    //         }, {});
 
+    //         const duplicates = [];
+    //         const singlebox = [];
+    //         for (const phoneNumber in phoneNumberGroups) {
+    //             if (phoneNumberGroups[phoneNumber].length > 1) {
+    //                 duplicates.push(phoneNumberGroups[phoneNumber]);
+    //             } else {
+    //                 singlebox.push(phoneNumberGroups[phoneNumber]);
+    //             }
+    //         }
 
-    useEffect(() => {
+    //         return [...duplicates, ...singlebox];
+    //     }
 
-        async function findDuplicateUsers(users) {
-            const phoneNumberGroups = await users.reduce((acc, user) => {
-                if (!acc[user.number]) {
-                    acc[user.number] = [];
-                }
-                acc[user.number].push(user);
-                return acc;
-            }, {});
-
-            const duplicates = [];
-            const singlebox = []
-            for (const phoneNumber in phoneNumberGroups) {
-                if (phoneNumberGroups[phoneNumber].length > 1) {
-                    duplicates.push(phoneNumberGroups[phoneNumber]);
-                } else {
-                    singlebox.push(phoneNumberGroups[phoneNumber]);
-                }
-            }
-
-            return ([...duplicates, ...singlebox])
-        }
-
-
-        findDuplicateUsers(Data)
-            .then(user => setArraylist(user))
-            .catch(error => console.log(error))
-    }, [Data, sensor])
-
-
-
+    //     findDuplicateUsers(Data)
+    //         .then(user => setArraylist(user))
+    //         .catch(error => console.log(error))
+    // }, [Data, sensor]);
 
     const Arraylist = () => {
+        const [data, setData] = useState([]);
+        // const newArr = arraylist.map(user => {
+        //     const box = [];
+        //     user.forEach(ar => box.push(ar.coin));
+        //     const allCoin = box.reduce((a, b) => a + b, 0);
 
-        const [data, setData] = useState([])
-        const newArr = arraylist.map(user => {
-            const box = []
-            user.forEach(ar => box.push(ar.coin))
-            const allCoin = box.reduce((a, b) => a + b, 0)
-
-            return { allCoin, user }
-        })
-        const arrayData = newArr.sort((a, b) => b.allCoin - a.allCoin)
+        //     return { allCoin, user };
+        // });
+        const sorted = Data.sort((a, b) => b.allCoin - a.allCoin)
 
         useEffect(() => {
-            if (newArr) {
 
-                const filteredData = arrayData.filter(use => use.allCoin > +selectData && use.allCoin < (+selectData + 100));
-
+            console.log(sorted)
+            if (sorted) {
+                const filteredData = Data.filter(use => use.allCoin > +selectData && use.allCoin < (+selectData + 100));
                 if (selectData === "") {
-                    setData(arrayData);
+                    setData(sorted);
                 } else {
                     setData(filteredData);
-
                 }
             }
         }, [selectData]);
 
-        // newArr.forEach(use => box.push(use.allCoin > Number(selectData) || use.coin < (Number(selectData) + 100)))
         return data.map((array, index) => (
             <Staticchild key={index} arraydata={array} inx={index} />
-        ))
-
-
+        ));
     }
 
     return (
@@ -118,8 +101,8 @@ function Statistics() {
                 <option value="600">600 dan tepasi</option>
             </select>
             <Arraylist />
-        </div >
-    )
+        </div>
+    );
 }
 
-export default Statistics
+export default Statistics;
