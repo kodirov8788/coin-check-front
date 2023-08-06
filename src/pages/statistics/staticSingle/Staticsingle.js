@@ -13,7 +13,7 @@ function Staticsingle({ userdata }) {
     console.log("userdata :", userdata)
     useEffect(() => {
         const fetchData = async () => {
-            setIsLoading(true);
+            // setIsLoading(true);
             await axios.get(`/user/getsingle/${userdata.teacherid}`, {
                 headers: {
                     Authorization: `Bearer ${user.token}`,
@@ -21,7 +21,7 @@ function Staticsingle({ userdata }) {
             }).then(res => {
                 setTeacher(res?.data)
 
-                setIsLoading(false)
+                // setIsLoading(false)
             })
                 .catch(err => {
                     setIsLoading(false)
