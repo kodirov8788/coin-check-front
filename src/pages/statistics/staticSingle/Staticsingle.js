@@ -10,7 +10,7 @@ function Staticsingle({ userdata }) {
     // console.log(teacher)
     const { user } = useAuthContext()
 
-    console.log("userdata :", userdata)
+    // console.log("userdata :", userdata)
     useEffect(() => {
         const fetchData = async () => {
             // setIsLoading(true);

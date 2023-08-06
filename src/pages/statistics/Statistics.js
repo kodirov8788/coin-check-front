@@ -12,7 +12,7 @@ function Statistics() {
     const [arraylist, setArraylist] = useState([]);
     // console.log(arraylist)
     const { isLoading, setIsLoading, sensor, setSensor } = useContext(AuthContext);
-    console.log("data :", Data)
+    // console.log("data :", Data)
 
     useEffect(() => {
         const fetchData = async () => {
@@ -22,15 +22,14 @@ function Statistics() {
                 const { data } = await Axios.get('/auth/get');
                 setData(data)
                 setSensor(false)
-                setIsLoading(false);
+                // setIsLoading(false);
             } catch (error) {
                 console.error(error);
                 console.log('Error occurred while fetching data');
                 setSensor(false)
-                setIsLoading(false);
             }
         };
-
+        setIsLoading(false);
         fetchData()
     }, [sensor])
 
@@ -79,7 +78,7 @@ function Statistics() {
         })
 
         const arrayData = newArr.sort((a, b) => b.allCoin - a.allCoin)
-        console.log("array data", arrayData)
+        // console.log("array data", arrayData)
         return arrayData.map((array, index) => (
             <Staticchild key={index} arraydata={array} />
         ))

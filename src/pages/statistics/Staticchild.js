@@ -4,7 +4,7 @@ import Staticsingle from './staticSingle/Staticsingle';
 
 function Staticchild({ arraydata }) {
 
-    console.log("staticchild :", arraydata)
+    // console.log("staticchild :", arraydata)
     return (
         <div className='static_child'>
             <div className="static_child_title">
