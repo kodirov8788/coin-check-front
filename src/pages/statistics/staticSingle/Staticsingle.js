@@ -41,15 +41,15 @@ function Staticsingle({ userdata }) {
                 <h2>ismi:</h2>
                 <h2>coin : </h2>
                 <h2>Fani</h2>
-                <h2>O'qituvchisi :</h2>
                 <h2>Telefon:</h2>
+                <h2>O'qituvchisi :</h2>
             </div>
             <div className="staticsingle_right">
                 <h2>{userdata?.name}</h2>
                 <h2><span>{userdata.coin}</span></h2>
                 <h2>{userdata?.subject?.toUpperCase()}</h2>
-                <h2>{teacher ? teacher.name : "ismi chiqmadi"}</h2>
                 <h2><a href={`tel:+998${userdata?.number}`}>{userdata?.number}</a></h2>
+                <h2>{teacher?.name ? teacher.name : "ismi chiqmadi"}</h2>
             </div>
 
 
