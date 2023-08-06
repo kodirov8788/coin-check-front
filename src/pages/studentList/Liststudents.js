@@ -101,7 +101,6 @@ function Liststudents({ users }) {
                     Taxrirlash
                 </Link> : <></>
             }
-            <Staticchild newUser={newUser} />
 
             <p className='userlist_subject'>
                 {newUser.subject === "it" ? "dasturlash" : newUser.subject === "eng" ? "ingliz" : newUser.subject === "ru" ? "rus tili" : newUser.subject === "math" ? "Matematika" : newUser.subject === "chemistry" ? "kimyo" : newUser.subject === "law" ? "huquq" : ""}
