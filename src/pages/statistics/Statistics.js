@@ -12,7 +12,7 @@ function Statistics() {
     const [arraylist, setArraylist] = useState([]);
     // console.log(arraylist)
     const { isLoading, setIsLoading, sensor, setSensor } = useContext(AuthContext);
-    // console.log(Data)
+    console.log("data :", Data)
 
     useEffect(() => {
         const fetchData = async () => {
@@ -79,7 +79,7 @@ function Statistics() {
         })
 
         const arrayData = newArr.sort((a, b) => b.allCoin - a.allCoin)
-        // console.log(arrayData)
+        console.log("array data", arrayData)
         return arrayData.map((array, index) => (
             <Staticchild key={index} arraydata={array} />
         ))
