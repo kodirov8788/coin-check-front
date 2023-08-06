@@ -17,22 +17,22 @@ function Statistics() {
     useEffect(() => {
         const fetchData = async () => {
             setIsLoading(true);
-
+            setSensor(true)
             try {
                 const { data } = await Axios.get('/auth/get');
                 setData(data)
+                setSensor(false)
+                setIsLoading(false);
             } catch (error) {
                 console.error(error);
                 console.log('Error occurred while fetching data');
+                setSensor(false)
+                setIsLoading(false);
             }
-            setIsLoading(false);
-
         };
 
-        return () => {
-            fetchData()
-        }
-    }, [])
+        fetchData()
+    }, [sensor])
 
 
 
