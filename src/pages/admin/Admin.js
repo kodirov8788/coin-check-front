@@ -6,7 +6,7 @@ import { useAuthContext } from '../../hooks/useAuthContext.js';
 import { Link } from 'react-router-dom';
 import ListItems from './ListItems.js';
 function Admin() {
-    const { isLoading, setIsLoading, sensor, setSensor } = useContext(AuthContext)
+    const { setIsLoading } = useContext(AuthContext)
     const [data, setData] = useState([]);
     const { user } = useAuthContext();
     // console.log(data)
@@ -16,11 +16,13 @@ function Admin() {
             const response = await axios.get('/user/getusers', {
             });
             setData(response.data);
+            setIsLoading(false);
+
         } catch (error) {
+            setIsLoading(false);
             console.error(error);
             console.log('Error occurred while fetching data');
         }
-        setIsLoading(false);
     };
 
     useEffect(() => {

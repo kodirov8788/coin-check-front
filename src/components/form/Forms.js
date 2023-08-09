@@ -5,7 +5,7 @@ import { AuthContext } from '../../context/AuthContext'
 import { useAuthContext } from '../../hooks/useAuthContext'
 import { toast } from 'react-toastify';
 function Forms() {
-    const { isLoading, setIsLoading, sensor, setSensor } = useContext(AuthContext)
+    const { setIsLoading, setSensor } = useContext(AuthContext)
 
 
 

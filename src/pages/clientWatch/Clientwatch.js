@@ -9,10 +9,8 @@ function Clientwatch() {
     const [Data, setData] = useState([]);
     const [total, setTotal] = useState(0);
     const [number, setNumber] = useState("");
-    const { isLoading, setIsLoading, sensor, setSensor } = useContext(AuthContext);
-    // console.log(filteredData)
-    // console.log(Data)
-    // console.log(total)
+    const { setIsLoading } = useContext(AuthContext);
+
 
 
     const fetchData = async (e) => {
@@ -22,11 +20,14 @@ function Clientwatch() {
         try {
             const { data } = await Axios.get('/auth/get');
             setData(data.filter(user => user.number == number));
+            setIsLoading(false);
+
         } catch (error) {
             console.error(error);
+            setIsLoading(false);
+
             console.log('Error occurred while fetching data');
         }
-        setIsLoading(false);
 
     };
 

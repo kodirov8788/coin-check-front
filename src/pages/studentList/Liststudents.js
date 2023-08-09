@@ -3,18 +3,15 @@ import { Link } from 'react-router-dom'
 import { AuthContext } from '../../context/AuthContext'
 import { useAuthContext } from '../../hooks/useAuthContext'
 import axios from '../../api/api'
-import Staticchild from '../statistics/Staticchild'
 import { toast } from 'react-toastify';
 
 function Liststudents({ users }) {
-    const { isLoading, setIsLoading, sensor, setSensor } = useContext(AuthContext)
+    const { setIsLoading, sensor, setSensor } = useContext(AuthContext)
     const [newUser, setNewUser] = useState([])
 
     const [qoshuvQiymat, setQoshuvQiymat] = useState("")
-    const [userData, setUserData] = useState("")
     const { user } = useAuthContext()
-    // console.log(newUser)
-    // console.log(newUser)
+
     useEffect(() => {
         setTimeout(() => {
             const getData = async () => {
@@ -43,7 +40,7 @@ function Liststudents({ users }) {
             setNewUser(users)
         }
 
-    }, [sensor, userData])
+    }, [sensor])
 
 
     const qoshish = async (id) => {

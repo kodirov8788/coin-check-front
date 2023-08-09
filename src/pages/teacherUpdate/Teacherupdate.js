@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react'
 import "./TeacherUpdate.css"
-import { useLocation, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { useAuthContext } from '../../hooks/useAuthContext';
 import { AuthContext } from '../../context/AuthContext';
 import axios from '../../api/api';
@@ -15,10 +15,10 @@ function Teacherupdate() {
     const [teacher, setTeacher] = useState([]);
 
     // const [isLoading, setIsLoading] = useState(false);
-    const { isLoading, setIsLoading, sensor, setSensor } = useContext(AuthContext);
+    const { setIsLoading, sensor, setSensor } = useContext(AuthContext);
     const { user } = useAuthContext();
 
-    console.log(teacher);
+    // console.log(teacher);
 
     const fetchData = async () => {
         setIsLoading(true);

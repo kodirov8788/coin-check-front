@@ -1,5 +1,4 @@
-import axios from '../../api/api';
-import React, { useContext, useEffect, useState } from 'react'
+import React from 'react'
 import Staticsingle from './staticSingle/Staticsingle';
 
 function Staticchild({ arraydata, inx }) {

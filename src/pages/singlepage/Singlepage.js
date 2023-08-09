@@ -2,7 +2,6 @@ import React, { useState, useEffect, useContext } from 'react'
 import "./Singlepage.css"
 import Axios from '../../api/api'
 import { useNavigate, useParams } from "react-router-dom"
-import LoadingSpinner from '../../components/loaderSpinner/LoaderSpinner'
 import { AuthContext } from '../../context/AuthContext'
 import { useAuthContext } from '../../hooks/useAuthContext'
 import { toast } from 'react-toastify';
@@ -16,14 +15,14 @@ function Singlepage() {
     const [NumberInput, setNumberInput] = useState("")
     const [weekdays, setWeekday] = useState("");
     const [lessonTime, setLessonTime] = useState("");
-    console.log(lessonTime)
-    const { isLoading, setIsLoading, sensor, setSensor } = useContext(AuthContext)
+    // console.log(lessonTime)
+    const { setIsLoading, sensor, setSensor } = useContext(AuthContext)
     const { user } = useAuthContext()
     const [ayiruvQiymat, setAyiruvQiymat] = useState("")
-    const [qoshuvQiymat, setQoshuvQiymat] = useState("")
+    // const [qoshuvQiymat, setQoshuvQiymat] = useState("")
     const [clientEdit, setClientEdit] = useState(false)
     const [userData, setUserData] = useState([])
-    console.log(clientEdit)
+    // console.log(clientEdit)
     // console.log(userData)
     const getApi = () => {
         setIsLoading(true)
@@ -64,7 +63,6 @@ function Singlepage() {
                 setIsLoading(false)
                 setSensor(true)
                 console.log(res)
-                setQoshuvQiymat(0)
                 setAyiruvQiymat(0)
             })
             .catch((error) => {

@@ -1,7 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import './Userslist.css';
 import Axios from '../../api/api';
-import { Link } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthContext';
 import { useAuthContext } from '../../hooks/useAuthContext';
 import Liststudents from '../../pages/studentList/Liststudents';
@@ -10,7 +9,7 @@ function Userslist() {
     const [data, setData] = useState([]);
 
     const [isLoading, setIsLoading] = useState(false);
-    const { setIsLoading: setContextIsLoading, sensor, setSensor } = useContext(AuthContext);
+    const { setIsLoading: setContextIsLoading, sensor } = useContext(AuthContext);
     const { user } = useAuthContext();
 
     console.log(data);

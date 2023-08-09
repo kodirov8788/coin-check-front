@@ -14,7 +14,7 @@ function Studentlist() {
     const [lessonTime, setLessonTime] = useState("");
 
     const [filteredData, setFilteredData] = useState([]);
-    const { isLoading, setIsLoading, sensor, setSensor } = useContext(AuthContext);
+    const { setIsLoading, sensor } = useContext(AuthContext);
     const { user } = useAuthContext();
     // console.log(filteredData)
     const fetchData = async () => {

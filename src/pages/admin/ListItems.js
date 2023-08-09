@@ -5,10 +5,7 @@ import { AuthContext } from '../../context/AuthContext'
 
 function ListItems({ userlist }) {
     const { setIsLoading, setSensor } = useContext(AuthContext)
-    // const inputFunction = (e) => {
-    //     console.log(e.target.checked)
-    //     console.log(userlist._id)
-    // }
+
     const inputFunction = async (e) => {
         setSensor(false)
         setIsLoading(true)

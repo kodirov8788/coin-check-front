@@ -1,7 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react'
 import "./Statistics.css"
-import Liststudents from '../studentList/Liststudents'
-import { useAuthContext } from '../../hooks/useAuthContext';
+
 import { AuthContext } from '../../context/AuthContext';
 import Axios from '../../api/api';
 import { Link } from 'react-router-dom';
@@ -11,8 +10,7 @@ function Statistics() {
     const [total, setTotal] = useState();
     const [Data, setData] = useState([]);
     const [selectData, setSelectData] = useState("");
-    const [arraylist, setArraylist] = useState([]);
-    const { isLoading, setIsLoading, sensor, setSensor } = useContext(AuthContext);
+    const { setIsLoading, setSensor } = useContext(AuthContext);
     // console.log(Data)
     useEffect(() => {
         const fetchData = async () => {
@@ -33,43 +31,10 @@ function Statistics() {
         fetchData();
     }, []);
 
-    // useEffect(() => {
-    //     async function findDuplicateUsers(users) {
-    //         const phoneNumberGroups = await users.reduce((acc, user) => {
-    //             if (!acc[user.number]) {
-    //                 acc[user.number] = [];
-    //             }
-    //             acc[user.number].push(user);
-    //             return acc;
-    //         }, {});
-
-    //         const duplicates = [];
-    //         const singlebox = [];
-    //         for (const phoneNumber in phoneNumberGroups) {
-    //             if (phoneNumberGroups[phoneNumber].length > 1) {
-    //                 duplicates.push(phoneNumberGroups[phoneNumber]);
-    //             } else {
-    //                 singlebox.push(phoneNumberGroups[phoneNumber]);
-    //             }
-    //         }
-
-    //         return [...duplicates, ...singlebox];
-    //     }
-
-    //     findDuplicateUsers(Data)
-    //         .then(user => setArraylist(user))
-    //         .catch(error => console.log(error))
-    // }, [Data, sensor]);
 
     const Arraylist = () => {
         const [data, setData] = useState([]);
-        // const newArr = arraylist.map(user => {
-        //     const box = [];
-        //     user.forEach(ar => box.push(ar.coin));
-        //     const allCoin = box.reduce((a, b) => a + b, 0);
 
-        //     return { allCoin, user };
-        // });
         const sorted = Data.sort((a, b) => b.allCoin - a.allCoin)
 
         useEffect(() => {

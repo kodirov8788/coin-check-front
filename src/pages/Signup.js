@@ -11,7 +11,6 @@ const Signup = () => {
   const { isLoading, setIsLoading } = useContext(AuthContext)
   const [visible, setVisible] = useState(false)
 
-  const { user } = useAuthContext()
   const [username, setUsername] = useState('')
   const [name, setName] = useState('')
   const [lastname, setLastname] = useState('')

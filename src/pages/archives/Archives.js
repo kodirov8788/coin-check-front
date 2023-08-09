@@ -5,7 +5,7 @@ import axios from '../../api/api';
 import ListItems from './ListItems';
 
 function Archives() {
-    const { isLoading, setIsLoading, sensor, setSensor } = useContext(AuthContext)
+    const { setIsLoading } = useContext(AuthContext)
     const [archiveData, setArchiveData] = useState([]);
     const { user } = useAuthContext();
     const fetchData = async () => {
@@ -14,11 +14,14 @@ function Archives() {
             const response = await axios.get('/archives/get', {
             });
             setArchiveData(response.data);
+            setIsLoading(false);
+
         } catch (error) {
             console.error(error);
+            setIsLoading(false);
+
             console.log('Error occurred while fetching data');
         }
-        setIsLoading(false);
     };
 
     useEffect(() => {

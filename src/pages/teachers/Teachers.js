@@ -9,7 +9,7 @@ function Teachers() {
     const [data, setData] = useState([]);
 
     // const [isLoading, setIsLoading] = useState(false);
-    const { isLoading, setIsLoading, sensor, setSensor } = useContext(AuthContext);
+    const { setIsLoading, sensor, setSensor } = useContext(AuthContext);
     const { user } = useAuthContext();
     // console.log(isLoading)
     // console.log(data);
