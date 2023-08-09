@@ -52,23 +52,22 @@ function Forms() {
                 toast.success(res.data, {
                     position: toast.POSITION.TOP_RIGHT
                 });
+                setIsLoading(false)
+                setSensor(true)
+                e.target[0].value = ''
+                e.target[1].value = ''
+                e.target[2].value = ''
+                e.target[3].value = ''
+                e.target[6].value = ""
             })
                 .catch((error) => {
-                    toast.error(error, {
+                    toast.error(error.response.data, {
                         position: toast.POSITION.TOP_RIGHT
                     });
-                    console.log("error chiqdi")
+                    // console.log(error)
+                    setIsLoading(false)
+                    setSensor(true)
                 })
-            setIsLoading(false)
-            setSensor(true)
-            e.target[0].value = ''
-            e.target[1].value = ''
-            e.target[2].value = ''
-            e.target[3].value = ''
-            e.target[6].value = ""
-
-
-            // console.log("joylandi")
         }
 
 

@@ -12,7 +12,7 @@ function Userslist() {
     const { setIsLoading: setContextIsLoading, sensor } = useContext(AuthContext);
     const { user } = useAuthContext();
 
-    console.log(data);
+    // console.log(data);
 
     const fetchData = async () => {
         setIsLoading(true);
