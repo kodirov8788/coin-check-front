@@ -4,6 +4,7 @@ import "./Form.css"
 import { AuthContext } from '../../context/AuthContext'
 import { useAuthContext } from '../../hooks/useAuthContext'
 import { toast } from 'react-toastify';
+
 function Forms() {
     const { setIsLoading, setSensor } = useContext(AuthContext)
 
@@ -17,7 +18,13 @@ function Forms() {
 
 
         if (inputRadio === "") {
-            alert("joylarni to`ldiring")
+            toast.warn("kunini tanglang!", {
+                position: toast.POSITION.TOP_RIGHT
+            });
+        } else if (e.target[2]?.value.length !== 9) {
+            toast.warn("9 xonalik raqam kiriting! misol: 93 000 00 00", {
+                position: toast.POSITION.TOP_RIGHT
+            });
         } else {
             setSensor(false)
             setIsLoading(true)

@@ -83,7 +83,7 @@ function App() {
             />
             <Route
               path="/teacherupdate/:id"
-              element={<Teacherupdate />}
+              element={user ? <Teacherupdate /> : <Navigate to="/login" />}
             />
             <Route
               path="/teachers/:id"
@@ -111,7 +111,7 @@ function App() {
             />
             <Route
               path="/searchstudent"
-              element={<Searchstudent />}
+              element={user ? <Searchstudent /> : <Navigate to="/login" />}
             />
             <Route
               path="/client"
@@ -119,7 +119,7 @@ function App() {
             />
             <Route
               path="/statistics"
-              element={<Statistics />}
+              element={user ? <Statistics /> : <Navigate to="/login" />}
             />
           </Routes>
         </div>
