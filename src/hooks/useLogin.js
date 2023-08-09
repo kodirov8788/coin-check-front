@@ -2,9 +2,11 @@ import { useContext, useState } from 'react';
 import { useAuthContext } from './useAuthContext';
 import axios from '../api/api';
 import { AuthContext } from '../context/AuthContext';
+import { toast } from 'react-toastify';
 
 export const useLogin = () => {
   const [error, setError] = useState(null);
+
   // const [isLoading, setIsLoading] = useState(null);
   const { isLoading, setIsLoading } = useContext(AuthContext)
 
@@ -24,10 +26,13 @@ export const useLogin = () => {
       if (response.status !== 200) {
         setIsLoading(false);
         setError(response.data.error);
+
       } else {
         const json = response.data;
         console.log(json)
-
+        toast.success("Muvaffaqqiyatli saytga kirdingiz!", {
+          position: toast.POSITION.TOP_RIGHT
+        });
         // Save the user to local storage
         localStorage.setItem('user', JSON.stringify(json));
 
@@ -38,8 +43,11 @@ export const useLogin = () => {
         setIsLoading(false);
       }
     } catch (error) {
+      let errors = error.response.data?.slice(7)
       setIsLoading(false);
-      setError('Sizga saytga kirish uchun hali ruxsat yo`q');
+      toast.error(errors, {
+        position: toast.POSITION.TOP_RIGHT
+      });
     }
   };
 

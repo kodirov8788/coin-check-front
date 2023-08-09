@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthContext';
 import { useAuthContext } from '../../hooks/useAuthContext';
 import Liststudents from './Liststudents';
+import { toast } from 'react-toastify';
 
 function Studentlist() {
     const [Data, setData] = useState([]);
@@ -18,26 +19,25 @@ function Studentlist() {
     // console.log(filteredData)
     const fetchData = async () => {
         setIsLoading(true);
-
         try {
             const { data } = await Axios.get('/auth/get', {
                 headers: {
                     Authorization: `Bearer ${user?.token}`,
                 },
             });
-
             if (user.role === "root") {
                 setData(data)
             } else {
                 setData(data.filter(use => use.teacherid === user.id));
             }
+
+            setIsLoading(false);
         } catch (error) {
-            console.error(error);
-            console.log('Error occurred while fetching data');
+            setIsLoading(false);
+            toast.error(error, {
+                position: toast.POSITION.TOP_RIGHT
+            });
         }
-        setIsLoading(false);
-
-
     };
 
     const sendForm = (e) => {
@@ -83,15 +83,8 @@ function Studentlist() {
             } else {
                 setFilteredData(Data)
             }
-
-
-
         }
-
-
-
         setIsLoading(false)
-
     };
 
     useEffect(() => {

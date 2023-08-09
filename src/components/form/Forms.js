@@ -3,6 +3,7 @@ import React, { useContext, useState } from 'react'
 import "./Form.css"
 import { AuthContext } from '../../context/AuthContext'
 import { useAuthContext } from '../../hooks/useAuthContext'
+import { toast } from 'react-toastify';
 function Forms() {
     const { isLoading, setIsLoading, sensor, setSensor } = useContext(AuthContext)
 
@@ -40,8 +41,17 @@ function Forms() {
                 headers: {
                     'Authorization': `Bearer ${user.token}`
                 }
-            }).then(res => console.log(res))
-                .catch(() => console.log("error chiqdi"))
+            }).then(res => {
+                toast.success(res.data, {
+                    position: toast.POSITION.TOP_RIGHT
+                });
+            })
+                .catch((error) => {
+                    toast.error(error, {
+                        position: toast.POSITION.TOP_RIGHT
+                    });
+                    console.log("error chiqdi")
+                })
             setIsLoading(false)
             setSensor(true)
             e.target[0].value = ''
@@ -51,7 +61,7 @@ function Forms() {
             e.target[6].value = ""
 
 
-            console.log("joylandi")
+            // console.log("joylandi")
         }
 
 

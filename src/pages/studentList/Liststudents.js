@@ -4,6 +4,7 @@ import { AuthContext } from '../../context/AuthContext'
 import { useAuthContext } from '../../hooks/useAuthContext'
 import axios from '../../api/api'
 import Staticchild from '../statistics/Staticchild'
+import { toast } from 'react-toastify';
 
 function Liststudents({ users }) {
     const { isLoading, setIsLoading, sensor, setSensor } = useContext(AuthContext)
@@ -15,10 +16,10 @@ function Liststudents({ users }) {
     // console.log(newUser)
     // console.log(newUser)
     useEffect(() => {
+        setTimeout(() => {
+            const getData = async () => {
+                // setIsLoading(true)
 
-        const getData = () => {
-            setIsLoading(true)
-            setTimeout(async () => {
                 await axios.get(`/client/getsingle/${users._id}`, {
                     headers: {
                         'Authorization': `Bearer ${user?.token}`
@@ -26,19 +27,18 @@ function Liststudents({ users }) {
                 })
                     .then(res => {
                         setNewUser(res.data)
-                        setIsLoading(false)
+                        // setIsLoading(false)
                     }
                     )
                     .catch((error) => {
                         console.log("error bor", error)
-                        setIsLoading(false)
+                        // setIsLoading(false)
                     })
-            }, 1000);
-
-        }
-
-        if (users._id) {
+            }
             getData()
+        }, 500);
+        if (users._id) {
+
         } else {
             setNewUser(users)
         }
@@ -47,9 +47,8 @@ function Liststudents({ users }) {
 
 
     const qoshish = async (id) => {
-
         if (users._id) {
-            setSensor(true)
+            setSensor(false)
             setIsLoading(true)
             await axios.put(`/client/plus/${id}`, { coin: qoshuvQiymat }, {
                 headers: {
@@ -57,12 +56,23 @@ function Liststudents({ users }) {
                 }
             })
                 .then(res => {
+                    toast.success(res.data, {
+                        position: toast.POSITION.TOP_RIGHT
+                    });
                     setIsLoading(false)
-                    setSensor(false)
+                    setSensor(true)
                     setQoshuvQiymat("")
                 })
-                .catch((error) => console.log("error bor", error))
-
+                .catch((error) => {
+                    console.log("error bor", error)
+                    toast.error(res.data, {
+                        position: toast.POSITION.TOP_RIGHT
+                    });
+                    // setIsLoading(false)
+                    // setSensor(true)
+                    setIsLoading(false)
+                    setSensor(true)
+                })
         }
     }
     return (

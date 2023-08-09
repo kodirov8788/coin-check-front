@@ -2,6 +2,7 @@ import { useContext, useState } from 'react';
 import { useAuthContext } from './useAuthContext';
 import axios from '../api/api';
 import { AuthContext } from '../context/AuthContext';
+import { toast } from 'react-toastify';
 
 export const useSignup = () => {
   const [error, setError] = useState(null);
@@ -12,12 +13,12 @@ export const useSignup = () => {
   const signup = async (username, password, name, lastname, number, subject) => {
     setIsLoading(true);
     setError(null);
-    console.log("username: ", username)
-    console.log("lastname: ", lastname)
-    console.log("password: ", password)
-    console.log("number: ", number)
-    console.log("subject: ", subject)
-    console.log("name: ", name)
+    // console.log("username: ", username)
+    // console.log("lastname: ", lastname)
+    // console.log("password: ", password)
+    // console.log("number: ", number)
+    // console.log("subject: ", subject)
+    // console.log("name: ", name)
 
     if (!user.role === "root" || !username || !lastname || !password || !number || !subject || !name) {
       alert("user root admin bolishi kerak")
@@ -36,7 +37,9 @@ export const useSignup = () => {
           setError(response.data.error);
         } else {
           const json = response.data;
-
+          toast.success("Muvaffaqqiyatli ro'yhatdan o'tdingiz!", {
+            position: toast.POSITION.TOP_RIGHT
+          });
           // Save the user to local storage
           localStorage.setItem('user', JSON.stringify(json));
 
@@ -47,8 +50,11 @@ export const useSignup = () => {
           setIsLoading(false);
         }
       } catch (error) {
+        let errors = error.response.data?.slice(7)
         setIsLoading(false);
-        setError('An error occurred during signup.');
+        toast.error(errors, {
+          position: toast.POSITION.TOP_RIGHT
+        });
       }
     }
 

@@ -5,6 +5,8 @@ import { useNavigate, useParams } from "react-router-dom"
 import LoadingSpinner from '../../components/loaderSpinner/LoaderSpinner'
 import { AuthContext } from '../../context/AuthContext'
 import { useAuthContext } from '../../hooks/useAuthContext'
+import { toast } from 'react-toastify';
+
 function Singlepage() {
     const { id } = useParams()
     const navigate = useNavigate()
@@ -55,12 +57,28 @@ function Singlepage() {
                 'Authorization': `Bearer ${user.token}`
             }
         })
-            .then(res => console.log(res))
-            .catch((error) => console.log("error bor", error))
-        setIsLoading(false)
-        setSensor(true)
-        setQoshuvQiymat(0)
-        setAyiruvQiymat(0)
+            .then(res => {
+                toast.success(res.data, {
+                    position: toast.POSITION.TOP_RIGHT
+                });
+                setIsLoading(false)
+                setSensor(true)
+                console.log(res)
+                setQoshuvQiymat(0)
+                setAyiruvQiymat(0)
+            })
+            .catch((error) => {
+                console.log("error bor", error)
+                setIsLoading(false)
+                setSensor(true)
+                toast.error(error, {
+                    position: toast.POSITION.TOP_RIGHT
+                });
+            }
+            )
+
+
+
     }
 
     // const qoshish = async () => {
@@ -85,9 +103,15 @@ function Singlepage() {
                     Authorization: `Bearer ${user.token}`,
                 },
             });
-            // console.log(response.data); // Assuming the server sends a response with the deleted user information
+            console.log(response);
+            toast.success(response.data, {
+                position: toast.POSITION.TOP_RIGHT
+            });
         } catch (error) {
             console.error(error);
+            toast.error(error, {
+                position: toast.POSITION.TOP_RIGHT
+            });
             // console.log('Error occurred while deleting user');
         }
         setIsLoading(false);

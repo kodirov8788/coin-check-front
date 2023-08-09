@@ -1,4 +1,5 @@
 import { useAuthContext } from './useAuthContext'
+import { toast } from 'react-toastify';
 
 export const useLogout = () => {
   const { dispatch } = useAuthContext()
@@ -10,6 +11,9 @@ export const useLogout = () => {
 
     // dispatch logout action
     dispatch({ type: 'LOGOUT' })
+    toast.success("Muvaffaqqiyatli saytdan chiqdingiz!", {
+      position: toast.POSITION.TOP_RIGHT
+    });
   }
 
   return { logout }

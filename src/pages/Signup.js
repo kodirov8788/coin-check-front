@@ -4,6 +4,8 @@ import { AuthContext } from "../context/AuthContext"
 import { useAuthContext } from "../hooks/useAuthContext"
 import { useNavigate } from "react-router-dom"
 import { AiFillEyeInvisible, AiFillEye } from "react-icons/ai"
+import { toast } from 'react-toastify';
+
 const Signup = () => {
   const navigate = useNavigate()
   const { isLoading, setIsLoading } = useContext(AuthContext)
@@ -22,20 +24,23 @@ const Signup = () => {
   const handleSubmit = async (e) => {
     e.preventDefault()
     setIsLoading(true)
+    await signup(username, password, name, lastname, number, subject)
+      .then(res => {
+        navigate("/login")
+        console.log(res)
+        toast.success("Muvaffaqiyatli ro`yhatdan otdingiz!", {
+          position: toast.POSITION.TOP_CENTER
+        });
+        setIsLoading(false)
 
-    setTimeout(async () => {
-      await signup(username, password, name, lastname, number, subject)
-        .then(res => {
-          navigate("/login")
-          console.log(res)
-        })
-        .catch(error => console.log(error))
-      setIsLoading(false)
-    }, 1000);
-    // console.log(username)
-    // console.log(password)
-
-
+      })
+      .catch(error => {
+        console.log(error)
+        setIsLoading(false)
+        toast.error("serverda xatolik bor", {
+          position: toast.POSITION.TOP_LEFT
+        });
+      })
   }
 
 
