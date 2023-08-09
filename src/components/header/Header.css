@@ -19,6 +19,7 @@
 
 .header_media_wrap>h1 {
     font-size: 20px;
+    cursor: pointer;
 }
 
 .header_media_wrap>h1 span {
@@ -61,7 +62,16 @@
     height: 100%;
 }
 
+.header_userhidden {
+    /* display: inline-block; */
+    /* border: 2px solid black; */
+    /* padding-top: 10px; */
+    cursor: pointer;
+}
 
+.header_userhidden small {
+    /* margin-top: 10px; */
+}
 
 @media screen and (max-width:500px) {
     header {

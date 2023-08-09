@@ -8,6 +8,21 @@ const Header = () => {
     const location = useLocation().pathname
     const { user, dispatch } = useAuthContext();
     const [sidebarOpen, setSidebarOpen] = useState(false);
+    const [userHidden, setUserHidden] = useState(false);
+
+
+    const change = () => {
+        setUserHidden(true)
+
+        setTimeout(() => {
+            setUserHidden(false)
+        }, 3000);
+    }
+
+
+
+
+
     const logout = () => {
         localStorage.removeItem('user')
         dispatch({ type: 'LOGOUT' })
@@ -37,7 +52,7 @@ const Header = () => {
                 </Link>
                 <div className="header_media_wrap">{
                     user ?
-                        <h1>username: <span>{user.username}</span> </h1> : <></>
+                        <h1 onClick={() => change()}>username: {userHidden ? <span>{user.username}</span> : <span className='header_userhidden'><small>*******</small></span>} </h1> : <></>
                 }
 
 
