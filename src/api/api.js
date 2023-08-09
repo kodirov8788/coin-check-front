@@ -9,8 +9,8 @@ import axios from "axios";
 // });
 const Api = axios.create({
     // baseURL: 'https://coin21.uz'
-    baseURL: 'http://localhost:5000'
-    // baseURL: 'https://coin-project.onrender.com'
+    // baseURL: 'http://localhost:5000'
+    baseURL: 'https://coin-project.onrender.com'
 
 });
 
