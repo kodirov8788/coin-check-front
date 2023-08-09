@@ -4,32 +4,39 @@ import Axios from '../../api/api';
 import { AuthContext } from '../../context/AuthContext';
 import { useAuthContext } from '../../hooks/useAuthContext';
 import Liststudents from '../../pages/studentList/Liststudents';
+import { toast } from 'react-toastify';
 
 function Userslist() {
     const [data, setData] = useState([]);
 
-    const [isLoading, setIsLoading] = useState(false);
-    const { setIsLoading: setContextIsLoading, sensor } = useContext(AuthContext);
+    const { setIsLoading, sensor } = useContext(AuthContext);
     const { user } = useAuthContext();
 
     // console.log(data);
 
-    const fetchData = async () => {
-        setIsLoading(true);
-        try {
-            const response = await Axios.get('/auth/get');
-            let filteredData = response.data.filter(student => student.teacherid === user.id)
-            setData(filteredData);
-        } catch (error) {
-            console.log(error);
-            // console.log('Error occurred while fetching data');
-        }
-        setIsLoading(false);
-    };
 
     useEffect(() => {
-        fetchData();
-    }, [user, sensor]);
+
+        setTimeout(() => {
+            const fetchData = async () => {
+                setIsLoading(true);
+                try {
+                    const response = await Axios.get('/auth/get');
+                    let filteredData = response.data.filter(student => student.teacherid === user.id)
+                    setData(filteredData);
+                    setIsLoading(false);
+
+                } catch (error) {
+                    setIsLoading(false);
+                    toast.error("serverda error", {
+                        position: toast.POSITION.TOP_RIGHT
+                    });
+                }
+            };
+
+            fetchData();
+        }, 1000);
+    }, [sensor]);
 
 
 

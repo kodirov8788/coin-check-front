@@ -4,15 +4,17 @@ import "./Form.css"
 import { AuthContext } from '../../context/AuthContext'
 import { useAuthContext } from '../../hooks/useAuthContext'
 import { toast } from 'react-toastify';
+import { useNavigate } from 'react-router-dom'
+
 
 function Forms() {
     const { setIsLoading, setSensor } = useContext(AuthContext)
 
-
+    let navigate = useNavigate()
 
     const [inputRadio, setinputRadio] = useState("")
     const { user } = useAuthContext()
-    console.log(inputRadio)
+    // console.log(inputRadio)
     const sendForm = async (e) => {
         e.preventDefault()
 
@@ -27,6 +29,7 @@ function Forms() {
             });
         } else {
             setSensor(false)
+            setSensor(true)
             setIsLoading(true)
             let name = e.target[0].value
             let lastname = e.target[1].value
@@ -53,12 +56,15 @@ function Forms() {
                     position: toast.POSITION.TOP_RIGHT
                 });
                 setIsLoading(false)
-                setSensor(true)
+                setSensor(false)
                 e.target[0].value = ''
                 e.target[1].value = ''
                 e.target[2].value = ''
                 e.target[3].value = ''
                 e.target[6].value = ""
+
+
+
             })
                 .catch((error) => {
                     toast.error(error.response.data, {
@@ -66,7 +72,7 @@ function Forms() {
                     });
                     // console.log(error)
                     setIsLoading(false)
-                    setSensor(true)
+                    setSensor(false)
                 })
         }
 
