@@ -11,7 +11,7 @@ const Login = () => {
   const { isLoading, setIsLoading } = useContext(AuthContext)
 
   const [visible, setVisible] = useState(false)
-  console.log(visible)
+  // console.log(visible)
 
   const handleSubmit = async (e) => {
     e.preventDefault()

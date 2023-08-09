@@ -5,7 +5,7 @@ import { useAuthContext } from '../../../hooks/useAuthContext';
 import axios from '../../../api/api';
 function Staticsingle({ userdata }) {
 
-    const { isLoading, setIsLoading, sensor, setSensor } = useContext(AuthContext)
+    const { setIsLoading, sensor, setSensor } = useContext(AuthContext)
     const [teacher, setTeacher] = useState({})
     // console.log(teacher)
     const { user } = useAuthContext()
