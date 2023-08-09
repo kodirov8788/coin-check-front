@@ -62,7 +62,7 @@ function Liststudents({ users }) {
                 })
                 .catch((error) => {
                     console.log("error bor", error)
-                    toast.error(res.data, {
+                    toast.error(error.data, {
                         position: toast.POSITION.TOP_RIGHT
                     });
                     // setIsLoading(false)
