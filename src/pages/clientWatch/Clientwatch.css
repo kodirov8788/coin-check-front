@@ -31,3 +31,27 @@ form.client_form button {
     margin-top: 10px;
     font-size: 20px;
 }
+
+.client_watch {
+    display: flex;
+    align-items: center;
+    border: 2px solid green;
+    font-size: 14px;
+    padding: 3px 10px;
+    border-radius: 4px;
+}
+
+.client_watch input {
+    border: none;
+    font-size: 14px;
+    text-indent: 10px;
+
+}
+
+.client_watch input::placeholder {
+    font-size: 14px;
+}
+
+.client_watch input:focus {
+    outline: none;
+}

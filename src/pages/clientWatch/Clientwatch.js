@@ -67,7 +67,11 @@ function Clientwatch() {
             <Link to={"/login"}>Loginga qaytish</Link>
             <form className='client_form' onSubmit={fetchData}>
                 <h1>Nomer orqali qidiring!</h1>
-                <input onChange={(e) => setNumber(e.target.value)} type="number" placeholder='raqamingizni kiriting' required />
+                <div className="client_watch">
+                    <p>+998</p>
+                    <input onChange={(e) => setNumber(e.target.value)} type="number" placeholder='raqamingizni kiriting' required />
+
+                </div>
                 <button>ko`rish</button>
 
             </form>

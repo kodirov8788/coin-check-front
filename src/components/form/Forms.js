@@ -46,7 +46,7 @@ function Forms() {
                 time: lessontime,
                 number: number,
             }
-            console.log(newuser)
+            // console.log(newuser)
             await Axios.post("/client/create", newuser, {
                 headers: {
                     'Authorization': `Bearer ${user.token}`
@@ -62,8 +62,6 @@ function Forms() {
                 e.target[2].value = ''
                 e.target[3].value = ''
                 e.target[6].value = ""
-
-
 
             })
                 .catch((error) => {
