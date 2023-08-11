@@ -8,9 +8,8 @@ import Liststudents from '../studentList/Liststudents';
 function Teacherlist() {
     const teachers = useParams().id
     const [data, setData] = useState([]);
-    // console.log(data)
-    const [setIsLoading] = useState(false);
-    const { setIsLoading: setContextIsLoading, sensor } = useContext(AuthContext);
+    console.log(data)
+    const { setIsLoading, sensor } = useContext(AuthContext);
     const { user } = useAuthContext();
     // console.log(teachers)
     // console.log(data);
@@ -38,7 +37,7 @@ function Teacherlist() {
         <div className='userlist'>
             <h1>User lists</h1>
             <h1>o`quchilar soni <span className='student_count'>{data.length}</span></h1>
-            {data.length === 0 ? (
+            {/* {data.length === 0 ? (
                 <h1>loading...</h1>
             ) : (
                 <div className="list_collection">
@@ -46,7 +45,7 @@ function Teacherlist() {
                         <Liststudents key={user._id} totalstudent={data.length} users={user} />
                     ))}
                 </div>
-            )}
+            )} */}
         </div>
     )
 }
