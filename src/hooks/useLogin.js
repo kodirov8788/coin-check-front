@@ -29,7 +29,6 @@ export const useLogin = () => {
 
       } else {
         const json = response.data;
-        console.log(json)
         toast.success("Muvaffaqqiyatli saytga kirdingiz!", {
           position: toast.POSITION.TOP_RIGHT
         });

@@ -9,11 +9,17 @@ function TeacherListItem({ teacher }) {
     const { setIsLoading, sensor, setSensor } = useContext(AuthContext);
     const { user } = useAuthContext();
     const [data, setData] = useState([]);
-    console.log(data)
+    // console.log(data)
     const fetchData = async () => {
         setIsLoading(true);
+
+
         try {
-            const response = await axios.get(`/user/getsingle/${teacher._id}`);
+            const response = await axios.get(`/user/getsingle/${teacher._id}`, {
+                headers: {
+                    Authorization: `Bearer ${user.token}`,
+                },
+            });
             setData(response.data);
         } catch (error) {
             console.error(error);
