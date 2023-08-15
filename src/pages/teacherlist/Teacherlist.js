@@ -37,7 +37,7 @@ function Teacherlist() {
         <div className='userlist'>
             <h1>User lists</h1>
             <h1>o`quchilar soni <span className='student_count'>{data.length}</span></h1>
-            {/* {data.length === 0 ? (
+            {data.length === 0 ? (
                 <h1>loading...</h1>
             ) : (
                 <div className="list_collection">
@@ -45,7 +45,7 @@ function Teacherlist() {
                         <Liststudents key={user._id} totalstudent={data.length} users={user} />
                     ))}
                 </div>
-            )} */}
+            )}
         </div>
     )
 }
