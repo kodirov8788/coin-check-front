@@ -7,7 +7,7 @@ function Staticsingle({ userdata }) {
 
     const { setIsLoading, sensor, setSensor } = useContext(AuthContext)
     const [teacher, setTeacher] = useState({})
-    console.log(teacher)
+    // console.log(teacher)
     const { user } = useAuthContext()
 
     // console.log("userdata :", userdata)
@@ -15,12 +15,12 @@ function Staticsingle({ userdata }) {
         const fetchData = async () => {
             // setIsLoading(true);
             setSensor(true)
-            await axios.get(`/user/getsingle/${userdata.teacherid}`, {
+            await axios.get(`/user/getsingle/${userdata?.teacherid}`, {
                 headers: {
                     Authorization: `Bearer ${user.token}`,
                 },
             }).then(res => {
-                setTeacher(res?.data)
+                setTeacher(res.data.user)
                 setSensor(false)
             })
                 .catch(err => {
