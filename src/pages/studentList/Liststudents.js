@@ -86,7 +86,16 @@ function Liststudents({ users }) {
 
             {newUser._id ?
                 <div className="userlist_addcoin">
-                    <input type="number" value={qoshuvQiymat === 0 ? setQoshuvQiymat("") : qoshuvQiymat} required onChange={(e) => setQoshuvQiymat(Number(e.target.value))} placeholder='tanga kiriting...' />
+
+                    <select className='userlist_select' required onChange={(e) => setQoshuvQiymat(Number(e.target.value))}>
+                        <option value="">Coin tanglang!</option>
+                        <option value="2">2</option>
+                        <option value="5">5</option>
+                        <option value="7">7</option>
+                        <option value="10">10</option>
+                    </select>
+
+                    {/* <input type="number" value={qoshuvQiymat === 0 ? setQoshuvQiymat("") : qoshuvQiymat} placeholder='tanga kiriting...' /> */}
 
                     <button style={qoshuvQiymat ? { borderColor: "green" } : { borderColor: "gray", color: "gray" }}
 

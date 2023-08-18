@@ -60,7 +60,10 @@
     color: red !important;
 }
 
-
+.userlist_select {
+    margin-right: 10px;
+    padding: 5px 20px;
+}
 
 
 
