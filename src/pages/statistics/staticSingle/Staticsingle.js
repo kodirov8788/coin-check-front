@@ -7,7 +7,7 @@ function Staticsingle({ userdata }) {
 
     const { setIsLoading, sensor, setSensor } = useContext(AuthContext)
     const [teacher, setTeacher] = useState({})
-    // console.log(teacher)
+    console.log(teacher)
     const { user } = useAuthContext()
 
     // console.log("userdata :", userdata)
@@ -22,12 +22,9 @@ function Staticsingle({ userdata }) {
             }).then(res => {
                 setTeacher(res?.data)
                 setSensor(false)
-
-                // setIsLoading(false)
             })
                 .catch(err => {
                     setIsLoading(false)
-                    // console.log(err)
                     setSensor(false)
                 })
         };

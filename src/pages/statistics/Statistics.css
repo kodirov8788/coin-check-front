@@ -32,9 +32,26 @@
     margin-left: 20px;
 }
 
+.client_count {
+    color: red !important;
+    margin-left: 20px;
+
+}
+
+.client_wrap {
+    display: flex;
+    align-items: center;
+    /* border: 2px solid black; */
+    justify-content: space-around;
+}
+
 @media screen and (max-width:500px) {
     .static_child_title {
         display: flex;
+        flex-direction: column;
+    }
+
+    .client_wrap {
         flex-direction: column;
     }
 }
