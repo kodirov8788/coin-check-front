@@ -20,7 +20,7 @@ function Staticsingle({ userdata }) {
                     Authorization: `Bearer ${user.token}`,
                 },
             }).then(res => {
-                setTeacher(res.data.user)
+                setTeacher(res?.data?.user)
                 setSensor(false)
             })
                 .catch(err => {
