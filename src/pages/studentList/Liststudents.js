@@ -87,7 +87,7 @@ function Liststudents({ users }) {
             {newUser._id ?
                 <div className="userlist_addcoin">
 
-                    <select className='userlist_select' required onChange={(e) => setQoshuvQiymat(Number(e.target.value))}>
+                    <select className='userlist_select' value={qoshuvQiymat} required onChange={(e) => setQoshuvQiymat(Number(e.target.value))}>
                         <option value="">Coin tanglang!</option>
                         <option value="2">2</option>
                         <option value="5">5</option>
