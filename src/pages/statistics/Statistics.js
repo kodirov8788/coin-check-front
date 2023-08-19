@@ -56,7 +56,7 @@ function Statistics() {
             }
         }, [selectData]);
 
-        return data.map((array, index) => (
+        return data.slice(0, 20).map((array, index) => (
             <Staticchild key={index} arraydata={array} inx={index} />
         ));
     }

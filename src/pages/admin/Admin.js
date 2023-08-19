@@ -20,8 +20,8 @@ function Admin() {
 
         } catch (error) {
             setIsLoading(false);
-            console.error(error);
-            console.log('Error occurred while fetching data');
+            // console.error(error);
+            // console.log('Error occurred while fetching data');
         }
     };
 

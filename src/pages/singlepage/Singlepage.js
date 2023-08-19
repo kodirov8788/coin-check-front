@@ -62,11 +62,11 @@ function Singlepage() {
                 });
                 setIsLoading(false)
                 setSensor(true)
-                console.log(res)
+                // console.log(res)
                 setAyiruvQiymat(0)
             })
             .catch((error) => {
-                console.log("error bor", error)
+                // console.log("error bor", error)
                 setIsLoading(false)
                 setSensor(true)
                 toast.error(error, {
@@ -118,7 +118,7 @@ function Singlepage() {
     };
 
     const editClient = async () => {
-        console.log(id)
+        // console.log(id)
         setIsLoading(true)
         setSensor(true)
 
@@ -134,12 +134,12 @@ function Singlepage() {
                 'Authorization': `Bearer ${user.token}`
             }
         }).then((res) => {
-            console.log(res)
+            // console.log(res)
             setIsLoading(false)
             setSensor(false)
         })
             .catch((error) => {
-                console.log("error bor")
+                // console.log("error bor")
                 setIsLoading(false)
                 setSensor(false)
             })

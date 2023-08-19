@@ -26,7 +26,7 @@ const Signup = () => {
     await signup(username, password, name, lastname, number, subject)
       .then(res => {
         navigate("/login")
-        console.log(res)
+        // console.log(res)
         toast.success("Muvaffaqiyatli ro`yhatdan otdingiz!", {
           position: toast.POSITION.TOP_CENTER
         });
@@ -34,7 +34,7 @@ const Signup = () => {
 
       })
       .catch(error => {
-        console.log(error)
+        // console.log(error)
         setIsLoading(false)
         toast.error("serverda xatolik bor", {
           position: toast.POSITION.TOP_LEFT

@@ -23,10 +23,10 @@ function Clientwatch() {
             setIsLoading(false);
 
         } catch (error) {
-            console.error(error);
+            // console.error(error);
             setIsLoading(false);
 
-            console.log('Error occurred while fetching data');
+            // console.log('Error occurred while fetching data');
         }
 
     };
@@ -47,7 +47,7 @@ function Clientwatch() {
     }, [Data])
 
     const Listuser = (user) => {
-        console.log(user)
+        // console.log(user)
 
         let newuser = {
             name: user.user.name,
@@ -57,7 +57,7 @@ function Clientwatch() {
             subject: user.user.subject,
             weekday: user.user.weekday,
         }
-        console.log(newuser)
+        // console.log(newuser)
 
         return <Liststudents totalstudent={Data.length} users={newuser} />
     }

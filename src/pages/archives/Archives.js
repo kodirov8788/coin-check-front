@@ -17,10 +17,10 @@ function Archives() {
             setIsLoading(false);
 
         } catch (error) {
-            console.error(error);
+            // console.error(error);
             setIsLoading(false);
 
-            console.log('Error occurred while fetching data');
+            // console.log('Error occurred while fetching data');
         }
     };
 

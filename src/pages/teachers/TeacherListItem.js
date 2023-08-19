@@ -22,8 +22,8 @@ function TeacherListItem({ teacher }) {
             });
             setData(response.data);
         } catch (error) {
-            console.error(error);
-            console.log('Error occurred while fetching data');
+            // console.error(error);
+            // console.log('Error occurred while fetching data');
         }
         setIsLoading(false);
     };

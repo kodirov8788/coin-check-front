@@ -3,6 +3,7 @@ import "./Staticsingle.css"
 import { AuthContext } from '../../../context/AuthContext';
 import { useAuthContext } from '../../../hooks/useAuthContext';
 import axios from '../../../api/api';
+import ReactLoading from "react-loading";
 function Staticsingle({ userdata }) {
 
     const { setIsLoading, sensor, setSensor } = useContext(AuthContext)
@@ -21,6 +22,7 @@ function Staticsingle({ userdata }) {
                 },
             }).then(res => {
                 setTeacher(res?.data?.user)
+                // console.log(res)
                 setSensor(false)
             })
                 .catch(err => {
@@ -49,7 +51,7 @@ function Staticsingle({ userdata }) {
                 <h2><span>{userdata.coin}</span></h2>
                 <h2>{userdata?.subject?.toUpperCase()}</h2>
                 <h2><a href={`tel:+998${userdata?.number}`}>{userdata?.number}</a></h2>
-                <h2>{teacher?.name ? teacher.name : "ismi chiqmadi"}</h2>
+                <h2>{teacher?.name ? teacher.name : <ReactLoading width={30} type={"spin"} color="green" />}</h2>
             </div>
 
 
