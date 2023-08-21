@@ -113,7 +113,7 @@ function Liststudents({ users }) {
                 </p>
             </div>
             {/* <input type="number" value={qoshuvQiymat === 0 ? setQoshuvQiymat("") : qoshuvQiymat} placeholder='tanga kiriting...' /> */}
-            {/* 
+
             {newUser._id ?
                 <div className="userlist_addcoin">
 
@@ -130,9 +130,9 @@ function Liststudents({ users }) {
 
                         disabled={qoshuvQiymat === "" || qoshuvQiymat < 0 ? true : false} onClick={() => qoshish(newUser._id)}>qo'shish</button>
                 </div> : <></>
-            } */}
+            }
 
-            <button style={{ borderColor: "green", marginRight: "20px", cursor: "pointer" }} onClick={() => reset()}>RESET</button>
+            {/* <button style={{ borderColor: "green", marginRight: "20px", cursor: "pointer" }} onClick={() => reset()}>RESET</button> */}
 
 
             <p className='userlist_weekday'>{newUser.weekday === "odd" ? "toq" : "juft"} kunlari</p>
