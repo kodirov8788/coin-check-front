@@ -190,7 +190,7 @@ function Singlepage() {
 
 
             <button className='single_page_editBtn' onClick={() => setClientEdit(!clientEdit ? true : false)}>Edit</button>
-            <button className='single_page_editBtn' onClick={() => reset()}>RESET</button>
+            {/* <button className='single_page_editBtn' onClick={() => reset()}>RESET</button> */}
 
             <div className="singlepage_main">
                 {clientEdit ? <div className="singlepage_update_container">
