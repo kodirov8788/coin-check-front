@@ -42,7 +42,36 @@ function Liststudents({ users }) {
 
     }, [sensor])
 
+    const reset = async () => {
+        // return console.log("coin: ", (userData.coin - userData.coin))
+        setSensor(false)
+        setIsLoading(true)
+        await axios.put(`/client/minus/${users._id}`, { coin: newUser.coin }, {
+            headers: {
+                'Authorization': `Bearer ${user.token}`
+            }
+        })
+            .then(res => {
+                toast.success(res.data, {
+                    position: toast.POSITION.TOP_RIGHT
+                });
+                setIsLoading(false)
+                setSensor(true)
+                // console.log(res)
+                setAyiruvQiymat(0)
+            })
+            .catch((error) => {
+                // console.log("error bor", error)
+                setIsLoading(false)
+                setSensor(true)
+                toast.error(error, {
+                    position: toast.POSITION.TOP_RIGHT
+                });
+            })
 
+
+
+    }
     const qoshish = async (id) => {
         if (users._id) {
             setSensor(false)
@@ -83,7 +112,8 @@ function Liststudents({ users }) {
                     <b>{newUser.lastname ? newUser.lastname : "Familiya yo`q"}</b>
                 </p>
             </div>
-
+            {/* <input type="number" value={qoshuvQiymat === 0 ? setQoshuvQiymat("") : qoshuvQiymat} placeholder='tanga kiriting...' /> */}
+            {/* 
             {newUser._id ?
                 <div className="userlist_addcoin">
 
@@ -95,13 +125,14 @@ function Liststudents({ users }) {
                         <option value="10">10</option>
                     </select>
 
-                    {/* <input type="number" value={qoshuvQiymat === 0 ? setQoshuvQiymat("") : qoshuvQiymat} placeholder='tanga kiriting...' /> */}
 
                     <button style={qoshuvQiymat ? { borderColor: "green" } : { borderColor: "gray", color: "gray" }}
 
                         disabled={qoshuvQiymat === "" || qoshuvQiymat < 0 ? true : false} onClick={() => qoshish(newUser._id)}>qo'shish</button>
                 </div> : <></>
-            }
+            } */}
+
+            <button style={{ borderColor: "green", marginRight: "20px", cursor: "pointer" }} onClick={() => reset()}>RESET</button>
 
 
             <p className='userlist_weekday'>{newUser.weekday === "odd" ? "toq" : "juft"} kunlari</p>

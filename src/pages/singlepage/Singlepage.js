@@ -79,6 +79,37 @@ function Singlepage() {
 
     }
 
+
+    const reset = async () => {
+        // return console.log("coin: ", (userData.coin - userData.coin))
+        setSensor(false)
+        setIsLoading(true)
+        await Axios.put(`/client/minus/${id}`, { coin: userData.coin }, {
+            headers: {
+                'Authorization': `Bearer ${user.token}`
+            }
+        })
+            .then(res => {
+                toast.success(res.data, {
+                    position: toast.POSITION.TOP_RIGHT
+                });
+                setIsLoading(false)
+                setSensor(true)
+                // console.log(res)
+                setAyiruvQiymat(0)
+            })
+            .catch((error) => {
+                // console.log("error bor", error)
+                setIsLoading(false)
+                setSensor(true)
+                toast.error(error, {
+                    position: toast.POSITION.TOP_RIGHT
+                });
+            })
+
+
+
+    }
     // const qoshish = async () => {
     //     setSensor(false)
     //     setIsLoading(true)
@@ -159,6 +190,7 @@ function Singlepage() {
 
 
             <button className='single_page_editBtn' onClick={() => setClientEdit(!clientEdit ? true : false)}>Edit</button>
+            <button className='single_page_editBtn' onClick={() => reset()}>RESET</button>
 
             <div className="singlepage_main">
                 {clientEdit ? <div className="singlepage_update_container">
