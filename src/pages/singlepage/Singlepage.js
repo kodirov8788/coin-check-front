@@ -19,7 +19,7 @@ function Singlepage() {
     const { setIsLoading, sensor, setSensor } = useContext(AuthContext)
     const { user } = useAuthContext()
     const [ayiruvQiymat, setAyiruvQiymat] = useState("")
-    // const [qoshuvQiymat, setQoshuvQiymat] = useState("")
+    const [qoshuvQiymat, setQoshuvQiymat] = useState("")
     const [clientEdit, setClientEdit] = useState(false)
     const [userData, setUserData] = useState([])
     // console.log(clientEdit)
@@ -110,21 +110,21 @@ function Singlepage() {
 
 
     }
-    // const qoshish = async () => {
-    //     setSensor(false)
-    //     setIsLoading(true)
-    //     await Axios.put(`/client/plus/${id}`, { coin: qoshuvQiymat }, {
-    //         headers: {
-    //             'Authorization': `Bearer ${user.token}`
-    //         }
-    //     })
-    //         .then(res => console.log(res))
-    //         .catch((error) => console.log("error bor", error))
-    //     setIsLoading(false)
-    //     setSensor(true)
-    //     setQoshuvQiymat(0)
-    //     setAyiruvQiymat(0)
-    // }
+    const qoshish = async () => {
+        setSensor(false)
+        setIsLoading(true)
+        await Axios.put(`/client/plus/${id}`, { coin: qoshuvQiymat }, {
+            headers: {
+                'Authorization': `Bearer ${user.token}`
+            }
+        })
+            .then(res => console.log(res))
+            .catch((error) => console.log("error bor", error))
+        setIsLoading(false)
+        setSensor(true)
+        setQoshuvQiymat(0)
+        setAyiruvQiymat(0)
+    }
     const deleteUser = async (id) => {
         try {
             const response = await Axios.delete(`/client/delete/${id}`, {
@@ -186,6 +186,12 @@ function Singlepage() {
 
                     <button onClick={ayirish} disabled={ayiruvQiymat < 1}>coindan ayirish</button>
                 </div>
+
+                {/* <div className="singlepage_topCover">
+                    <input onChange={(e) => setQoshuvQiymat(Number(e.target.value))} type="number" value={qoshuvQiymat < 1 ? "" : qoshuvQiymat} placeholder='raqam kiriting...' />
+
+                    <button onClick={qoshish} disabled={qoshuvQiymat < 1}>coin qoshish</button>
+                </div> */}
             </div>
 
 
