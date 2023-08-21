@@ -113,7 +113,7 @@ function Liststudents({ users }) {
             </div>
 
 
-            {newUser._id ?
+            {/* {newUser._id ?
                 <div className="userlist_addcoin">
 
                     <select className='userlist_select' value={qoshuvQiymat} required onChange={(e) => setQoshuvQiymat(Number(e.target.value))}>
@@ -129,7 +129,7 @@ function Liststudents({ users }) {
 
                         disabled={qoshuvQiymat === "" || qoshuvQiymat < 0 ? true : false} onClick={() => qoshish(newUser._id)}>qo'shish</button>
                 </div> : <></>
-            }
+            } */}
 
 
 
