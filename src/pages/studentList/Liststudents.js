@@ -57,7 +57,6 @@ function Liststudents({ users }) {
                 setIsLoading(false)
                 setSensor(true)
                 // console.log(res)
-                setAyiruvQiymat(0)
             })
             .catch((error) => {
                 // console.log("error bor", error)
