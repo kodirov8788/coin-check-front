@@ -42,35 +42,35 @@ function Liststudents({ users }) {
 
     }, [sensor])
 
-    // const reset = async () => {
-    //     setSensor(false)
-    //     setIsLoading(true)
-    //     await axios.put(`/client/minus/${users._id}`, { coin: newUser.coin }, {
-    //         headers: {
-    //             'Authorization': `Bearer ${user.token}`
-    //         }
-    //     })
-    //         .then(res => {
-    //             toast.success(res.data, {
-    //                 position: toast.POSITION.TOP_RIGHT
-    //             });
-    //             setIsLoading(false)
-    //             setSensor(true)
-    //             // console.log(res)
-    //             setAyiruvQiymat(0)
-    //         })
-    //         .catch((error) => {
-    //             // console.log("error bor", error)
-    //             setIsLoading(false)
-    //             setSensor(true)
-    //             toast.error(error, {
-    //                 position: toast.POSITION.TOP_RIGHT
-    //             });
-    //         })
+    const reset = async () => {
+        setSensor(false)
+        setIsLoading(true)
+        return await axios.put(`/client/minus/${users._id}`, { coin: newUser.coin }, {
+            headers: {
+                'Authorization': `Bearer ${user.token}`
+            }
+        })
+            .then(res => {
+                toast.success(res.data, {
+                    position: toast.POSITION.TOP_RIGHT
+                });
+                setIsLoading(false)
+                setSensor(true)
+                // console.log(res)
+                setAyiruvQiymat(0)
+            })
+            .catch((error) => {
+                // console.log("error bor", error)
+                setIsLoading(false)
+                setSensor(true)
+                toast.error(error, {
+                    position: toast.POSITION.TOP_RIGHT
+                });
+            })
 
 
 
-    // }
+    }
     const qoshish = async (id) => {
         if (users._id) {
             setSensor(false)
@@ -113,7 +113,7 @@ function Liststudents({ users }) {
             </div>
 
 
-            {/* {newUser._id ?
+            {newUser._id ?
                 <div className="userlist_addcoin">
 
                     <select className='userlist_select' value={qoshuvQiymat} required onChange={(e) => setQoshuvQiymat(Number(e.target.value))}>
@@ -129,9 +129,11 @@ function Liststudents({ users }) {
 
                         disabled={qoshuvQiymat === "" || qoshuvQiymat < 0 ? true : false} onClick={() => qoshish(newUser._id)}>qo'shish</button>
                 </div> : <></>
-            } */}
+            }
 
-
+            <button style={{ marginRight: "10px" }} className='user_list_link' onClick={reset}>
+                Reset
+            </button>
 
 
             <p className='userlist_weekday'>{newUser.weekday === "odd" ? "toq" : "juft"} kunlari</p>
@@ -151,7 +153,7 @@ function Liststudents({ users }) {
             <p className='userlist_subject'>
                 {newUser.subject === "it" ? "dasturlash" : newUser.subject === "eng" ? "ingliz" : newUser.subject === "ru" ? "rus tili" : newUser.subject === "math" ? "Matematika" : newUser.subject === "chemistry" ? "kimyo" : newUser.subject === "law" ? "huquq" : ""}
             </p>
-        </li>
+        </li >
     )
 }
 
