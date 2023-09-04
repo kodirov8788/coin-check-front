@@ -128,8 +128,7 @@ function Liststudents({ users }) {
                     <button style={qoshuvQiymat ? { borderColor: "green" } : { borderColor: "gray", color: "gray" }}
 
                         disabled={qoshuvQiymat === "" || qoshuvQiymat < 0 ? true : false} onClick={() => qoshish(newUser._id)}>qo'shish</button>
-                </div> : <></>
-            }
+                </div> : <></>}
 
             <button style={{ marginRight: "10px" }} className='user_list_link' onClick={reset}>
                 Reset
