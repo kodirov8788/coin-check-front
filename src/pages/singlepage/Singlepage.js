@@ -254,7 +254,7 @@ function Singlepage() {
                                     <div className="singlepage_plus">
                                         <h2>Qo`shilgan: <span>{comment.amount}</span> </h2>
 
-                                        <span><b>sana:</b> {(new Date((comment.updatedAt)).getDate()) + "." + (new Date((comment.updatedAt)).getMonth()) + "." + (new Date((comment.updatedAt)).getFullYear())}</span>
+                                        <span><b>sana:</b> {(new Date((comment.updatedAt)).getDate()) + "." + (new Date((comment.updatedAt)).getMonth() + 1) + "." + (new Date((comment.updatedAt)).getFullYear())}</span>
                                     </div>
                                     :
                                     <div className="singlepage_minus">
