@@ -80,6 +80,7 @@ function Liststudents({ users }) {
                 }
             })
                 .then(res => {
+                    console.log(res)
                     toast.success(res.data, {
                         position: toast.POSITION.TOP_RIGHT
                     });
@@ -88,8 +89,8 @@ function Liststudents({ users }) {
                     setQoshuvQiymat("")
                 })
                 .catch((error) => {
-                    console.log("error bor", error)
-                    toast.error(error.data, {
+                    // console.log("error bor", error)
+                    toast.error(error.response.data, {
                         position: toast.POSITION.TOP_RIGHT
                     });
                     // setIsLoading(false)
