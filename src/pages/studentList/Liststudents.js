@@ -80,7 +80,6 @@ function Liststudents({ users }) {
                 }
             })
                 .then(res => {
-                    console.log(res)
                     toast.success(res.data, {
                         position: toast.POSITION.TOP_RIGHT
                     });
@@ -89,12 +88,9 @@ function Liststudents({ users }) {
                     setQoshuvQiymat("")
                 })
                 .catch((error) => {
-                    // console.log("error bor", error)
                     toast.error(error.response.data, {
                         position: toast.POSITION.TOP_RIGHT
                     });
-                    // setIsLoading(false)
-                    // setSensor(true)
                     setIsLoading(false)
                     setSensor(true)
                 })
@@ -122,6 +118,8 @@ function Liststudents({ users }) {
                         <option value="5">5</option>
                         <option value="7">7</option>
                         <option value="10">10</option>
+                        <option value="15">15</option>
+                        <option value="20">20</option>
                     </select>
 
 

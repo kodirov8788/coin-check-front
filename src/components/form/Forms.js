@@ -10,7 +10,6 @@ import { useNavigate } from 'react-router-dom'
 function Forms() {
     const { setIsLoading, setSensor } = useContext(AuthContext)
 
-    let navigate = useNavigate()
 
     const [inputRadio, setinputRadio] = useState("")
     const { user } = useAuthContext()
@@ -88,7 +87,15 @@ function Forms() {
                 <input className='forms_input' type="text" placeholder='Ismni kiriting...' required />
                 <input className='forms_input' type="text" placeholder='Familiyani kiriting...' required />
                 <input className='forms_input' type="number" placeholder='tel raqam' required />
-                <input type="number" className='forms_input' required placeholder='coin miqdori' />
+                <select className='userlist_select' required >
+                    <option value="">Coin tanglang!</option>
+                    <option value="2">2</option>
+                    <option value="5">5</option>
+                    <option value="7">7</option>
+                    <option value="10">10</option>
+                    <option value="15">15</option>
+                    <option value="20">20</option>
+                </select>
                 <div className="radio-group" onChange={(e) => setinputRadio(e.target.value)} required>
                     <input type="radio" value={"odd"} id="option-one" name="selector" />
                     <label htmlFor="option-one">Toq</label>

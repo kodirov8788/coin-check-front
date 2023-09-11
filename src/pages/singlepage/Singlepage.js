@@ -80,51 +80,51 @@ function Singlepage() {
     }
 
 
-    const reset = async () => {
-        // return console.log("coin: ", (userData.coin - userData.coin))
-        setSensor(false)
-        setIsLoading(true)
-        await Axios.put(`/client/minus/${id}`, { coin: userData.coin }, {
-            headers: {
-                'Authorization': `Bearer ${user.token}`
-            }
-        })
-            .then(res => {
-                toast.success(res.data, {
-                    position: toast.POSITION.TOP_RIGHT
-                });
-                setIsLoading(false)
-                setSensor(true)
-                // console.log(res)
-                setAyiruvQiymat(0)
-            })
-            .catch((error) => {
-                // console.log("error bor", error)
-                setIsLoading(false)
-                setSensor(true)
-                toast.error(error, {
-                    position: toast.POSITION.TOP_RIGHT
-                });
-            })
+    // const reset = async () => {
+    //     // return console.log("coin: ", (userData.coin - userData.coin))
+    //     setSensor(false)
+    //     setIsLoading(true)
+    //     await Axios.put(`/client/minus/${id}`, { coin: userData.coin }, {
+    //         headers: {
+    //             'Authorization': `Bearer ${user.token}`
+    //         }
+    //     })
+    //         .then(res => {
+    //             toast.success(res.data, {
+    //                 position: toast.POSITION.TOP_RIGHT
+    //             });
+    //             setIsLoading(false)
+    //             setSensor(true)
+    //             // console.log(res)
+    //             setAyiruvQiymat(0)
+    //         })
+    //         .catch((error) => {
+    //             // console.log("error bor", error)
+    //             setIsLoading(false)
+    //             setSensor(true)
+    //             toast.error(error, {
+    //                 position: toast.POSITION.TOP_RIGHT
+    //             });
+    //         })
 
 
 
-    }
-    const qoshish = async () => {
-        setSensor(false)
-        setIsLoading(true)
-        await Axios.put(`/client/plus/${id}`, { coin: qoshuvQiymat }, {
-            headers: {
-                'Authorization': `Bearer ${user.token}`
-            }
-        })
-            .then(res => console.log(res))
-            .catch((error) => console.log("error bor", error))
-        setIsLoading(false)
-        setSensor(true)
-        setQoshuvQiymat(0)
-        setAyiruvQiymat(0)
-    }
+    // }
+    // const qoshish = async () => {
+    //     setSensor(false)
+    //     setIsLoading(true)
+    //     await Axios.put(`/client/plus/${id}`, { coin: qoshuvQiymat }, {
+    //         headers: {
+    //             'Authorization': `Bearer ${user.token}`
+    //         }
+    //     })
+    //         .then(res => console.log(res))
+    //         .catch((error) => console.log("error bor", error))
+    //     setIsLoading(false)
+    //     setSensor(true)
+    //     setQoshuvQiymat(0)
+    //     setAyiruvQiymat(0)
+    // }
     const deleteUser = async (id) => {
         try {
             const response = await Axios.delete(`/client/delete/${id}`, {
