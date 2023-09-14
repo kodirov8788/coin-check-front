@@ -7,6 +7,7 @@ function PrivateRoute({ path, element, authenticated }) {
         </Routes>
     ) : (
         <Navigate to="/login" />
+        // <></>
     );
 }
 
