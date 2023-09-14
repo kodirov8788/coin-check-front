@@ -1,10 +1,7 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 import { useAuthContext } from './hooks/useAuthContext'
-
-// pages & components
 import Login from './pages/Login'
 import Signup from './pages/Signup'
-// import Navbar from './components/navbar/Navbar'
 import Main from './pages/Main/Main'
 import Singlepage from './pages/singlepage/Singlepage'
 import Header from './components/header/Header'
@@ -23,12 +20,10 @@ import Teacherupdate from './pages/teacherUpdate/Teacherupdate'
 import Searchstudent from './pages/searchStudent/Searchstudent'
 import Statistics from './pages/statistics/Statistics'
 import { ToastContainer, toast } from 'react-toastify';
-import PrivateRoute from './PrivateRoute'
 
 function App() {
   const { user } = useAuthContext()
   const { isLoading } = useContext(AuthContext)
-  console.log(user)
   return (
     <div className="App">
       <ToastContainer />
@@ -36,27 +31,67 @@ function App() {
         <LoadingSpinner boolean={isLoading} />
         {user ? <Header /> : <></>}
         <div className="pages">
-          <PrivateRoute path="/" element={<Main />} authenticated={user} />
-          <PrivateRoute path="/admin" element={<Admin />} authenticated={user} />
-          <PrivateRoute path="/archives" element={<Archives />} authenticated={user} />
-          <PrivateRoute path="/teachers" element={<Teachers />} authenticated={user} />
-          <PrivateRoute path="/teacherupdate/:id" element={<Teacherupdate />} authenticated={user} />
-          <PrivateRoute path="/teachers/:id" element={<Teacherlist />} authenticated={user} />
-          <PrivateRoute path="/signup" element={<Signup />} authenticated={user} />
-          <PrivateRoute path="/debt/:id" element={<Singlepage />} authenticated={user} />
-          <PrivateRoute path="/studentlist" element={<Studentlist />} authenticated={user} />
-          <PrivateRoute path="/singleuser/:id" element={<Singleuser />} authenticated={user} />
-          <PrivateRoute path="/addstudent" element={<Addstudent />} authenticated={user} />
-          <PrivateRoute path="/searchstudent" element={<Searchstudent />} authenticated={user} />
-          <PrivateRoute path="/statistics" element={<Statistics />} authenticated={user} />
           <Routes>
+            <Route
+              path="/"
+              element={user ? <Main /> : <Navigate to="/login" />}
+            />
+
             <Route
               path="/login"
               element={!user ? <Login /> : <Navigate to="/" />}
             />
             <Route
+              path="/admin"
+              element={user ? <Admin /> : <Navigate to="/login" />}
+            />
+            <Route
+              path="/archives"
+              element={user ? <Archives /> : <Navigate to="/login" />}
+            />
+            <Route
+              path="/teachers"
+              element={user ? <Teachers /> : <Navigate to="/login" />}
+            />
+            <Route
+              path="/teacherupdate/:id"
+              element={user ? <Teacherupdate /> : <Navigate to="/login" />}
+            />
+            <Route
+              path="/teachers/:id"
+              element={user ? <Teacherlist /> : <Navigate to="/login" />}
+            />
+            <Route
+              path="/signup"
+              element={user ? <Signup /> : <Navigate to="/login" />}
+            />
+            <Route
+              path="/debt/:id"
+              element={user ? <Singlepage /> : <Navigate to="/login" />}
+            />
+            <Route
+              path="/studentlist"
+              element={user ? <Studentlist /> : <Navigate to="/login" />}
+            />
+            <Route
+              path="/singleuser/:id"
+              element={user ? <Singleuser /> : <Navigate to="/login" />}
+            />
+            <Route
+              path="/addstudent"
+              element={user ? <Addstudent /> : <Navigate to="/login" />}
+            />
+            <Route
+              path="/searchstudent"
+              element={user ? <Searchstudent /> : <Navigate to="/login" />}
+            />
+            <Route
               path="/client"
               element={<Clientwatch />}
+            />
+            <Route
+              path="/statistics"
+              element={user ? <Statistics /> : <Navigate to="/login" />}
             />
           </Routes>
         </div>
