@@ -94,8 +94,9 @@ const Signup = () => {
         <option value="math">Matematika</option>
         <option value="chemistry">Kimyo</option>
         <option value="law">Huquq</option>
+        <option value="bioligy">Bialogiya</option>
+        <option value="tongue">Ona tili</option>
       </select>
-
       <button disabled={isLoading}>Sign up</button>
       {error && <div className="error">{error}</div>}
     </form>
