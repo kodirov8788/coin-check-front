@@ -132,20 +132,22 @@ function Singlepage() {
                     Authorization: `Bearer ${user.token}`,
                 },
             });
-            console.log(response);
             toast.success(response.data, {
                 position: toast.POSITION.TOP_RIGHT
             });
+            setIsLoading(false);
+            setSensor(true)
+            navigate(-1)
         } catch (error) {
             console.error(error);
             toast.error(error, {
                 position: toast.POSITION.TOP_RIGHT
             });
+            setIsLoading(false);
+            setSensor(true)
             // console.log('Error occurred while deleting user');
         }
-        setIsLoading(false);
-        setSensor(true)
-        navigate("/")
+
     };
 
     const editClient = async () => {
