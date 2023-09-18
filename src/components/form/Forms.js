@@ -104,6 +104,7 @@ function Forms() {
 
                 <select required>
                     <option value="">dars vaqtini tanglang</option>
+                    <option value="6-8">6-8</option>
                     <option value="8-10">8-10</option>
                     <option value="10-12">10-12</option>
                     <option value="12-14">12-14</option>

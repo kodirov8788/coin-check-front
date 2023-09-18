@@ -110,6 +110,7 @@ function Studentlist() {
                     </div>
                     <select onChange={(e) => (setLessonTime(e.target.value))}>
                         <option value="">all</option>
+                        <option value="6-8">6-8</option>
                         <option value="8-10">8-10</option>
                         <option value="10-12">10-12</option>
                         <option value="12-14">12-14</option>

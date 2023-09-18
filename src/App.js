@@ -96,7 +96,7 @@ function App() {
             />
             <Route
               path="/table"
-              element={<Table />}
+              element={user ? <Table /> : <Navigate to="/login" />}
             />
           </Routes>
         </div>

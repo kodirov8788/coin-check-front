@@ -31,6 +31,8 @@ function Sidebar({ sidebarstate, sidebarOpen }) {
                         <Link to="/teachers">Teacher</Link>
                         <Link to="/statistics">Statistika</Link>
                         <Link to="/searchstudent">O`quvchini qidirish</Link>
+                        <Link to="/table">Table</Link>
+
                     </div>
                     : <div className='sidebar_link'>
                         <Link to="/addstudent">O`quvchini qo`shish</Link>

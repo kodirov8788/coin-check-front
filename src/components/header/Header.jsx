@@ -63,6 +63,8 @@ const Header = () => {
                             {/* <Link to="/admin">admin</Link> */}
                             <Link to="/teachers">Teacher</Link>
                             <Link to="/statistics">Statistika</Link>
+                            <Link to="/table">Table</Link>
+
 
                         </div>
                         : <div className='admin_link'>
