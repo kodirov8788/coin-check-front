@@ -126,9 +126,9 @@ function Liststudents({ users }) {
                         disabled={qoshuvQiymat === "" || qoshuvQiymat < 0 ? true : false} onClick={() => qoshish(newUser._id)}>qo'shish</button>
                 </div> : <></>}
 
-            <button style={{ marginRight: "10px" }} className='user_list_link' onClick={reset}>
+            {/* <button style={{ marginRight: "10px" }} className='user_list_link' onClick={reset}>
                 Reset
-            </button>
+            </button> */}
 
 
             <p className='userlist_weekday'>{newUser.weekday === "odd" ? "toq" : "juft"} kunlari</p>
@@ -145,9 +145,9 @@ function Liststudents({ users }) {
                 </Link> : <></>
             }
 
-            {/* <p className='userlist_subject'>
-                {newUser.subject === "it" ? "dasturlash" : newUser.subject === "eng" ? "ingliz" : newUser.subject === "ru" ? "rus tili" : newUser.subject === "math" ? "Matematika" : newUser.subject === "chemistry" ? "kimyo" : newUser.subject === "law" ? "huquq" : ""}
-            </p> */}
+            <p className='userlist_subject'>
+                {newUser.subject?.toUpperCase()}
+            </p>
         </li >
     )
 }
