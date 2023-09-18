@@ -41,7 +41,7 @@ const Header = () => {
     }, [location])
 
     return (
-        <header>
+        <header style={location === "/table" ? { display: 'none' } : { display: 'block' }}>
             <Sidebar sidebarOpen={sidebarOpen} sidebarstate={setSidebarOpen} />
             <button className='header_menu' onClick={() => setSidebarOpen(true)}>
                 <img src={Menu} alt="" />
