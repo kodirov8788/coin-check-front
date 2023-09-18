@@ -20,6 +20,7 @@ import Teacherupdate from './pages/teacherUpdate/Teacherupdate'
 import Searchstudent from './pages/searchStudent/Searchstudent'
 import Statistics from './pages/statistics/Statistics'
 import { ToastContainer, toast } from 'react-toastify';
+import Table from './pages/table/Table'
 
 function App() {
   const { user } = useAuthContext()
@@ -92,6 +93,10 @@ function App() {
             <Route
               path="/statistics"
               element={user ? <Statistics /> : <Navigate to="/login" />}
+            />
+            <Route
+              path="/table"
+              element={<Table />}
             />
           </Routes>
         </div>
