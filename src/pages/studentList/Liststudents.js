@@ -126,9 +126,11 @@ function Liststudents({ users }) {
                         disabled={qoshuvQiymat === "" || qoshuvQiymat < 0 ? true : false} onClick={() => qoshish(newUser._id)}>qo'shish</button>
                 </div> : <></>}
 
-            <button style={{ marginRight: "10px" }} className='user_list_link' onClick={reset}>
+
+            {user.role == 'root' ? <button style={{ marginRight: "10px" }} className='user_list_link' onClick={reset}>
                 Reset
-            </button>
+            </button> : <></>}
+
 
 
             <p className='userlist_weekday'>{newUser.weekday === "odd" ? "toq" : "juft"} kunlari</p>

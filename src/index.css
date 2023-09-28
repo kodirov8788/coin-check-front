@@ -142,3 +142,8 @@ form.login .natija {
     width: 100%;
   }
 }
+
+.loading {
+  position: absolute;
+  color: blue;
+}
