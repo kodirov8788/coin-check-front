@@ -21,7 +21,6 @@ import Searchstudent from './pages/searchStudent/Searchstudent'
 import Statistics from './pages/statistics/Statistics'
 import { ToastContainer, toast } from 'react-toastify';
 import Table from './pages/table/Table'
-// import ReactLoading from "react-loading";
 
 function App() {
   const { user } = useAuthContext()

@@ -127,7 +127,7 @@ function Liststudents({ users }) {
                 </div> : <></>}
 
 
-            {user.role == 'root' ? <button style={{ marginRight: "10px" }} className='user_list_link' onClick={reset}>
+            {user?.role == 'root' ? <button style={{ marginRight: "10px" }} className='user_list_link' onClick={reset}>
                 Reset
             </button> : <></>}
 
