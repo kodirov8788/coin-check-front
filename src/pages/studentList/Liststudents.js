@@ -16,7 +16,6 @@ function Liststudents({ users }) {
         setTimeout(() => {
             const getData = async () => {
                 // setIsLoading(true)
-
                 await axios.get(`/client/getsingle/${users._id}`, {
                     headers: {
                         'Authorization': `Bearer ${user?.token}`
@@ -24,12 +23,10 @@ function Liststudents({ users }) {
                 })
                     .then(res => {
                         setNewUser(res.data)
-                        // setIsLoading(false)
                     }
                     )
                     .catch((error) => {
                         console.log("error bor", error)
-                        // setIsLoading(false)
                     })
             }
             getData()

@@ -4,6 +4,7 @@ import Axios from '../../api/api';
 import { AuthContext } from '../../context/AuthContext';
 import { useAuthContext } from '../../hooks/useAuthContext';
 import Liststudents from '../studentList/Liststudents';
+import { toast } from 'react-toastify';
 
 function Searchstudent() {
     const [Data, setData] = useState([]);
@@ -15,27 +16,21 @@ function Searchstudent() {
     const { user } = useAuthContext();
     const fetchData = async () => {
         setIsLoading(true);
-
         try {
-            const { data } = await Axios.get('/auth/get', {
-                headers: {
-                    Authorization: `Bearer ${user?.token}`,
-                },
-            });
-
             if (user.role === "root") {
                 setData(data)
+                const { data } = await Axios.get('/auth/get');
             } else {
-                setData(data.filter(use => use.teacherid === user.id));
+                const { data } = await Axios.post('/auth/students', user);
+                setData(data);
             }
             setIsLoading(false);
         } catch (error) {
-            console.error(error);
             setIsLoading(false);
-            console.log('Error occurred while fetching data');
+            toast.error(error, {
+                position: toast.POSITION.TOP_RIGHT
+            });
         }
-
-
     };
 
     useEffect(() => {

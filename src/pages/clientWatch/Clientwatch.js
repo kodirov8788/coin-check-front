@@ -10,7 +10,7 @@ function Clientwatch() {
     const [total, setTotal] = useState(0);
     const [number, setNumber] = useState("");
     const { setIsLoading } = useContext(AuthContext);
-
+    console.log(Data)
 
 
     const fetchData = async (e) => {
@@ -18,8 +18,10 @@ function Clientwatch() {
         setIsLoading(true);
 
         try {
-            const { data } = await Axios.get('/auth/get');
-            setData(data.filter(user => user.number == number));
+            const { data } = await Axios.post('/auth/result', { number: number });
+            // setData(data.filter(user => user.number == number));
+            setData(data)
+
             setIsLoading(false);
 
         } catch (error) {
