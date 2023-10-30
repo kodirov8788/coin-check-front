@@ -115,6 +115,8 @@ function Liststudents({ users }) {
                         <option value="5">5</option>
                         <option value="7">7</option>
                         <option value="10">10</option>
+
+                        {user.role === "root" ? <option value="300">300</option> : ""}
                     </select>
 
 
