@@ -15,34 +15,65 @@ function Singlepage() {
     const [NumberInput, setNumberInput] = useState("")
     const [weekdays, setWeekday] = useState("");
     const [lessonTime, setLessonTime] = useState("");
+    const [teacherId, setTeacherId] = useState("");
+    // console.log(teacher)
     // console.log(lessonTime)
     const { setIsLoading, sensor, setSensor } = useContext(AuthContext)
     const { user } = useAuthContext()
     const [ayiruvQiymat, setAyiruvQiymat] = useState("")
-    const [qoshuvQiymat, setQoshuvQiymat] = useState("")
+    // const [qoshuvQiymat, setQoshuvQiymat] = useState("")
     const [clientEdit, setClientEdit] = useState(false)
     const [userData, setUserData] = useState([])
+    const [teacherData, setTeacherData] = useState([])
+    // console.log(teacherData)
     // console.log(clientEdit)
     // console.log(userData)
     const getApi = () => {
         setIsLoading(true)
         if (user) {
-            setTimeout(async () => {
-                await Axios.get("/auth/get", {
+
+            const getClientApi = async () => {
+                await Axios.get(`/client/getsingle/${id}`, {
                     headers: {
                         'Authorization': `Bearer ${user.token}`
                     }
                 })
                     .then((res) => {
-                        setUserData(res.data.find(us => us._id === id))
+                        setUserData(res.data)
                         setIsLoading(false)
                     })
-                    .catch((error) => console.log("error bor"))
-            }, 500);
+                    .catch((error) => {
+                        toast.error("error bor", {
+                            position: toast.POSITION.TOP_RIGHT
+                        })
+                    })
+            }
+            const getTeachersApi = async () => {
+                await Axios.get("/user/getusers", {
+                    headers: {
+                        'Authorization': `Bearer ${user.token}`
+                    }
+                })
+                    .then((res) => {
+                        setTeacherData(res.data.filter(el => el.role != "root"))
+                        setIsLoading(false)
+                    })
+                    .catch((error) => {
+                        toast.error("error bor", {
+                            position: toast.POSITION.TOP_RIGHT
+                        })
+                    })
+            }
+
+            setTimeout(async () => {
+                getClientApi()
+                getTeachersApi()
+            }, 1000);
 
         }
 
     }
+
     useEffect(() => {
         getApi()
     }, [user, sensor])
@@ -160,7 +191,8 @@ function Singlepage() {
             lastname: Lastname,
             number: NumberInput,
             weekday: weekdays,
-            time: lessonTime
+            time: lessonTime,
+            teacherid: teacherId
         }
         await Axios.put(`/client/update/${id}`, newuser, {
             headers: {
@@ -179,6 +211,30 @@ function Singlepage() {
         setName("")
 
     }
+
+
+
+    const selectTeacher = () => {
+        let teachername = teacherData.find(el => el._id === userData.teacherid)
+        console.log(teachername)
+        return <div className="singlepage_name">
+            <h2><span>{teachername.name}</span></h2>
+
+            <select className='singlepage_name_select' onChange={(e) => setTeacherId(e.target.value)}>
+                <option value="">O'qituvchini o'zgartirish</option>
+                {
+                    teacherData.filter(el => el._id !== teachername._id).map(el => (
+                        <option key={el._id} value={el._id}>{el.name}</option>
+
+                    ))
+                }
+            </select>
+
+            <button onClick={editClient}>Jo'natish</button>
+        </div>
+    }
+
+
     return (
         <div>
             <div className="singlepage_top">
@@ -238,8 +294,11 @@ function Singlepage() {
                             <option value="14-16">14-16</option>
                             <option value="16-18">16-18</option>
                         </select>
+
+
                         <button onClick={editClient}>Jo'natish</button>
                     </div>
+                    {selectTeacher()}
                 </div>
                     : <></>}
 
