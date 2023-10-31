@@ -223,7 +223,7 @@ function Singlepage() {
             <select className='singlepage_name_select' onChange={(e) => setTeacherId(e.target.value)}>
                 <option value="">O'qituvchini o'zgartirish</option>
                 {
-                    teacherData.filter(el => el._id !== teachername._id).map(el => (
+                    teacherData.filter(el => el._id !== teachername._id && el.subject === teachername.subject).map(el => (
                         <option key={el._id} value={el._id}>{el.name}</option>
 
                     ))
