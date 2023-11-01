@@ -298,7 +298,10 @@ function Singlepage() {
 
                         <button onClick={editClient}>Jo'natish</button>
                     </div>
-                    {selectTeacher()}
+                    {
+                        user.role === "root" ? selectTeacher() : ""
+                    }
+
                 </div>
                     : <></>}
 
