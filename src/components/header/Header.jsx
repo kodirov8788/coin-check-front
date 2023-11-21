@@ -63,6 +63,7 @@ const Header = () => {
                             {/* <Link to="/admin">admin</Link> */}
                             <Link to="/teachers">Teacher</Link>
                             <Link to="/statistics">Statistika</Link>
+                            <Link to="/searchstudent">O`quvchini qidirish</Link>
                             <Link to="/table">Table</Link>
 
 

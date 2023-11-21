@@ -8,7 +8,7 @@ import { toast } from 'react-toastify';
 
 function Searchstudent() {
     const [Data, setData] = useState([]);
-
+    console.log(Data)
     const [inputSearch, setInputSearch] = useState("");
 
     const [filteredData, setFilteredData] = useState([]);
@@ -18,8 +18,8 @@ function Searchstudent() {
         setIsLoading(true);
         try {
             if (user.role === "root") {
-                setData(data)
                 const { data } = await Axios.get('/auth/get');
+                setData(data)
             } else {
                 const { data } = await Axios.post('/auth/students', user);
                 setData(data);
