@@ -11,7 +11,7 @@ function Liststudents({ users }) {
 
     const [qoshuvQiymat, setQoshuvQiymat] = useState("")
     const { user } = useAuthContext()
-
+    console.log(user)
     useEffect(() => {
         setTimeout(() => {
             const getData = async () => {
@@ -108,16 +108,20 @@ function Liststudents({ users }) {
 
             {newUser._id ?
                 <div className="userlist_addcoin">
+                    {user.role === "root" ?
+                        <input placeholder='coin kiriting...' type="text" value={qoshuvQiymat} required onChange={(e) => setQoshuvQiymat(Number(e.target.value))} />
+                        :
+                        <select className='userlist_select' value={qoshuvQiymat} required onChange={(e) => setQoshuvQiymat(Number(e.target.value))}>
+                            <option value="">Coin tanglang!</option>
+                            <option value="2">2</option>
+                            <option value="5">5</option>
+                            <option value="7">7</option>
+                            <option value="10">10</option>
+                        </select>
+                    }
 
-                    <select className='userlist_select' value={qoshuvQiymat} required onChange={(e) => setQoshuvQiymat(Number(e.target.value))}>
-                        <option value="">Coin tanglang!</option>
-                        <option value="2">2</option>
-                        <option value="5">5</option>
-                        <option value="7">7</option>
-                        <option value="10">10</option>
 
-                        {user.role === "root" ? <option value="300">300</option> : ""}
-                    </select>
+
 
 
                     <button style={qoshuvQiymat ? { borderColor: "green" } : { borderColor: "gray", color: "gray" }}
